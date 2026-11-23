@@ -19,14 +19,14 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
 ## Design system (Version 3)
 - Colours: brand orange `#FC8C27`, cream `#F5EBDD`, cream-2 `#EEDFCB`, tea brown `#382219`; hero text peach `#F2D4BE`
 - Fonts: **Cormorant Garamond** (display; switched from Bodoni Moda on 23 Nov) + **Manrope** (body, uppercase letter-spaced labels). Exceptions:
-  - Hero film chapter headlines use **Bodoni Moda Italic** (user asked to keep the old font there), except chapter 02 "Pulled, not stirred" in **Source Serif 4 Italic** and chapter 04 "Handmade taufufah" in **Lora Italic** (set per chapter with `font:` in the `CH` list; the rail card labels keep Manrope).
+  - Hero film chapter headlines (all five) use **Source Serif 4 Italic** since 23 Nov (was Bodoni Moda Italic; Lora was briefly used for chapter 04). The rail card labels keep Manrope.
   - Drinks stage drink name uses **Inter 800** (matches the React Bits FoldText demo).
 - Libraries (CDN): Three.js 0.160 (jsDelivr, importmap), GSAP 3.12.2 + ScrollTrigger (cdnjs), Google Fonts
 - Single static `index.html` + `a/` assets. No build step. Local test needs a Range-capable server: `python3 tools/rangeserve.py . 8000`
 
 ## Page structure (Version 3, top to bottom)
 1. **Hero film** (Delta Cafés-style layout since 23 Nov): 38.7 s muted loop `a/hero-16x9.mp4` on every screen. The hero is always the **full viewport height** (`100svh`, min 520 px) at every width; narrower screens just crop the sides of the film. (A 30 px peek of the next section was tried and removed at the user's request.)
-   - Bottom-left: small uppercase subtitle + big headline (Bodoni Moda Italic, with the two per-chapter exceptions above), sitting just above the chapter rail. No CTA button (the "Our Five Flavours" pill + arrow were removed on 23 Nov at the user's request).
+   - Bottom-left: small uppercase subtitle + big headline (Source Serif 4 Italic), sitting just above the chapter rail. No CTA button (the "Our Five Flavours" pill + arrow were removed on 23 Nov at the user's request).
    - Bottom: scrolling rail of 5 chapter cards, each with a progress line; the playing card lights up and the rail follows it; tap a card to jump to that chapter. Thumbnails `a/ch-1..5.webp` shown at **98 × 62 px** (files 294×186): frames at 0.3 s, 10.5 s (crown splash), 18.5 s (milk swirl), 22.6 s, 29.3 s.
    - Phone header: dark "JB" place pill (to `#find`) left, logo centred (cup above wordmark), dark MENU pill right. Desktop header unchanged. Header turns cream when scrolled.
    - Chapters: 0 s Bold black tea / SELECTED TEA LEAVES · 7.5 s Pulled, not stirred / THE ART OF TARIK · 14 s Silky, never too sweet / MILK MEETS HOT TEA · 22 s Handmade taufufah / SILKY SOY BEANCURD · 28.7 s Five flavours, one pull / PREMIUM · CHAM · MATCHA · TARO · JASMINE SEASALT
