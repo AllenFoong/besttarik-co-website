@@ -19,7 +19,7 @@ Any static host works for deployment (GitHub Pages, Netlify, Vercel, Cloudflare 
 
 | Section | What it does |
 |---|---|
-| Hero film | 38.7 s looping ingredient film `a/hero-16x9.mp4` on every screen. Like Delta Cafés, the hero keeps the same height at every width (viewport height minus a 30 px peek of the next section); narrower screens just crop the sides. Delta Cafés-style layout: big Cormorant Garamond headline bottom-left, pill CTA + round arrow, and a scrolling rail of five chapter cards (`a/ch-1..5.webp`, the start frame of each chapter) with progress lines; tap a card to jump to that chapter |
+| Hero film | 38.7 s looping ingredient film `a/hero-16x9.mp4` on every screen. Like Delta Cafés, the hero keeps the same height at every width (full viewport height); narrower screens just crop the sides. Delta Cafés-style layout: big Cormorant Garamond headline bottom-left, pill CTA + round arrow, and a scrolling rail of five chapter cards (`a/ch-1..5.webp`, the start frame of each chapter) with progress lines; tap a card to jump to that chapter |
 | Drinks | 3D cup built with Three.js (lathe model wrapped in real photos). Spins to the next flavour every ~2.5 s, ingredients implode and burst, drag/hover parallax |
 | Our Story | Editorial rows, milestones (TNCSEA Shining Business Award 2026), made-by-hand process |
 | Brand Highlights | Two columns: React Bits `DepthCarousel` (3D stacked deck, GSAP) on the left, live caption panel on the right |
