@@ -7,7 +7,7 @@
 <meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..700&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..700&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&family=Lora:ital,wght@1,400&display=swap">
 <link rel="preload" as="image" href="a/hero-poster.jpg">
 <style>
 /* Layout: a full-screen looping ingredient film (HeroTea-style) with captions top-left, then an editorial story,
@@ -1004,9 +1004,9 @@ button{font:inherit;color:inherit}
 (function(){
   const CH = [
     {t:0,    h:'Bold black tea',          s:'Selected tea leaves'},
-    {t:7.5,  h:'Pulled, not stirred',     s:'The art of tarik'},
+    {t:7.5,  h:'Pulled, not stirred',     s:'The art of tarik',   font:'"Source Serif 4",Georgia,serif'},
     {t:14,   h:'Silky, never too sweet',  s:'Milk meets hot tea'},
-    {t:22,   h:'Handmade taufufah',       s:'Silky soy beancurd'},
+    {t:22,   h:'Handmade taufufah',       s:'Silky soy beancurd', font:'"Lora",Georgia,serif'},
     {t:28.7, h:'Five flavours, one pull', s:'Premium \u00b7 Cham \u00b7 Matcha \u00b7 Taro \u00b7 Jasmine Seasalt'}
   ];
   const TOTAL = 38.7;
@@ -1023,7 +1023,7 @@ button{font:inherit;color:inherit}
     requestAnimationFrame(tick);
     const t = v.currentTime || 0; let k = 0; CH.forEach((c,i)=>{ if (t >= c.t) k = i; });
     const end = CH[k+1] ? CH[k+1].t : TOTAL;
-    if (k !== cur){ cur = k; cards.forEach((c,i)=>c.classList.toggle('on', i === k)); if (rail.scrollWidth > rail.clientWidth + 4) follow(k); cap.classList.add('out'); setTimeout(()=>{ H.textContent = CH[k].h; S.textContent = CH[k].s; }, 260); }
+    if (k !== cur){ cur = k; cards.forEach((c,i)=>c.classList.toggle('on', i === k)); if (rail.scrollWidth > rail.clientWidth + 4) follow(k); cap.classList.add('out'); setTimeout(()=>{ H.style.fontFamily = CH[k].font || ''; H.textContent = CH[k].h; S.textContent = CH[k].s; }, 260); }
     cap.classList.toggle('out', !(t >= CH[k].t + .5 && t < end - .4) && !(v.paused && t < .05));
     bars.forEach((b,i)=>{ const a = CH[i].t, z = CH[i+1] ? CH[i+1].t : TOTAL; b.style.transform = `scaleX(${Math.min(1, Math.max(0, (t - a)/(z - a))).toFixed(3)})`; });
   }

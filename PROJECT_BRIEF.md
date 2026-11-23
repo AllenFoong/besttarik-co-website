@@ -19,6 +19,7 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
 ## Design system (Version 3)
 - Colours: brand orange `#FC8C27`, cream `#F5EBDD`, cream-2 `#EEDFCB`, tea brown `#382219`
 - Fonts: **Cormorant Garamond** (display, italic for headlines/captions; switched from Bodoni Moda on 23 Nov) + **Manrope** (body, uppercase letter-spaced labels)
+- Hero film captions: **Bodoni Moda** italic by default; chapter 02 "Pulled, not stirred" uses **Source Serif 4** italic and chapter 04 "Handmade taufufah" uses **Lora** italic (set per chapter in the `CH` list). Drink name in the Drinks stage uses **Inter 800**.
 - Libraries (CDN): Three.js 0.160 (jsDelivr, importmap), GSAP 3.12.2 + ScrollTrigger (cdnjs), Google Fonts
 - Single static `index.html` + `a/` assets. No build step. Local test needs a Range-capable server: `python3 tools/rangeserve.py . 8000`
 
