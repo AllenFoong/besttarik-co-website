@@ -7,7 +7,7 @@
 <meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..700&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&display=swap">
 <link rel="preload" as="image" href="a/hero-poster.jpg">
 <style>
 /* Layout: a full-screen looping ingredient film (HeroTea-style) with captions top-left, then an editorial story,
@@ -281,31 +281,40 @@ button{font:inherit;color:inherit}
   .beat{position:relative;opacity:1;transform:none;margin-bottom:1.4rem}
 }
 
-/* ---------- video hero (Version 3) ---------- */
-.vhero{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#5a3a22;color:var(--cream)}
+/* ---------- video hero (Version 4: Delta-style layout) ---------- */
+.vhero{--peach:#F2D4BE;--peek:30px;position:relative;height:calc(100svh - var(--peek));min-height:520px;overflow:hidden;background:#5a3a22;color:var(--peach)}
 .vhero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vhero::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(165deg,rgba(30,15,6,.5) 0%,rgba(30,15,6,0) 45%),linear-gradient(0deg,rgba(30,15,6,.42) 0%,rgba(30,15,6,0) 32%)}
-.vcap{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);top:clamp(112px,20vh,200px);max-width:min(760px,100%)}
-@media (min-width:900px){.vcap{left:max(48px,env(safe-area-inset-left,0px))}}
-.vcap h1{font:italic 500 clamp(2.7rem,7.4vw,6rem)/1 var(--f-display);letter-spacing:-.01em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.22)}
-.vcap p{margin-top:1.1rem;font:600 clamp(.66rem,1.1vw,.8rem)/1.7 var(--f-body);letter-spacing:.24em;text-transform:uppercase;opacity:.92}
+  background:linear-gradient(180deg,rgba(30,15,6,.45) 0%,rgba(30,15,6,0) 26%),linear-gradient(0deg,rgba(30,15,6,.78) 0%,rgba(30,15,6,.35) 32%,rgba(30,15,6,0) 58%)}
+.vbody{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(150px + env(safe-area-inset-bottom,0px));max-width:880px}
+@media (min-width:900px){.vbody{left:max(56px,env(safe-area-inset-left,0px));bottom:calc(178px + env(safe-area-inset-bottom,0px))}}
+.vcap p{font:600 .66rem/1.6 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:rgba(242,212,190,.85);margin-bottom:.7rem}
+.vcap h1{font:italic 400 clamp(2.8rem,12vw,6.8rem)/.98 "Bodoni Moda","Didot","Bodoni 72",Georgia,serif;letter-spacing:-.015em;text-wrap:balance;color:var(--peach);max-width:12ch}
 .vcap h1,.vcap p{transition:opacity .7s ease,transform .9s var(--ease-out)}
-.vcap p{transition-delay:.12s}
+.vcap h1{transition-delay:.08s}
 .vcap.out h1,.vcap.out p{opacity:0;transform:translateY(14px);transition-delay:0s}
-.vfoot{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));
-  display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
-@media (min-width:900px){.vfoot{left:max(48px,env(safe-area-inset-left,0px));right:max(48px,env(safe-area-inset-right,0px))}}
-.vchaps{display:flex;gap:6px;list-style:none;flex:1;max-width:420px}
-.vchaps li{flex:1;height:2px;background:rgba(245,235,221,.28);overflow:hidden;border-radius:1px}
-.vchaps i{display:block;height:100%;width:100%;background:var(--brand);transform:scaleX(0);transform-origin:left}
-.vplace{font:600 .66rem/1.5 var(--f-body);letter-spacing:.22em;text-transform:uppercase;text-align:right;opacity:.9}
-.vbtn{min-height:44px;min-width:44px;padding:0 1rem;border-radius:99px;border:1px solid rgba(245,235,221,.45);background:rgba(30,15,6,.28);color:var(--cream);
-  font:600 .7rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.vcue{position:absolute;z-index:2;left:50%;transform:translateX(-50%);bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:.5rem;
-  color:var(--cream);text-decoration:none;font:600 .62rem var(--f-body);letter-spacing:.24em;text-transform:uppercase}
-.vcue i{width:1px;height:28px;background:linear-gradient(var(--cream),transparent)}
-@media (max-width:899px){.vcue{display:none}}
+.vcta{display:flex;align-items:center;gap:.3rem;margin-top:clamp(1.4rem,4vh,2.2rem)}
+.vcta a{display:inline-flex;align-items:center;justify-content:center;min-height:56px;border-radius:99px;text-decoration:none;transition:transform .16s var(--ease-out),background-color .25s ease}
+.vcta a:active{transform:scale(.97)}
+.vcta-pill{padding:0 1.6rem;background:var(--peach);color:var(--tea);font:500 1rem var(--f-body)}
+.vcta-go{width:56px;background:#4A2A1C;color:var(--peach)}
+.vcta-go svg{width:18px;height:18px}
+@media (hover:hover) and (pointer:fine){.vcta-pill:hover{background:#FBE6D6}.vcta-go:hover{background:#5E3725}}
+/* chapter rail: progress line + scrolling cards, like the reference */
+.vrail{position:absolute;z-index:2;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+.vchapters{display:flex;gap:14px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding:0 var(--gutter-r) 4px var(--gutter-l);scroll-padding-left:var(--gutter-l)}
+.vchapters::-webkit-scrollbar{display:none}
+@media (min-width:900px){.vchapters{padding-left:max(56px,env(safe-area-inset-left,0px));padding-right:56px;scroll-padding-left:56px}}
+.vchapters li{flex:0 0 min(78vw,300px);scroll-snap-align:start}
+.vch{position:relative;display:grid;grid-template-columns:44% 1fr;align-items:start;gap:14px;width:100%;padding:16px 0 6px;border:0;background:none;color:var(--peach);text-align:left;cursor:pointer;font:inherit;opacity:.62;transition:opacity .35s ease}
+.vch.on{opacity:1}
+.vch::before,.vch i{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:rgba(242,212,190,.35)}
+.vch i{height:2px;top:-.5px;background:var(--peach);transform:scaleX(0);transform-origin:left}
+.vch img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;border-radius:4px;display:block}
+.vch b{display:block;font:500 .95rem/1 var(--f-body);margin-bottom:.55rem}
+.vch span{font:500 .9rem/1.25 var(--f-body)}
+@media (hover:hover) and (pointer:fine){.vch:hover{opacity:1}}
 /* header sits over the film until it turns solid, on every screen */
 @media all{
 .header:not(.solid):not(.on-menu){color:var(--cream)}
@@ -313,29 +322,33 @@ button{font:inherit;color:inherit}
 .header:not(.solid):not(.on-menu) .nav a.active,.header:not(.solid):not(.on-menu) .nav a:hover{color:var(--cream)}
 .header:not(.solid):not(.on-menu) .menu-btn{background:rgba(30,15,6,.25);border-color:rgba(245,235,221,.4)}
 }
-/* portrait screens: the film stays landscape, full width, with the clear header over it */
-@media (max-aspect-ratio:4/5){
-.vhero{height:auto;min-height:0;aspect-ratio:16/9}
-.vhero::after{background:linear-gradient(180deg,rgba(30,15,6,.55) 0%,rgba(30,15,6,0) 55%),linear-gradient(0deg,rgba(30,15,6,.4) 0%,rgba(30,15,6,0) 35%)}
-.vcap{top:calc(3.7rem + env(safe-area-inset-top,0px))}
-.vcap h1{font-size:clamp(1.5rem,6.4vw,2.4rem)}
-.vcap p{margin-top:.5rem;font-size:.56rem;letter-spacing:.2em}
-.vfoot{bottom:10px}
-.vchaps{max-width:none}
+.hdr-pill{display:none}
+/* short landscape phones: tighten the stack so the cards still fit */
+@media (max-height:620px) and (orientation:landscape){
+.vbody{bottom:calc(128px + env(safe-area-inset-bottom,0px))}
+.vcap h1{font-size:clamp(2.4rem,7vw,4rem)}
+.vcta{margin-top:1rem}.vcta a{min-height:48px}.vcta-go{width:48px}
 }
-/* ---------- compact header on phones: logo and menu on one centre line ---------- */
+/* ---------- phones: Delta-style header (place pill, centred logo, menu pill) ---------- */
 @media (max-width:899px){
-  .header{padding:calc(.65rem + env(safe-area-inset-top,0px)) var(--gutter-r) .65rem var(--gutter-l);align-items:center}
-  .logo{min-height:34px;gap:.45rem}
-  .logo svg{width:16px;height:22px}
-  .logo span{font-size:.7rem;letter-spacing:.26em}
-  .menu-btn{min-height:34px;padding:0 .8rem;gap:.45rem;font-size:.64rem;letter-spacing:.16em;line-height:1}
+  .header{display:grid;grid-template-columns:1fr auto 1fr;padding:calc(.9rem + env(safe-area-inset-top,0px)) var(--gutter-r) .9rem var(--gutter-l)}
+  .logo{flex-direction:column;justify-content:center;gap:.32rem;min-height:44px;justify-self:center}
+  .logo svg{width:22px;height:30px}
+  .logo span{font-size:.56rem;letter-spacing:.3em}
+  .logo small{font-size:.46rem}
+  #header .hdr-pill,#header .menu-btn{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1.05rem;border:0;border-radius:99px;
+    background:rgba(28,16,10,.66);color:var(--cream);font:700 .7rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  #header.on-menu .menu-btn{background:rgba(245,235,221,.12)}
+  .hdr-pill{justify-self:start}
+  .hdr-pill svg{width:16px;height:16px}
+  .menu-btn{justify-self:end}
   .menu-btn i{width:14px;height:7px}
   .menu-btn[aria-expanded="true"] i::before{transform:translateY(2.75px) rotate(45deg)}
   .menu-btn[aria-expanded="true"] i::after{transform:translateY(-2.75px) rotate(-45deg)}
   .menu-btn i::before,.menu-btn i::after{width:14px}
-  .menu{clip-path:circle(0px at calc(100% - var(--gutter-r) - 40px) calc(env(safe-area-inset-top,0px) + 1.7rem))}
-  .menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 40px) calc(env(safe-area-inset-top,0px) + 1.7rem))}
+  .menu{clip-path:circle(0px at calc(100% - var(--gutter-r) - 44px) calc(env(safe-area-inset-top,0px) + .9rem + 22px))}
+  .menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 44px) calc(env(safe-area-inset-top,0px) + .9rem + 22px))}
 }
 /* ---------- dynamic menu button and menu ---------- */
 .header,.header .logo,.header .logo small{transition:background-color .35s ease,box-shadow .35s ease,color .35s ease}
@@ -354,7 +367,7 @@ button{font:inherit;color:inherit}
 .menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 48px) calc(env(safe-area-inset-top,0px) + 2.3rem))}
 .menu a,.menu p{opacity:0;transform:translateY(26px);transition:opacity .3s ease,transform .3s ease}
 .menu.open a,.menu.open p{opacity:1;transform:none;transition:opacity .5s ease,transform .7s var(--ease-out);transition-delay:calc(.22s + var(--i,0) * .07s)}
-@media (prefers-reduced-motion:reduce){.vcap h1,.vcap p{transition:none}.menu{clip-path:none;opacity:0;transition:opacity .2s ease}.menu.open{opacity:1}.menu a,.menu p{opacity:1;transform:none;transition:none}.menu-btn span.swap{animation:none}}
+@media (prefers-reduced-motion:reduce){.vcap h1,.vcap p,.vch{transition:none}.menu{clip-path:none;opacity:0;transition:opacity .2s ease}.menu.open{opacity:1}.menu a,.menu p{opacity:1;transform:none;transition:none}.menu-btn span.swap{animation:none}}
 
 /* ---------- real photos ---------- */
 .mile-photo,.team-photo,.find-photo{position:relative;overflow:hidden;margin-top:.6rem}
@@ -789,6 +802,7 @@ button{font:inherit;color:inherit}
 </svg>
 
 <header class="header" id="header">
+  <a class="hdr-pill" href="#find" aria-label="Find us in Johor Bahru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>JB</a>
   <a class="logo" href="#top" aria-label="Best Tarik and Co, back to top"><svg aria-hidden="true"><use href="#mark"/></svg><span>BEST TARIK <small>&amp;CO</small></span></a>
   <nav class="nav" aria-label="Sections">
     <a href="#drinks">Drinks</a>
@@ -809,11 +823,23 @@ button{font:inherit;color:inherit}
 <main id="top">
 <!-- 1. Hero film -->
 <section class="vhero" id="hero" aria-label="Best Tarik and Co, the art of tarik">
-  <video id="film" src="a/hero-16x9.mp4" muted playsinline autoplay loop preload="auto" poster="a/hero-poster.jpg" aria-hidden="true"></video>
-  <div class="vcap out" id="vcap" aria-live="polite"><h1 id="vcapH">Bold black tea</h1><p id="vcapS">Selected tea leaves</p></div>
-  <div class="vfoot">
+  <video id="film" src="a/hero-16x9.mp4" poster="a/hero-poster.jpg" muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
+  <div class="vbody">
+    <div class="vcap out" id="vcap" aria-live="polite"><p id="vcapS">Selected tea leaves</p><h1 id="vcapH">Bold black tea</h1></div>
+    <div class="vcta">
+      <a class="vcta-pill" href="#drinks">Our Five Flavours</a>
+      <a class="vcta-go" href="#drinks" aria-label="See our drinks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
-  <a class="vcue" href="#drinks"><span>Our drinks</span><i aria-hidden="true"></i></a>
+  <div class="vrail">
+    <ol class="vchapters" id="vchapters" aria-label="Film chapters">
+      <li><button class="vch on" type="button" data-k="0"><i aria-hidden="true"></i><img src="a/ch-1.webp" alt="" width="360" height="203" loading="lazy"><span><b>01</b>Bold black tea</span></button></li>
+      <li><button class="vch" type="button" data-k="1"><i aria-hidden="true"></i><img src="a/ch-2.webp" alt="" width="360" height="203" loading="lazy"><span><b>02</b>Pulled, not stirred</span></button></li>
+      <li><button class="vch" type="button" data-k="2"><i aria-hidden="true"></i><img src="a/ch-3.webp" alt="" width="360" height="203" loading="lazy"><span><b>03</b>Silky, never too sweet</span></button></li>
+      <li><button class="vch" type="button" data-k="3"><i aria-hidden="true"></i><img src="a/ch-4.webp" alt="" width="360" height="203" loading="lazy"><span><b>04</b>Handmade taufufah</span></button></li>
+      <li><button class="vch" type="button" data-k="4"><i aria-hidden="true"></i><img src="a/ch-5.webp" alt="" width="360" height="203" loading="lazy"><span><b>05</b>Five flavours, one pull</span></button></li>
+    </ol>
+  </div>
 </section>
 
 <section class="v1stage" id="drinks" aria-label="Five flavours in 3D">
@@ -989,7 +1015,11 @@ button{font:inherit;color:inherit}
   ];
   const TOTAL = 38.7;
   const v = document.getElementById('film'), cap = document.getElementById('vcap'), H = document.getElementById('vcapH'), S = document.getElementById('vcapS');
-  const bars = [...document.querySelectorAll('#vchaps i')], hero = document.getElementById('hero');
+  const cards = [...document.querySelectorAll('#vchapters .vch')], bars = cards.map(c=>c.querySelector('i')), rail = document.getElementById('vchapters'), hero = document.getElementById('hero');
+  // tap a card to jump to that chapter
+  cards.forEach((c,i)=>c.addEventListener('click', ()=>{ v.currentTime = CH[i].t + .02; v.play().catch(()=>{}); }));
+  // keep the playing card in view inside the rail (never scrolls the page)
+  function follow(k){ const li = cards[k].parentElement, pad = parseFloat(getComputedStyle(rail).scrollPaddingLeft) || 0; rail.scrollTo({left: li.offsetLeft - pad, behavior:'smooth'}); }
   let cur = -1;
   // pause off-screen to save battery
   new IntersectionObserver(es=>{ if (es[0].isIntersecting) v.play().catch(()=>{}); else v.pause(); }).observe(hero);
@@ -997,7 +1027,7 @@ button{font:inherit;color:inherit}
     requestAnimationFrame(tick);
     const t = v.currentTime || 0; let k = 0; CH.forEach((c,i)=>{ if (t >= c.t) k = i; });
     const end = CH[k+1] ? CH[k+1].t : TOTAL;
-    if (k !== cur){ cur = k; cap.classList.add('out'); setTimeout(()=>{ H.textContent = CH[k].h; S.textContent = CH[k].s; }, 260); }
+    if (k !== cur){ cur = k; cards.forEach((c,i)=>c.classList.toggle('on', i === k)); if (rail.scrollWidth > rail.clientWidth + 4) follow(k); cap.classList.add('out'); setTimeout(()=>{ H.textContent = CH[k].h; S.textContent = CH[k].s; }, 260); }
     cap.classList.toggle('out', !(t >= CH[k].t + .5 && t < end - .4) && !(v.paused && t < .05));
     bars.forEach((b,i)=>{ const a = CH[i].t, z = CH[i+1] ? CH[i+1].t : TOTAL; b.style.transform = `scaleX(${Math.min(1, Math.max(0, (t - a)/(z - a))).toFixed(3)})`; });
   }
@@ -1012,7 +1042,7 @@ button{font:inherit;color:inherit}
   if (reduce || !window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
   // leaving the film: captions lift away
-  gsap.to(['#vcap', '.vfoot', '.vcue'], {y:-60, opacity:0, ease:'none', scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:.6}});
+  gsap.to(['.vbody', '.vrail'], {y:-60, opacity:0, ease:'none', scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:.6}});
   gsap.utils.toArray('.reveal').forEach(el=>{
     gsap.fromTo(el, {clipPath:'inset(18% 0 0 0)', y:30}, {clipPath:'inset(0% 0 0 0)', y:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:el, start:'top 88%'}});
   });
