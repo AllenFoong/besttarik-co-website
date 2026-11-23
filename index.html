@@ -289,7 +289,7 @@ button{font:inherit;color:inherit}
 .vbody{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(130px + env(safe-area-inset-bottom,0px));max-width:880px}
 @media (min-width:900px){.vbody{left:max(56px,env(safe-area-inset-left,0px));bottom:calc(140px + env(safe-area-inset-bottom,0px))}}
 .vcap p{font:600 .66rem/1.6 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:rgba(242,212,190,.85);margin-bottom:.7rem}
-.vcap h1{font:normal 400 clamp(2.8rem,12vw,6.8rem)/.98 "Source Serif 4",Georgia,serif;letter-spacing:-.015em;text-wrap:balance;color:var(--peach);max-width:12ch}
+.vcap h1{font:normal 400 clamp(2.2rem,8.5vw,4.8rem)/1.02 "Source Serif 4",Georgia,serif;letter-spacing:-.015em;text-wrap:balance;color:var(--peach);max-width:12ch}
 .vcap h1,.vcap p{transition:opacity .7s ease,transform .9s var(--ease-out)}
 .vcap h1{transition-delay:.08s}
 .vcap.out h1,.vcap.out p{opacity:0;transform:translateY(14px);transition-delay:0s}
@@ -326,7 +326,7 @@ button{font:inherit;color:inherit}
 /* short landscape phones: tighten the stack so the cards still fit */
 @media (max-height:620px) and (orientation:landscape){
 .vbody{bottom:calc(118px + env(safe-area-inset-bottom,0px))}
-.vcap h1{font-size:clamp(2.4rem,7vw,4rem)}
+.vcap h1{font-size:clamp(1.9rem,5vw,3rem)}
 .vcta{margin-top:1rem}.vcta a{min-height:48px}.vcta-go{width:48px}
 }
 /* ---------- phones: Delta-style header (place pill, centred logo, menu pill) ---------- */

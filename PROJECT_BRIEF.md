@@ -26,7 +26,7 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
 
 ## Page structure (Version 3, top to bottom)
 1. **Hero film** (Delta Cafés-style layout since 23 Nov): 38.7 s muted loop `a/hero-16x9.mp4` on every screen. The hero is always the **full viewport height** (`100svh`, min 520 px) at every width; narrower screens just crop the sides of the film. (A 30 px peek of the next section was tried and removed at the user's request.)
-   - Bottom-left: small uppercase subtitle + big headline (Source Serif 4, upright), sitting just above the chapter rail. No CTA button (the "Our Five Flavours" pill + arrow were removed on 23 Nov at the user's request).
+   - Bottom-left: small uppercase subtitle + big headline (Source Serif 4, upright; size `clamp(2.2rem, 8.5vw, 4.8rem)`, reduced on 23 Nov), sitting just above the chapter rail. No CTA button (the "Our Five Flavours" pill + arrow were removed on 23 Nov at the user's request).
    - Bottom: scrolling rail of 5 chapter cards, each with a progress line; the playing card lights up and the rail follows it; tap a card to jump to that chapter. Thumbnails `a/ch-1..5.webp` shown at **98 × 62 px** (files 294×186): frames at 0.3 s, 10.5 s (crown splash), 18.5 s (milk swirl), 22.6 s, 29.3 s.
    - Phone header: dark "JB" place pill (to `#find`) left, logo centred (cup above wordmark), dark MENU pill right. Desktop header unchanged. Header turns cream when scrolled.
    - Chapters: 0 s Bold black tea / SELECTED TEA LEAVES · 7.5 s Pulled, not stirred / THE ART OF TARIK · 14 s Silky, never too sweet / MILK MEETS HOT TEA · 22 s Handmade taufufah / SILKY SOY BEANCURD · 28.7 s Five flavours, one pull / PREMIUM · CHAM · MATCHA · TARO · JASMINE SEASALT
