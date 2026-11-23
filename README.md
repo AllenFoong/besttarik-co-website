@@ -34,6 +34,7 @@ index.html                      Version 3 (current site)
 a/                              images, video, 3D textures, ingredient sprites
 versions/v1/                    Version 1 (white theme, 3D cup hero)
 versions/v2/                    Version 2 (cinematic redesign; head.html + body.html + cupcore.js are combined into index.html)
+src/fold-text/                  React Bits FoldText (drink name in the Drinks stage): original JSX + CSS, plain-JS port
 src/depth-carousel/             React Bits DepthCarousel: original JSX + CSS, and the plain-JS port used in the site
 src/circular-carousel/          React Bits CircularCarousel: original JSX + CSS, and the plain-JS port used in the site
 tools/rangeserve.py             local static server with Range support
