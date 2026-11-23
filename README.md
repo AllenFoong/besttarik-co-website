@@ -19,7 +19,7 @@ Any static host works for deployment (GitHub Pages, Netlify, Vercel, Cloudflare 
 
 | Section | What it does |
 |---|---|
-| Hero film | Full-screen 38.7 s looping ingredient film (`a/hero-16x9.mp4`), five chapters, English captions as page text (Bodoni Moda Italic + Manrope) |
+| Hero film | Full-screen 38.7 s looping ingredient film (`a/hero-16x9.mp4`), five chapters, English captions as page text (Cormorant Garamond Italic + Manrope) |
 | Drinks | 3D cup built with Three.js (lathe model wrapped in real photos). Spins to the next flavour every ~2.5 s, ingredients implode and burst, drag/hover parallax |
 | Our Story | Editorial rows, milestones (TNCSEA Shining Business Award 2026), made-by-hand process |
 | Brand Highlights | React Bits `CircularCarousel` (cylinder preset), ported to plain JS |
