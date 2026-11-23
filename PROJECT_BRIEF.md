@@ -19,7 +19,7 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
 ## Design system (Version 3)
 - Colours: brand orange `#FC8C27`, cream `#F5EBDD`, cream-2 `#EEDFCB`, tea brown `#382219`
 - Fonts: **Cormorant Garamond** (display, italic for headlines/captions; switched from Bodoni Moda on 23 Nov) + **Manrope** (body, uppercase letter-spaced labels)
-- Libraries (CDN): Three.js 0.160 (jsDelivr, importmap), GSAP 3.12.2 + ScrollTrigger (cdnjs), Google Fonts
+- Libraries (CDN): Three.js 0.160 + ogl 1.0.11 (jsDelivr, importmap), GSAP 3.12.2 + ScrollTrigger (cdnjs), Google Fonts
 - Single static `index.html` + `a/` assets. No build step. Local test needs a Range-capable server: `python3 tools/rangeserve.py . 8000`
 
 ## Page structure (Version 3, top to bottom)
@@ -32,7 +32,7 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
    Header is transparent over the film (desktop and phone), turns cream when scrolled. Phone menu button is compact and animated (lines → X, circular reveal, staggered links).
 2. **Drinks** (`#drinks`): Version 1's 3D cup stage (Three.js lathe cup wrapped in real photos, floating ingredients, milk bubbles). Titles "Five Ways" / "Pick Yours". Auto-advances to the next flavour every ~2.5 s, pauses on card hover and after a click, has a 4.5 s safety unlock.
 3. **Our Story**: Born in Johor (pour photo), Why taufufah, The first stall (Johor Jaya cart photo), Milestones (award + photo), Made by hand (stall photo + prep steps).
-4. **Brand Highlights**: React Bits **CircularCarousel** (cylinder preset, intro rise, cardWidth 220, aspectRatio 1, speed 14, captions, fade colour = cream-2), ported to plain JS (`src/circular-carousel/`). 10 photos. 560 px tall (420 px on phones).
+4. **Brand Highlights**: React Bits **FlexCarousel** (liquid-lens WebGL carousel, preset `liquid`, intro `rise`, captions; `captureWheel: false` so the page still scrolls), ported to plain JS on top of **ogl 1.0.11** (`src/flex-carousel/`). Replaced the earlier CircularCarousel on 23 Nov (its code is kept in `src/circular-carousel/`). 10 photos. 560 px tall (440 px on phones).
 5. **Find Us**: Jalan Sri Pelangi + day stall photo.
 
 ## How the hero film was made
