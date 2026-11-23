@@ -628,24 +628,23 @@ button{font:inherit;color:inherit}
 }
 
 /* ---------- Brand Highlights: two columns, DepthCarousel left, text right ---------- */
-.high-grid{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
+.high-grid{display:grid;gap:clamp(20px,5vw,64px);align-items:center;margin-top:clamp(28px,4vw,48px)}
 @media (min-width:900px){.high-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
 .high-stage{position:relative;height:560px;min-width:0}
 @media (max-width:600px){.high-stage{height:400px}}
 .high{overflow-x:clip}
 @supports not (overflow:clip){.high{overflow-x:hidden}}
 .high-text{min-width:0}
-.high-text h2{margin-top:1.2rem}
-.high-now{margin-top:clamp(28px,4vw,44px);padding-top:clamp(20px,3vw,28px);border-top:1px solid rgba(56,34,25,.15)}
+.high-now{padding-left:clamp(0px,2vw,28px);border-left:2px solid var(--brand)}
 .high-count{font:600 .68rem/1 var(--f-body);letter-spacing:.22em;color:var(--tea-soft);font-variant-numeric:tabular-nums}
 .high-count b{color:var(--brand);font-weight:700}
 .high-now h3{margin-top:.9rem;font:italic 500 clamp(2rem,4vw,2.8rem)/1.05 var(--f-display);letter-spacing:-.01em;color:var(--tea)}
 .high-sub{margin-top:.55rem;font:600 .66rem/1.6 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--tarik)}
-.high-desc{margin-top:1rem;max-width:38ch;font:400 1rem/1.65 var(--f-body);color:var(--tea-soft)}
+.high-desc{margin-top:1.1rem;max-width:44ch;font:400 1.02rem/1.75 var(--f-body);color:var(--tea-soft)}
 .high-now h3,.high-sub,.high-desc{transition:opacity .35s ease,transform .45s var(--ease-out)}
 .high-now.swap h3,.high-now.swap .high-sub,.high-now.swap .high-desc{opacity:0;transform:translateY(8px)}
 .high-hint{margin-top:1.6rem;font:600 .6rem/1.6 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--tea-soft);opacity:.75}
-@media (max-width:899px){.high-text{order:-1}}
+@media (max-width:899px){.high-text{order:2}.high-now{padding-left:16px}}
 /* light-theme skin for the deck's controls */
 #highlightDeck .depth-carousel__arrow{background:rgba(245,235,221,.82);border-color:rgba(56,34,25,.18);color:var(--tea)}
 #highlightDeck .depth-carousel__arrow:hover{background:var(--cream);border-color:rgba(56,34,25,.35)}
@@ -790,11 +789,13 @@ button{font:inherit;color:inherit}
 
 <!-- 3. Highlights -->
 <section class="high" id="highlights" aria-labelledby="high-t">
+  <div class="wrap">
+    <div class="eyebrow">Brand Highlights</div>
+    <h2 class="display" id="high-t">Up <em>close.</em></h2>
+  </div>
   <div class="wrap high-grid">
     <div class="high-stage"><div id="highlightDeck"></div></div>
     <div class="high-text">
-      <div class="eyebrow">Brand Highlights</div>
-      <h2 class="display" id="high-t">Up <em>close.</em></h2>
       <div class="high-now" id="highNow" aria-live="polite">
         <div class="high-count"><b id="highIdx">01</b> / <span id="highTotal">10</span></div>
         <h3 id="highTitle">Award night</h3>
@@ -1125,25 +1126,25 @@ button{font:inherit;color:inherit}
 (function(){
   const items = [
     { image: 'a/photo-award-2.webp', alt: 'The founder holding the Shining Business Award', title: 'Award night', subtitle: 'TNCSEA 2026', position: '50% 28%',
-      desc: 'Best Tarik & Co received the Shining Malaysian Beverage Innovation Excellence Award at the TNCSEA Shining Business Award 2026.' },
+      desc: 'Best Tarik & Co received the Shining Malaysian Beverage Innovation Excellence Award at the TNCSEA Shining Business Award 2026. The ceremony was held on 16 September 2026 at D Theatre, Hextar World in Petaling Jaya, where more than 100 awards were presented.' },
     { image: 'a/photo-pour-1.webp', alt: 'Teh tarik poured into a Best Tarik cup', title: 'The pour', subtitle: 'Premium Teh Tarik', position: '50% 40%',
-      desc: 'Pulled tea poured into the cup for a thick, silky froth.' },
+      desc: 'Freshly pulled tea is poured over an iced Premium Teh Tarik, building a thick, silky froth on top. It is the last step of every cup, done by hand at the stall.' },
     { image: 'a/top-cham.webp', alt: 'Salted coffee cream seen from above', title: 'Salted coffee cream', subtitle: 'Cham Teh Tarik',
-      desc: 'Cham Teh Tarik, crowned with salted coffee cream.' },
+      desc: 'Cham brings tea and coffee together, the Malaysian way. Our Cham Teh Tarik is topped with a layer of salted coffee cream, which settles into soft swirls over the drink.' },
     { image: 'a/photo-booth-pelangi-night.webp', alt: 'The Best Tarik stall lit up at night', title: 'The stall', subtitle: 'Jalan Sri Pelangi', position: '50% 62%',
-      desc: 'The stall on Jalan Sri Pelangi, Johor Bahru, lit up after dark.' },
+      desc: 'The Best Tarik stall on Jalan Sri Pelangi, Johor Bahru, lit up for an evening service. A cart, a white table and the light-box logo: a small setup that travels with us.' },
     { image: 'a/base-close-matcha.webp', alt: 'Soy beancurd layer under matcha', title: 'Taufufah', subtitle: 'Matcha',
-      desc: 'Silky soy beancurd sits at the bottom of every cup.' },
+      desc: 'Every cup starts with a layer of silky soy beancurd (taufufah) at the bottom. Here it sits under Matcha Teh Tarik, so each sip mixes smooth tea with soft, spoonable beancurd.' },
     { image: 'a/photo-pour-2.webp', alt: 'An iced Best Tarik cup with a dome lid', title: 'Ready to go', subtitle: 'Iced', position: '50% 45%',
-      desc: 'Iced, sealed and ready to take away.' },
+      desc: 'Iced, sealed under a dome lid and ready to take away. The layers stay visible through the cup: beancurd at the bottom, teh tarik in the middle, cream on top.' },
     { image: 'a/photo-booth-night-trunk.webp', alt: 'The car-boot stall at night', title: 'After dark', subtitle: 'Pop-up', position: '50% 55%',
-      desc: 'The car-boot pop-up, set up for the night.' },
+      desc: 'The car-boot pop-up after dark. An orange crate, a cooler box with the Best Tarik logo and a small lamp, all running from the back of the car.' },
     { image: 'a/top-premium.webp', alt: 'Pulled tea froth seen from above', title: 'Pulled froth', subtitle: 'Premium Teh Tarik',
-      desc: 'The froth on top of a Premium Teh Tarik.' },
+      desc: 'A close look at the froth on a Premium Teh Tarik. Pulling the tea back and forth traps air, which gives the top its light, bubbly texture.' },
     { image: 'a/photo-made-by-hand.webp', alt: 'Pulling teh tarik at the stall', title: 'Made by hand', subtitle: 'At the stall', position: '50% 35%',
-      desc: 'Every cup is made by hand at the stall.' },
+      desc: 'At the stall, every cup is made by hand, from the beancurd base to the final pour. This photo comes from a feature by @jbcityguide.' },
     { image: 'a/photo-award-1.webp', alt: 'The award trophy and certificate', title: 'Street to stage', subtitle: 'Shining Business Award', position: '50% 40%',
-      desc: 'From a street stall to the awards stage.' }
+      desc: 'The trophy and certificate from the TNCSEA Shining Business Award 2026. From a car-boot stall in Johor Bahru to an awards stage in Petaling Jaya.' }
   ];
   const now = document.getElementById('highNow'), idx = document.getElementById('highIdx'),
     title = document.getElementById('highTitle'), sub = document.getElementById('highSub'), desc = document.getElementById('highDesc');
