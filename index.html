@@ -715,7 +715,7 @@ button{font:inherit;color:inherit}
 
     <div class="hero-right">
       <div class="carousel">
-        <div class="cards-window"><div class="cards" id="cards" role="group" aria-label="Choose a flavour"></div></div>
+        <div class="cards-window" hidden><div class="cards" id="cards" role="group" aria-label="Choose a flavour"></div></div>
         <div class="carousel-nav">
           <button class="nav-arrow" id="prev" type="button" aria-label="Previous flavours">&larr;</button>
           <button class="nav-arrow" id="next" type="button" aria-label="More flavours">&rarr;</button>
@@ -1218,10 +1218,11 @@ function slide(){
   const maxOff = FLAVORS.length - visibleCount(); offset = Math.max(0, Math.min(maxOff, offset));
   const step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(cardsEl).gap);
   cardsEl.style.transform = `translateX(${-offset*step}px)`;
-  prevBtn.disabled = offset === 0; nextBtn.disabled = offset >= maxOff;
 }
-prevBtn.addEventListener('click', ()=>{ offset--; slide(); });
-nextBtn.addEventListener('click', ()=>{ offset++; slide(); });
+/* flavour cards are hidden: the arrows now step through the drinks themselves */
+prevBtn.setAttribute('aria-label', 'Previous drink'); nextBtn.setAttribute('aria-label', 'Next drink');
+prevBtn.addEventListener('click', ()=>{ if (!isSwitching) select((cur - 1 + FLAVORS.length) % FLAVORS.length); });
+nextBtn.addEventListener('click', ()=>{ if (!isSwitching) select((cur + 1) % FLAVORS.length); });
 addEventListener('resize', slide); slide();
 cardsEl.addEventListener('pointerenter', e=>{ if (e.pointerType === 'mouse') hoverHold = true; });
 cardsEl.addEventListener('pointerleave', ()=>{ hoverHold = false; nextAt = Math.max(nextAt, performance.now() + 1200); });
