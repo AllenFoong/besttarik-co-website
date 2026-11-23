@@ -22,7 +22,7 @@ Any static host works for deployment (GitHub Pages, Netlify, Vercel, Cloudflare 
 | Hero film | Full-screen 38.7 s looping ingredient film (`a/hero-16x9.mp4`), five chapters, English captions as page text (Cormorant Garamond Italic + Manrope) |
 | Drinks | 3D cup built with Three.js (lathe model wrapped in real photos). Spins to the next flavour every ~2.5 s, ingredients implode and burst, drag/hover parallax |
 | Our Story | Editorial rows, milestones (TNCSEA Shining Business Award 2026), made-by-hand process |
-| Brand Highlights | React Bits `CircularCarousel` (cylinder preset), ported to plain JS |
+| Brand Highlights | Two columns: React Bits `DepthCarousel` (3D stacked deck, GSAP) on the left, live caption panel on the right |
 | Find Us | Location, hours, contact |
 
 Libraries are loaded from CDNs: Three.js 0.160 (jsDelivr), GSAP 3.12.2 + ScrollTrigger (cdnjs), Google Fonts.
@@ -34,6 +34,7 @@ index.html                      Version 3 (current site)
 a/                              images, video, 3D textures, ingredient sprites
 versions/v1/                    Version 1 (white theme, 3D cup hero)
 versions/v2/                    Version 2 (cinematic redesign; head.html + body.html + cupcore.js are combined into index.html)
+src/depth-carousel/             React Bits DepthCarousel: original JSX + CSS, and the plain-JS port used in the site
 src/circular-carousel/          React Bits CircularCarousel: original JSX + CSS, and the plain-JS port used in the site
 tools/rangeserve.py             local static server with Range support
 tools/upscale_photos.py         Real-ESRGAN x4 photo upscaler used for the real photos

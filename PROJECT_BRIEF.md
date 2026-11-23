@@ -32,7 +32,7 @@ Last updated: 23 Nov 2026. Read this first in any new chat about this project.
    Header is transparent over the film (desktop and phone), turns cream when scrolled. Phone menu button is compact and animated (lines → X, circular reveal, staggered links).
 2. **Drinks** (`#drinks`): Version 1's 3D cup stage (Three.js lathe cup wrapped in real photos, floating ingredients, milk bubbles). Titles "Five Ways" / "Pick Yours". Auto-advances to the next flavour every ~2.5 s, pauses on card hover and after a click, has a 4.5 s safety unlock.
 3. **Our Story**: Born in Johor (pour photo), Why taufufah, The first stall (Johor Jaya cart photo), Milestones (award + photo), Made by hand (stall photo + prep steps).
-4. **Brand Highlights**: React Bits **CircularCarousel** (cylinder preset, intro rise, cardWidth 220, aspectRatio 1, speed 14, captions, fade colour = cream-2), ported to plain JS (`src/circular-carousel/`). 10 photos. 560 px tall (420 px on phones).
+4. **Brand Highlights**: two columns. Left: React Bits **DepthCarousel** (stacked 3D deck, GSAP tween, arrows + dots, drag/swipe; `tiltDirection: left`, tint tea brown, `captureWheel: false` so the page still scrolls), ported to plain JS (`src/depth-carousel/`). Right: eyebrow + "Up close." + live text panel (count, title, subtitle, one-line description) that follows the active photo. Text stacks above the deck on phones. Replaced CircularCarousel on 23 Nov (FlexCarousel was tried and reverted; both kept in `src/`). 10 photos.
 5. **Find Us**: Jalan Sri Pelangi + day stall photo.
 
 ## How the hero film was made
