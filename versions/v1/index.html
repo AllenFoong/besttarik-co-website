@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Best Tarik &amp; Co</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Best Tarik &amp; Co, Johor Bahru. Pulled teh tarik over soy beancurd, crowned with cream.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: a brand book. Screen one is the stage: a photo-real 3D cup that leans toward the cursor, ringed by its ingredients.
+   Below it the story unfolds in four chapters (Story, The Cup, Flavours, Journey), all tinted by the flavour on stage.
+   Single dark theme on purpose: each flavour owns its colour. */
+:root{
+  --text:#2B1D13;            /* steeped tea ink */
+  --muted:#6B5646;           /* 6.4:1 on the page */
+  --page:#FBF7F1;            /* steamed-milk white */
+  --page-2:#F4ECE1;          /* a shade warmer, for alternating chapters */
+  --glass-bg:rgba(255,255,255,.55);
+  --glass-border:rgba(43,29,19,.12);
+  --orange:#FC8C27;          /* the logo orange, used as-is for every shape and fill */
+  --accent:#D96E0A;          /* same orange, one step deeper, for large display type (3.2:1) */
+  --accent-ink:#A85205;      /* same hue for small labels, so they stay readable */
+  --on-accent:#2B1D13;       /* ink on orange fills (6.9:1) */
+  --font-main:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading:"Galada", "Brush Script MT", cursive;
+  --font-nav:"Manrope", "Inter", system-ui, sans-serif;
+  --bg-inner:#FFF8EF; --bg-mid:#F3E1C8; --bg-outer:#E4C6A0;
+  color-scheme:light;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+img{-webkit-user-drag:none;user-select:none}
+body{background:var(--page);color:var(--text);font-family:var(--font-main);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- bubbles ---------- */
+#bubbles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bubble{position:absolute;bottom:-50px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 32% 30%,#fff 0 9%,rgba(255,255,255,.35) 24%,rgba(255,255,255,.08) 60%,transparent 74%);
+  box-shadow:inset 0 0 0 1px rgba(43,29,19,.14)}
+@keyframes floatUp{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+  10%{opacity:var(--o,.4)} 90%{opacity:var(--o,.4)}
+  100%{transform:translateY(-110vh) translateX(30px) rotate(360deg);opacity:0}
+}
+
+/* ---------- header: a chapter index, not a shop ---------- */
+.header{position:fixed;top:0;left:0;right:0;z-index:120;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;
+  padding:calc(1.5rem + env(safe-area-inset-top,0px)) max(4%, 16px, env(safe-area-inset-right,0px)) 1.5rem max(4%, 16px, env(safe-area-inset-left,0px));
+  transition:padding .35s cubic-bezier(.23,1,.32,1),background-color .35s ease,border-color .35s ease;border-bottom:1px solid transparent}
+.header.scrolled{padding-top:calc(.7rem + env(safe-area-inset-top,0px));padding-bottom:.7rem;
+  background:color-mix(in srgb,var(--page) 82%,transparent);border-bottom-color:rgba(43,29,19,.08);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;justify-self:start;min-height:44px}
+.logo svg{width:22px;height:30px;flex:none}
+.logo span{font:600 .82rem/1 var(--font-nav);letter-spacing:.32em;text-transform:uppercase;white-space:nowrap}
+.logo small{font-size:.6rem;letter-spacing:.18em;margin-left:.15em;color:var(--muted)}
+.nav{display:flex;gap:.25rem}
+.nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 1rem;font:500 .88rem/1 var(--font-nav);color:var(--muted);text-decoration:none;transition:color .25s ease}
+.nav a::after{content:"";position:absolute;left:50%;bottom:4px;width:8px;height:5px;margin-left:-4px;background:var(--orange);border-radius:1px;opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .3s cubic-bezier(.23,1,.32,1)}
+.nav a.active{color:var(--text)}
+.nav a.active::after{opacity:1;transform:none}
+@media (hover:hover) and (pointer:fine){.nav a:hover{color:var(--text)}}
+.header-end{justify-self:end;display:flex;align-items:center;gap:.5rem}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(43,29,19,.18);background:transparent;color:var(--text);cursor:pointer;text-decoration:none;transition:background-color .25s ease,border-color .25s ease,transform .16s cubic-bezier(.23,1,.32,1)}
+.icon-btn:active{transform:scale(.95)}
+.icon-btn svg{width:18px;height:18px}
+@media (hover:hover) and (pointer:fine){.icon-btn:hover{background:rgba(43,29,19,.1);border-color:rgba(43,29,19,.35)}}
+.menu-btn{display:none}
+/* phone: chapters open as a full-screen index */
+.menu{position:fixed;inset:0;z-index:119;background:var(--page);
+  padding:calc(6rem + env(safe-area-inset-top,0px)) max(24px, env(safe-area-inset-right,0px)) calc(2rem + env(safe-area-inset-bottom,0px)) max(24px, env(safe-area-inset-left,0px));
+  display:flex;flex-direction:column;gap:.4rem;opacity:0;transition:opacity .25s ease}
+.menu.open{opacity:1}
+.menu a{display:flex;align-items:baseline;gap:1rem;text-decoration:none;font:400 clamp(2.6rem,12vw,3.6rem)/1.15 var(--font-heading);color:var(--text)}
+.menu a span{font:600 .75rem var(--font-nav);letter-spacing:.2em;color:var(--accent-ink)}
+.menu .menu-foot{margin-top:auto;font:500 .9rem var(--font-nav);color:var(--muted)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;height:100vh;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
+  padding:5rem max(4%, 16px, env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(4%, 16px, env(safe-area-inset-left,0px))}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--page));z-index:105;pointer-events:none}
+.hero-content{display:flex;justify-content:space-between;align-items:stretch;width:100%;height:100%;position:relative}
+.main-title,.side-title{font-family:var(--font-heading);font-size:clamp(5rem,10vw,12rem);line-height:.8;font-weight:400;white-space:nowrap;color:var(--text)}
+.main-title .soft,.side-title .soft{color:var(--accent)}
+
+/* far background: tea leaves */
+.leaves{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.leaf{position:absolute;width:60px;height:60px;object-fit:contain;pointer-events:none;filter:drop-shadow(0 5px 12px rgba(60,35,15,.18))}
+.l1{top:10%;left:15%;width:48px;height:48px}
+.l2{top:40%;left:82%;width:84px;height:84px;opacity:.35}
+.l3{top:72%;left:78%;width:56px;height:56px}
+.l4{top:86%;left:12%;width:72px;height:72px;opacity:.3}
+
+/* left column */
+.hero-left{display:flex;flex-direction:column;height:100%;padding:6rem 0;gap:2rem;z-index:100;position:relative}
+.description{color:var(--muted);font-size:1.1rem;line-height:1.6;max-width:400px}
+.primary-btn{display:flex;align-items:center;gap:1.5rem;background:var(--text);color:var(--page);border:0;padding:.4rem .4rem .4rem 1.5rem;border-radius:100px;font-weight:700;cursor:pointer;width:fit-content;text-decoration:none;transition:background-color .3s ease,transform .2s cubic-bezier(.23,1,.32,1)}
+.primary-btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.primary-btn:hover{background:#43301F;transform:translateY(-3px)}}
+.plus-icon{background:var(--orange);color:var(--on-accent);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.plus-icon svg{width:16px;height:16px}
+.badge{display:flex;align-items:center;gap:1rem;margin-top:auto}
+.badge-icon{width:48px;height:48px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.badge-icon svg{width:20px;height:26px}
+.badge-text{display:flex;flex-direction:column}
+.badge-title{font-size:.7rem;letter-spacing:.1em;color:var(--muted)}
+.badge-sub{font-size:.85rem;font-weight:600}
+
+/* ingredient layers */
+.pieces-bg,.pieces-fg{position:absolute;inset:0;pointer-events:none}
+.pieces-bg{z-index:0}
+.pieces-fg{z-index:110}
+.piece{position:absolute;width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(60,35,15,.22));will-change:transform}
+/* kept small and out of the cup's column so the cup stays the hero */
+.b1{top:20%;left:27%;width:96px;height:96px}
+.b2{top:74%;left:36%;width:54px;height:54px}
+.b3{top:41%;left:63.5%;width:104px;height:104px}
+.b4{top:6%;left:58%;width:66px;height:66px}
+.b5{top:80%;left:22%;width:62px;height:62px}
+.b6{top:56%;left:73%;width:82px;height:82px}
+.b7{top:12%;left:36%;width:44px;height:44px;opacity:.6}
+.b8{top:62%;left:63%;width:40px;height:40px;opacity:.5}
+.b9{top:86%;left:58%;width:42px;height:42px;opacity:.6}
+
+/* the cup */
+.hero-center{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.4s ease-out;
+  background:radial-gradient(circle at center, rgba(255,214,170,.14) 0%, transparent 60%)}
+.hero-center.ready{opacity:1}
+.cup-float{position:absolute;inset:0;animation:float 6s ease-in-out infinite}
+.hero-center canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+/* right column */
+.hero-right{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;text-align:right;height:100%;padding:6rem 0;z-index:100;width:450px;pointer-events:none;position:relative}
+.carousel{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-end;pointer-events:auto}
+.cards-window{width:calc(135px*2 + 1rem);overflow:visible;clip-path:inset(-200px 0 -10px 0)}
+.cards{display:flex;gap:1rem;transition:transform .55s cubic-bezier(.23,1,.32,1)}
+.card{flex:none;width:135px;background:var(--glass-bg);border:1px solid var(--glass-border);padding:5rem 1rem 1rem;border-radius:28px;display:flex;flex-direction:column;align-items:center;gap:1.2rem;cursor:pointer;color:var(--text);text-align:center;position:relative;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background-color .4s ease,border-color .4s ease}
+@media (hover:hover) and (pointer:fine){.card:hover{background:rgba(255,255,255,.8);border-color:rgba(43,29,19,.3)}}
+.card[aria-pressed="true"]{border-color:var(--orange)}
+.card img{width:96px;height:132px;object-fit:contain;margin-top:-8rem;filter:drop-shadow(0 18px 24px rgba(60,35,15,.28));transition:transform .5s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+@media (hover:hover) and (pointer:fine){.card:hover img{transform:translateY(-24px) rotate(-10deg) scale(1.12)}}
+.card-info{display:flex;flex-direction:column;font-size:.72rem;width:100%;line-height:1.35}
+.card-info span:first-child{font-weight:600}
+.card-info span:last-child{color:var(--muted)}
+.carousel-nav{display:flex;gap:1rem}
+.nav-arrow{background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .3s,opacity .3s}
+.nav-arrow:disabled{opacity:.35;cursor:default}
+@media (hover:hover) and (pointer:fine){.nav-arrow:not(:disabled):hover{background:rgba(43,29,19,.12)}}
+.side-title{align-self:flex-end}
+
+/* ---------- story ---------- */
+.chapter{position:relative;padding-block:clamp(80px,12vw,150px)}
+.chapter .wrap{max-width:1200px;margin:0 auto;padding-left:max(4%, 16px, env(safe-area-inset-left,0px));padding-right:max(4%, 16px, env(safe-area-inset-right,0px))}
+.chapter.alt{background:var(--page-2)}
+.eyebrow{display:flex;align-items:center;gap:.7rem;font:600 .72rem/1 var(--font-nav);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.eyebrow::before{content:"";width:10px;height:6px;background:var(--orange);border-radius:1px}
+.ch-title{font:400 clamp(3rem,6.4vw,5.6rem)/.95 var(--font-heading);letter-spacing:0;text-wrap:balance;margin-top:1.4rem}
+.ch-title .soft{color:var(--accent)}
+.prose{display:grid;gap:1.2rem;color:var(--muted);font-size:1.08rem;line-height:1.75;max-width:58ch}
+.prose strong{color:var(--text);font-weight:600}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,6vw,96px);align-items:end}
+
+/* story: the pairing as an equation */
+.pairing{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.1fr);align-items:center;gap:clamp(12px,2vw,28px);margin-top:clamp(56px,8vw,96px)}
+.pair{border:1px solid rgba(43,29,19,.12);border-radius:24px;padding:26px 24px;display:grid;gap:.5rem;min-width:0;background:rgba(43,29,19,.03)}
+.pair b{font:400 2.2rem/1 var(--font-heading)}
+.pair span{color:var(--muted);font-size:.95rem;line-height:1.5}
+.op{font:400 2.4rem/1 var(--font-heading);color:var(--accent)}
+.pair.result{display:flex;align-items:center;gap:18px;border-color:var(--orange);background:rgba(252,140,39,.07)}
+.pair.result img{width:74px;height:auto;flex:none;filter:drop-shadow(0 12px 16px rgba(60,35,15,.25))}
+.pair.result div{display:grid;gap:.4rem;min-width:0}
+
+/* the cup: layers called out like the brand's own posts */
+.cup-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:center;margin-top:clamp(48px,7vw,80px)}
+.cup-fig{position:relative;justify-self:center;width:min(380px,80%)}
+.cup-fig img{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(60,35,15,.25))}
+.layers{list-style:none;display:grid;gap:0;counter-reset:l}
+.layers li{counter-increment:l;display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding:26px 0;border-top:1px solid rgba(43,29,19,.1)}
+.layers li:last-child{border-bottom:1px solid rgba(43,29,19,.1)}
+.layers li::before{content:counter(l,decimal-leading-zero);font:600 .8rem var(--font-nav);letter-spacing:.12em;color:var(--accent-ink);padding-top:.5rem}
+.layers h3{font:400 2rem/1.1 var(--font-heading);font-weight:400}
+.layers p{color:var(--muted);line-height:1.65;margin-top:.35rem}
+
+/* the cup: the real pour, with the layer list following along */
+.cup-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.pour{position:relative;margin:0;border-radius:28px;overflow:hidden;background:#EAD7B9;aspect-ratio:16/9;max-width:100%;box-shadow:0 40px 80px -44px rgba(60,35,15,.45)}
+.pour video{display:block;width:100%;height:100%;object-fit:cover}
+.pour-bar{position:absolute;left:20px;right:76px;bottom:28px;height:3px;border-radius:2px;background:rgba(43,29,19,.18)}
+.pour-bar i{display:block;height:100%;width:0;border-radius:2px;background:var(--orange)}
+.pour-btn{position:absolute;right:16px;bottom:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(43,29,19,.72);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .16s cubic-bezier(.23,1,.32,1)}
+.pour-btn:active{transform:scale(.94)}
+.pour-btn svg{width:16px;height:16px}
+.layers li{transition:opacity .35s ease}
+.layers.live li{opacity:.38}
+.layers.live li.on{opacity:1}
+.layers li.on::before{color:var(--accent-ink)}
+
+/* flavours: one card per cup */
+.fl-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:clamp(48px,7vw,80px)}
+.fl{--c:#A0622F;position:relative;display:grid;grid-template-rows:auto 1fr;border-radius:26px;overflow:hidden;border:1px solid rgba(43,29,19,.1);
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 70%,#fff),#fff 72%);cursor:pointer;color:var(--text);text-align:left;padding:0;font:inherit;
+  transition:border-color .3s ease,transform .25s cubic-bezier(.23,1,.32,1)}
+.fl:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.fl:hover{border-color:rgba(43,29,19,.35)}.fl:hover img{transform:translateY(-8px) rotate(-4deg)}}
+.fl .ph{display:grid;place-items:center;padding:28px 18px 8px;aspect-ratio:4/5}
+.fl img{width:72%;height:auto;filter:drop-shadow(0 20px 22px rgba(60,35,15,.28));transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.fl .tx{display:grid;gap:.45rem;padding:6px 20px 22px;align-content:start}
+.fl h3{font:400 1.7rem/1.05 var(--font-heading)}
+.fl .cr{font:600 .7rem var(--font-nav);letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink)}
+.fl p{color:var(--muted);font-size:.92rem;line-height:1.55}
+.fl .new{position:absolute;top:14px;right:14px;font:600 .62rem/1 var(--font-nav);letter-spacing:.16em;text-transform:uppercase;background:var(--orange);color:var(--on-accent);padding:6px 9px;border-radius:99px}
+
+/* journey: steps in order, no dates */
+.steps-wrap{position:relative;margin-top:clamp(48px,7vw,80px);max-width:860px}
+.steps{list-style:none;position:relative;display:grid;gap:0}
+.steps-line{position:absolute;left:21px;top:10px;bottom:52px;width:2px;margin-left:-.5px;background:var(--orange);transform-origin:top;transform:scaleY(0);border-radius:2px;pointer-events:none}
+.steps .dot{transition:background-color .35s ease,border-color .35s ease,color .35s ease}
+.steps li.lit .dot{background:var(--orange);border-color:var(--orange);color:var(--on-accent)}
+.steps::before{content:"";position:absolute;left:21px;top:10px;bottom:10px;width:1px;background:linear-gradient(rgba(43,29,19,.25),rgba(43,29,19,.04))}
+.steps li{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:22px;padding-bottom:42px}
+.steps .dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--page-2);border:1px solid rgba(43,29,19,.2);font:600 .72rem var(--font-nav);letter-spacing:.06em;color:var(--accent-ink);position:relative}
+.steps li:last-child .dot{border-color:var(--orange)}
+.steps h3{font:400 2.1rem/1.05 var(--font-heading);padding-top:2px}
+.steps p{color:var(--muted);line-height:1.7;margin-top:.45rem;max-width:56ch}
+.closing{margin-top:clamp(24px,4vw,40px);font:400 clamp(2.4rem,5vw,4rem)/1 var(--font-heading);color:var(--accent)}
+
+/* footer */
+.foot{border-top:1px solid rgba(43,29,19,.08);padding-block:56px calc(40px + env(safe-area-inset-bottom,0px))}
+.foot .wrap{max-width:1200px;margin:0 auto;padding-left:max(4%, 16px, env(safe-area-inset-left,0px));padding-right:max(4%, 16px, env(safe-area-inset-right,0px));display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:28px;align-items:end}
+.foot .big{font:400 clamp(2.6rem,6vw,4.4rem)/.95 var(--font-heading)}
+.foot dt{font:600 .7rem var(--font-nav);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.foot dd{margin:0;line-height:1.6}
+.foot .fine{grid-column:1/-1;color:var(--muted);font-size:.82rem;padding-top:20px;border-top:1px solid rgba(43,29,19,.08)}
+
+@media (max-width:1100px){
+  .fl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pairing{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+  .pairing .op.eq{display:none}
+  .pair.result{grid-column:1/-1}
+}
+@media (max-width:860px){
+  .split,.cup-layout{grid-template-columns:1fr;align-items:start}
+  .fl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fl h3{font-size:1.4rem}.fl .tx{padding:4px 14px 18px}
+  .foot .wrap{grid-template-columns:1fr 1fr}.foot .wrap>div:first-child{grid-column:1/-1}
+}
+@media (max-width:520px){
+  .pairing{grid-template-columns:1fr}.pairing .op{justify-self:center}
+}
+
+/* ---------- smaller screens ---------- */
+@media (max-width:1200px){
+  .main-title,.side-title{font-size:6rem}
+  .hero-right{width:340px}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .menu-btn{display:inline-flex}
+  .header{grid-template-columns:1fr auto;padding-top:calc(1rem + env(safe-area-inset-top,0px));padding-bottom:1rem}
+  .hero{padding-top:4.5rem}
+  .hero-content{flex-direction:column;justify-content:space-between;overflow:hidden}
+  .hero-left{height:auto;padding:.5rem 0 0;gap:.9rem}
+  .main-title{font-size:clamp(3.4rem,15vw,4.6rem)}
+  .description{display:none}
+  .pieces-fg{z-index:2}
+  .b1{top:30%;left:6%;width:84px;height:84px}.b2{top:62%;left:8%;width:48px;height:48px}.b3{top:34%;left:74%;width:92px;height:92px}
+  .b4{top:20%;left:62%;width:60px;height:60px}.b5{top:56%;left:78%;width:58px;height:58px}.b6{top:46%;left:-4%;width:70px;height:70px}
+  .b7{width:40px;height:40px}.b8{width:36px;height:36px}.b9{top:60%;width:38px;height:38px}
+  .l1{width:44px;height:44px}.l2{width:80px;height:80px}.l3{width:50px;height:50px}.l4{top:62%;width:64px;height:64px}
+  .badge,.side-title{display:none}
+  .hero-right{width:100%;height:auto;padding:0 0 1.25rem;align-items:center}
+  .carousel{align-items:center;gap:1rem}
+  .cards-window{width:min(100%, calc(118px*3 + 1.2rem))}
+  .card{width:118px;padding-top:4rem}
+  .card img{width:80px;height:110px;margin-top:-6.5rem}
+  .l2{left:70%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .steps-line{transform:none}
+  .cup-float{animation:none}
+  #bubbles{display:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 26 34">
+    <path d="M2 3h22M4 3l2 12M22 3l-2 12M6 19l2 13h10l2-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="9" y="7" width="8" height="5" fill="#FC8C27"/>
+    <rect x="9" y="21" width="8" height="5" fill="#FC8C27"/>
+  </symbol>
+</svg>
+
+<header class="header" id="header">
+  <a class="logo" href="#top" aria-label="Best Tarik and Co, back to top"><svg aria-hidden="true"><use href="#mark"/></svg><span>Best Tarik <small>&amp;CO</small></span></a>
+  <nav class="nav" aria-label="Chapters">
+    <a href="#story">Our Story</a>
+    <a href="#cup">The Cup</a>
+    <a href="#flavours">Flavours</a>
+    <a href="#journey">Journey</a>
+  </nav>
+  <div class="header-end">
+    <a class="icon-btn" href="https://www.instagram.com/besttarik.co/" target="_blank" rel="noopener" aria-label="Best Tarik on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open chapters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Chapters" hidden>
+  <a href="#story"><span>01</span>Our Story</a>
+  <a href="#cup"><span>02</span>The Cup</a>
+  <a href="#flavours"><span>03</span>Flavours</a>
+  <a href="#journey"><span>04</span>Journey</a>
+  <p class="menu-foot">Johor Bahru &middot; @besttarik.co</p>
+</nav>
+
+<main id="top">
+<section class="hero" id="hero" aria-label="Best Tarik and Co">
+  <div id="bubbles" aria-hidden="true"></div>
+  <div class="hero-center" id="heroCenter">
+    <div class="cup-float" id="cupFloat"></div>
+  </div>
+  <div class="hero-content">
+    <div class="leaves" id="leaves" aria-hidden="true"></div>
+
+    <div class="hero-left">
+      <h1 class="main-title"><span class="soft">Best</span><br>Tarik</h1>
+      <p class="description">Pulled teh tarik over silky soy beancurd, <br>crowned with a different cream in every cup. <br>Five ways to sip, made in Johor Bahru.</p>
+      <div class="badge">
+        <div class="badge-icon"><svg aria-hidden="true"><use href="#mark"/></svg></div>
+        <div class="badge-text"><span class="badge-title">JOHOR BAHRU</span><span class="badge-sub">Teh tarik with taufufah</span></div>
+      </div>
+    </div>
+
+    <div class="pieces-bg" id="piecesBg" aria-hidden="true"></div>
+
+    <div class="pieces-fg" id="piecesFg" aria-hidden="true"></div>
+
+    <div class="hero-right">
+      <div class="carousel">
+        <div class="cards-window"><div class="cards" id="cards" role="group" aria-label="Choose a flavour"></div></div>
+        <div class="carousel-nav">
+          <button class="nav-arrow" id="prev" type="button" aria-label="Previous flavours">&larr;</button>
+          <button class="nav-arrow" id="next" type="button" aria-label="More flavours">&rarr;</button>
+        </div>
+      </div>
+      <h2 class="side-title"><span class="soft">Pulled</span><br>Properly</h2>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="story" aria-labelledby="story-t">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="eyebrow">01 &middot; Our Story</div>
+        <h2 class="ch-title" id="story-t">Familiar, <span class="soft">yet unexpected.</span></h2>
+      </div>
+      <div class="prose">
+        <p><strong>Best Tarik &amp; Co began in Johor, Malaysia</strong> with one idea: give the traditional Malaysian teh tarik a fresh, creative twist. By pairing familiar local flavours with unexpected ingredients, we want to offer a new way to enjoy a classic everyone already loves.</p>
+        <p>Our signature brings two old favourites together. The rich, comforting taste of teh tarik meets the soft, silky texture of taufufah, the soy pudding many of us grew up with. One cup that is part local drink, part traditional dessert.</p>
+      </div>
+    </div>
+    <div class="pairing" aria-label="Teh tarik plus taufufah makes Best Tarik">
+      <div class="pair"><b>Teh tarik</b><span>Rich, comforting, pulled. The drink of every kopitiam and mamak.</span></div>
+      <div class="op" aria-hidden="true">+</div>
+      <div class="pair"><b>Taufufah</b><span>Soft, silky soy pudding. The dessert of the night market.</span></div>
+      <div class="op eq" aria-hidden="true">=</div>
+      <div class="pair result"><img src="a/card-premium.webp" alt="" width="120" height="174"><div><b>Best Tarik</b><span>A local beverage and a traditional dessert, in one cup.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chapter alt" id="cup" aria-labelledby="cup-t">
+  <div class="wrap">
+    <div class="eyebrow">02 &middot; The Cup</div>
+    <h2 class="ch-title" id="cup-t">Three layers, <span class="soft">built from the bottom.</span></h2>
+    <div class="cup-layout">
+      <figure class="pour">
+        <video id="pour" src="a/pour.mp4" poster="a/pour-poster.jpg" muted playsinline loop preload="metadata" width="1280" height="720" aria-label="A Taro Teh Tarik being built from an empty cup: soy beancurd spooned in, ice added, teh tarik poured over, then taro cream on top"></video>
+        <div class="pour-bar" aria-hidden="true"><i id="pourBar"></i></div>
+        <button class="pour-btn" id="pourBtn" type="button" aria-label="Pause video"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path id="pourIcon" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
+      </figure>
+      <ol class="layers" id="layerList">
+        <li data-from="5.2" data-to="99"><div><h3>The cream</h3><p>Each flavour lives on top: pulled tea froth, salted coffee cream, matcha, taro or jasmine sea-salt, poured until it spills over the rim.</p></div></li>
+        <li data-from="2.5" data-to="5.2"><div><h3>Best teh tarik</h3><p>Strong, milky pulled tea runs through every cup. It is the one thing every flavour shares.</p></div></li>
+        <li data-from="0" data-to="2.5"><div><h3>Soy beancurd</h3><p>Silky taufufah waits at the bottom. Stir it through, or save it for the last sip.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="flavours" aria-labelledby="fl-t">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="eyebrow">03 &middot; Flavours</div>
+        <h2 class="ch-title" id="fl-t">Five ways <span class="soft">to tarik.</span></h2>
+      </div>
+      <p class="prose">Same teh tarik, same taufufah, a different crown each time. Tap a cup to see it in 3D at the top of the page.</p>
+    </div>
+    <div class="fl-grid" id="flGrid"></div>
+  </div>
+</section>
+
+<section class="chapter alt" id="journey" aria-labelledby="jr-t">
+  <div class="wrap">
+    <div class="eyebrow">04 &middot; Journey</div>
+    <h2 class="ch-title" id="jr-t">From a small pop&#8209;up <span class="soft">to a local favourite.</span></h2>
+    <div class="prose" style="margin-top:1.6rem">
+      <p>Every brand has a beginning. Ours reflects the spirit of local entrepreneurship: a creative take on Malaysian teh tarik, brought to the streets of Johor.</p>
+    </div>
+    <div class="steps-wrap" id="stepsWrap">
+    <ol class="steps">
+      <li><span class="dot">01</span><div><h3>A pop-up in Johor</h3><p>It started small, with a pop-up stall and a new idea for an old favourite.</p></div></li>
+      <li><span class="dot">02</span><div><h3>Teh tarik meets taufufah</h3><p>The signature pairing: something familiar, served in a way people did not expect.</p></div></li>
+      <li><span class="dot">03</span><div><h3>One cup at a time</h3><p>Through pop-ups and new drink creations, Best Tarik found its way into the local community.</p></div></li>
+      <li><span class="dot">04</span><div><h3>Five flavours and counting</h3><p>Premium, Cham and Matcha came first. Taro followed, then Jasmine Seasalt.</p></div></li>
+      <li><span class="dot">05</span><div><h3>Growing in Johor Bahru</h3><p>Every milestone is another step on the journey, and the next chapter is still being poured.</p></div></li>
+    </ol>
+    <div class="steps-line" id="stepsLine" aria-hidden="true"></div>
+    </div>
+    <p class="closing">One cup at a time.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><div class="big">Best Tarik &amp; Co.</div></div>
+    <dl><dt>Find us</dt><dd>Jalan Sri Pelangi<br>Johor Bahru, Malaysia</dd></dl>
+    <dl><dt>Follow the story</dt><dd><a href="https://www.instagram.com/besttarik.co/" target="_blank" rel="noopener">@besttarik.co</a></dd></dl>
+    <p class="fine">Teh tarik with taufufah. Made in Johor Bahru.</p>
+  </div>
+</footer>
+
+<p id="live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FLAVORS = [
+  {id:'premium', name:'Premium Teh Tarik', cream:'Pulled tea froth', bg:['#FFF8EF','#F3E1C8','#E4C6A0']},
+  {id:'cham',    name:'Cham Teh Tarik',    cream:'Salted coffee cream', bg:['#FBF3EA','#EBD6BF','#D4B391']},
+  {id:'matcha',  name:'Matcha Teh Tarik',  cream:'Creamy matcha', bg:['#F8FAEF','#E4ECCB','#C9D7A2']},
+  {id:'taro',    name:'Taro Teh Tarik',    cream:'Creamy taro', bg:['#FBF7FE','#E9DFF4','#CFBEE5']},
+  {id:'jasmine', name:'Jasmine Seasalt',   cream:'Jasmine salted cream', bg:['#FFFDF6','#F5EDDA','#E5D5B2']}
+];
+const [A, ING] = await Promise.all([fetch('a/assets.json').then(r=>r.json()), fetch('a/ingredients.json').then(r=>r.json())]);
+let cur = 0, isSwitching = false, switchSpin = 0;
+
+/* ---------- ingredients: each flavour floats its own, the leaves are always fresh tea leaves ---------- */
+const INGREDIENT = {premium:'tealeaf', cham:'bean', matcha:'greenleaf', taro:'taro', jasmine:'jasmine'};
+const pieceSrc = (fid, i) => { const p = ING[INGREDIENT[fid]]; return 'a/' + p[i % p.length][0]; };
+const leafSrc = i => 'a/' + ING.greenleaf[i % ING.greenleaf.length][0];
+const piecesFg = document.getElementById('piecesFg'), piecesBg = document.getElementById('piecesBg'), leavesEl = document.getElementById('leaves');
+const make = (parent, cls, src) => { const im = new Image(); im.className = cls; im.alt = ''; im.decoding = 'async'; im.src = src; parent.appendChild(im); return im; };
+const fg = [1,2,3,4,5,6].map((n,i)=>make(piecesFg, `piece b${n}`, pieceSrc('premium', i)));
+const bgp = [7,8,9].map((n,i)=>make(piecesBg, `piece b${n}`, pieceSrc('premium', i+6)));
+const allPieces = [...fg, ...bgp];
+const leaves = [1,2,3,4].map((n,i)=>make(leavesEl, `leaf l${n}`, leafSrc(i+1)));
+allPieces.forEach(b=>{ b.dataset.rx = 0; b.dataset.ry = 0; b.dataset.angle = Math.random()*360; b.dataset.baseX = 0; b.dataset.baseY = 0; });
+// warm the cache for every flavour's ingredients
+Object.values(ING).flat().forEach(p=>{ const i = new Image(); i.src = 'a/' + p[0]; });
+
+/* ---------- flavour cards ---------- */
+const cardsEl = document.getElementById('cards');
+const cards = FLAVORS.map((f,i)=>{
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'card'; b.setAttribute('aria-pressed', i===0 ? 'true':'false');
+  b.innerHTML = `<img src="a/${A[f.id].card[0]}" alt="" width="${A[f.id].card[1]}" height="${A[f.id].card[2]}"><div class="card-info"><span>${f.name}</span><span>${f.cream}</span></div>`;
+  b.addEventListener('click', ()=>select(i)); cardsEl.appendChild(b); return b;
+});
+let offset = 0;
+const prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
+function visibleCount(){ return innerWidth <= 860 ? 3 : 2; }
+function slide(){
+  const maxOff = FLAVORS.length - visibleCount(); offset = Math.max(0, Math.min(maxOff, offset));
+  const step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(cardsEl).gap);
+  cardsEl.style.transform = `translateX(${-offset*step}px)`;
+  prevBtn.disabled = offset === 0; nextBtn.disabled = offset >= maxOff;
+}
+prevBtn.addEventListener('click', ()=>{ offset--; slide(); });
+nextBtn.addEventListener('click', ()=>{ offset++; slide(); });
+addEventListener('resize', slide); slide();
+
+/* ---------- the 3D cup ---------- */
+const heroCenter = document.getElementById('heroCenter'), cupFloat = document.getElementById('cupFloat');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(2, devicePixelRatio));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+cupFloat.appendChild(renderer.domElement);
+const canvas = renderer.domElement;
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
+const HW = 3;
+const lean = new THREE.Group(); lean.rotation.z = -0.2; scene.add(lean);   // the floating lean, like the can
+const tilt = new THREE.Group(); lean.add(tilt);
+const spinG = new THREE.Group(); tilt.add(spinG);
+const maxAniso = renderer.capabilities.getMaxAnisotropy();
+
+/* Cup shape: the outline of the Premium front shot is the master for every flavour.
+   Each flavour keeps only its own cream dome above the rim. */
+function rimOf(raw){ let k = -1; raw.forEach((p,i)=>{ if (p[1] > .6 && p[1] < .97 && (k < 0 || p[0] > raw[k][0])) k = i; }); return k; }
+const MASTER = (()=>{ const raw = A.premium.profile, k = rimOf(raw); return {raw, k, ry: raw[k][1], rr: raw[k][0]}; })();
+function masterR(y){
+  const r = MASTER.raw;
+  for (let i=1;i<=MASTER.k;i++) if (r[i][1] >= y){ const a = r[i-1], b = r[i], t = (y-a[1]) / Math.max(1e-6, b[1]-a[1]); return a[0] + (b[0]-a[0])*t; }
+  return MASTER.rr;
+}
+function profileFor(fid){
+  const raw = A[fid].profile;
+  if (A[fid].master) return raw.map(([r,y],i)=>new THREE.Vector2(i === 0 ? 0 : r*HW, y*HW - HW/2));
+  const k = rimOf(raw), ry = raw[k][1], rr = raw[k][0], s = MASTER.rr / rr;
+  return raw.map(([r,y],i)=>{
+    if (i === 0) return new THREE.Vector2(0, -HW/2);
+    let Y, R;
+    if (y <= ry){ Y = y/ry*MASTER.ry; R = masterR(Y); } else { Y = MASTER.ry + (y-ry)*s; R = r*s; }
+    return new THREE.Vector2(R*HW, Y*HW - HW/2);
+  });
+}
+// Older photos see the base from above, so their bottom rows show the base ellipse as stripes: stretch the band above it down.
+function clampBaseUV(geo, prof){
+  const j = prof.findIndex(p=>p.y >= .06*HW - HW/2); const vMin = j / (prof.length - 1);
+  const uv = geo.attributes.uv;
+  for (let i=0;i<uv.count;i++) if (uv.getY(i) < vMin) uv.setY(i, vMin);
+  uv.needsUpdate = true;
+}
+const RADIAL = (()=>{ const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d');
+  const r = g.createRadialGradient(128,128,0,128,128,128); r.addColorStop(0,'#fff'); r.addColorStop(.72,'#fff'); r.addColorStop(.9,'#000'); r.addColorStop(1,'#000');
+  g.fillStyle = r; g.fillRect(0,0,256,256); return new THREE.CanvasTexture(c); })();
+function buildCup(fid, set){
+  const g = new THREE.Group();
+  const prof = profileFor(fid);
+  const bodyGeo = new THREE.LatheGeometry(prof, 200); if (!A[fid].master && !A[fid].level) clampBaseUV(bodyGeo, prof);
+  g.add(new THREE.Mesh(bodyGeo, new THREE.MeshBasicMaterial({map:set.tex})));
+  const rim = rimOf(A[fid].profile);
+  const gl = new THREE.Mesh(new THREE.LatheGeometry(prof.slice(0, rim+1).map(p=>new THREE.Vector2(p.x*1.012+.004, p.y)), 200),
+    new THREE.MeshPhysicalMaterial({color:0xffffff, roughness:.05, metalness:0, transparent:true, opacity:.12, clearcoat:1, clearcoatRoughness:.03, envMapIntensity:2.4, depthWrite:false}));
+  gl.renderOrder = 2; g.add(gl);
+  if (set.cap){                                        // foam seen from above, laid over the dome and faded out at its edge
+    const dome = prof.slice(rim); const Rd = Math.max(...dome.map(p=>p.x));
+    const geo = new THREE.LatheGeometry(dome.map(p=>new THREE.Vector2(p.x*1.004+.002, p.y+.003)), 200);
+    const pos = geo.attributes.position, uv = geo.attributes.uv;
+    for (let i=0;i<uv.count;i++) uv.setXY(i, .5 + pos.getX(i)/(2*Rd), .5 - pos.getZ(i)/(2*Rd));
+    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({map:set.cap, alphaMap:RADIAL, transparent:true, depthWrite:false}));
+    m.renderOrder = 1; g.add(m);
+  }
+  if (set.base){                                       // the underside, from the bottom-view photo
+    const disk = new THREE.Mesh(new THREE.CircleGeometry(prof[1].x, 96), new THREE.MeshBasicMaterial({map:set.base}));
+    disk.rotation.x = Math.PI/2; disk.position.y = -HW/2 - .002; g.add(disk);
+  }
+  return g;
+}
+const loader = new THREE.TextureLoader();
+const texCache = {};
+const loadTex = url => new Promise(res=>loader.load(url, t=>{ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = maxAniso; renderer.initTexture(t); res(t); }, undefined, ()=>res(null)));
+function texFor(fid){
+  if (!texCache[fid]) texCache[fid] = Promise.all([loadTex(`a/wrap-${fid}.webp`), A[fid].cap ? loadTex('a/' + A[fid].cap) : null, A[fid].base ? loadTex('a/' + A[fid].base) : null])
+    .then(([tex, cap, base])=>({tex, cap, base}));
+  return texCache[fid];
+}
+let cupMesh = null;
+function setCup(fid, set){
+  if (cupMesh){ spinG.remove(cupMesh); cupMesh.traverse(o=>{ if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); }); }
+  cupMesh = buildCup(fid, set); spinG.add(cupMesh);
+}
+const heroEl = document.getElementById('hero');
+function frame(){
+  const w = heroEl.clientWidth, h = heroEl.clientHeight; renderer.setSize(w, h, false); camera.aspect = w/h;
+  const small = w <= 860;
+  const share = small ? .32 : .66;                         // cup height as a share of the viewport
+  const dist = (HW/share) / (2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
+  camera.position.set(0, small ? -.25 : 0, dist); camera.lookAt(0, small ? -.25 : 0, 0); camera.updateProjectionMatrix();
+}
+frame(); addEventListener('resize', frame);
+
+texFor(FLAVORS[0].id).then(t=>{ setCup(FLAVORS[0].id, t); heroCenter.classList.add('ready'); FLAVORS.slice(1).forEach(f=>texFor(f.id)); });
+
+/* ---------- switching flavour ---------- */
+function select(i){
+  if (isSwitching || i === cur) return;
+  cards[cur].setAttribute('aria-pressed','false'); cards[i].setAttribute('aria-pressed','true');
+  if (i < offset) { offset = i; slide(); } else if (i >= offset + visibleCount()) { offset = i - visibleCount() + 1; slide(); }
+  cur = i; switchFlavor(FLAVORS[i]);
+  document.getElementById('live').textContent = FLAVORS[i].name;
+}
+function switchFlavor(f){
+  isSwitching = true;
+  const root = document.documentElement;
+  gsap.to(root, {'--bg-inner':f.bg[0], '--bg-mid':f.bg[1], '--bg-outer':f.bg[2], duration:1.5, ease:'power2.inOut'});
+  const texP = texFor(f.id);
+  if (reduce){ texP.then(t=>setCup(f.id, t)); allPieces.forEach((p,i)=>p.src = pieceSrc(f.id, i)); isSwitching = false; return; }
+
+  // the cup spins with a motion blur and changes at the peak
+  const s = {val:0, blur:0};
+  gsap.to(s, {val:360, blur:15, duration:.6, ease:'power2.in',
+    onUpdate(){ switchSpin = s.val; canvas.style.filter = `blur(${s.blur}px)`; },
+    onComplete: async ()=>{
+      const t = await texP; setCup(f.id, t);
+      gsap.to(s, {val:720, blur:0, duration:1.5, ease:'back.out(0.7)',
+        onUpdate(){ switchSpin = s.val; canvas.style.filter = `blur(${s.blur}px)`; },
+        onComplete(){ switchSpin = 0; canvas.style.filter = 'none'; }});
+    }});
+
+  // ingredients implode into the cup, swap, and burst back out
+  let done = 0;
+  allPieces.forEach((p,i)=>{
+    const bW = p.offsetWidth/2, bH = p.offsetHeight/2;
+    const parentRect = p.parentElement.getBoundingClientRect();
+      const hr = heroEl.getBoundingClientRect();
+    const cx = hr.left + hr.width/2 - parentRect.left - p.offsetLeft - bW, cy = hr.top + hr.height/2 - parentRect.top - p.offsetTop - bH;
+    const a0 = parseFloat(p.dataset.angle) || 0, bx = parseFloat(p.dataset.baseX) || 0, by = parseFloat(p.dataset.baseY) || 0;
+    const nx = (Math.random()-.5)*80, ny = (Math.random()-.5)*80;
+    gsap.set(p, {rotation:a0, x:bx, y:by});
+    gsap.timeline()
+      .to(p, {x:cx, y:cy, rotation:a0+45, scale:.1, opacity:0, duration:.5, ease:'power2.in', onComplete(){ p.src = pieceSrc(f.id, i); heroCenter.style.zIndex = 50; }})
+      .to(p, {duration:.3})
+      .to(p, {onStart(){ heroCenter.style.zIndex = 1; }, x:nx, y:ny, rotation:a0+90, scale:1, opacity:'', duration:.9, ease:'back.out(1.5)',
+        onComplete(){ p.dataset.angle = a0+90; p.dataset.baseX = nx; p.dataset.baseY = ny; p.dataset.rx = 0; p.dataset.ry = 0; gsap.set(p, {clearProps:'opacity'}); if (++done === allPieces.length) isSwitching = false; }});
+  });
+}
+
+/* ---------- pointer: lean, parallax, repel ---------- */
+const mouse = {x:0, y:0, px:-9999, py:-9999}, cm = {x:0, y:0};
+addEventListener('pointermove', e=>{ if (e.pointerType !== 'mouse') return; mouse.x = e.clientX/innerWidth - .5; mouse.y = e.clientY/innerHeight - .5; mouse.px = e.clientX; mouse.py = e.clientY; });
+document.addEventListener('pointerleave', ()=>{ mouse.px = mouse.py = -9999; });
+const DUR = [5,7,6,8,5.5,6.5,9,11,10];
+let running = true, heroOn = true;
+document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; });
+new IntersectionObserver(es=>{ heroOn = es[0].isIntersecting; }).observe(heroEl);   // the stage rests while you read the story
+
+function animate(){
+  requestAnimationFrame(animate);
+  if (!running || !heroOn) return;
+  const time = performance.now()*.001;
+  cm.x += (mouse.x - cm.x) * .05; cm.y += (mouse.y - cm.y) * .05;
+
+  // cup leans toward the cursor: about 20 degrees side to side, 10 up and down
+  spinG.rotation.y = THREE.MathUtils.degToRad(cm.x*40 + switchSpin);
+  tilt.rotation.x = THREE.MathUtils.degToRad(cm.y*20);
+  renderer.render(scene, camera);
+
+  if (reduce) return;
+  piecesFg.style.transform = `translate(${cm.x*60}px, ${cm.y*60}px)`;
+  piecesBg.style.transform = `translate(${cm.x*-30}px, ${cm.y*-30}px)`;
+  leavesEl.style.transform = `translate(${cm.x*-15}px, ${cm.y*-15}px)`;
+
+  if (!isSwitching){
+    allPieces.forEach((p,i)=>{
+      const r = p.getBoundingClientRect(), bx = r.left + r.width/2, by = r.top + r.height/2;
+      const dx = mouse.px - bx, dy = mouse.py - by, dist = Math.hypot(dx, dy) || 1;
+      let tx = 0, ty = 0, speed = 1;
+      if (dist < 260){ const force = (260 - dist)/260; tx = dx/dist*force*-50; ty = dy/dist*force*-50; speed = 1 + force*3; }
+      let rx = +p.dataset.rx, ry = +p.dataset.ry, angle = +p.dataset.angle;
+      rx += (tx - rx)*.1; ry += (ty - ry)*.1; angle += .2*speed;
+      p.dataset.rx = rx; p.dataset.ry = ry; p.dataset.angle = angle;
+      const ph = (time + i*.7) * (Math.PI*2 / DUR[i % 9]);
+      p.style.transform = `translate(${rx + +p.dataset.baseX}px, ${ry + +p.dataset.baseY + Math.sin(ph)*15}px) rotate(${angle + Math.cos(ph)*6}deg)`;
+    });
+  }
+  leaves.forEach((l,i)=>{
+    const ph = (time + i*1.2) * (Math.PI*2 / (10 + i*2));
+    l.style.transform = `translate(${Math.cos(ph*.5)*15}px, ${Math.sin(ph)*20}px) rotate(${Math.sin(ph*.3)*15}deg)`;
+  });
+}
+animate();
+
+/* ---------- rising milk bubbles ---------- */
+const bubbles = document.getElementById('bubbles');
+function bubble(){
+  if (document.hidden || reduce || !heroOn) return;
+  const b = document.createElement('div'); b.className = 'bubble';
+  const size = Math.random()*20 + 10; b.style.width = b.style.height = size + 'px';
+  b.style.left = Math.random()*100 + '%'; b.style.setProperty('--o', (Math.random()*.4 + .2).toFixed(2));
+  const d = Math.random()*6 + 4; b.style.animation = `floatUp ${d}s linear forwards`;
+  bubbles.appendChild(b); setTimeout(()=>b.remove(), d*1000);
+}
+setInterval(bubble, 400);
+/* ---------- flavour chapter: tap a cup to put it on stage ---------- */
+const TAG = {premium:'Not all teh tarik starts the same.', cham:'A familiar taste, rebuilt properly.', matcha:'A meeting of cultures in one cup.', taro:'Taro cream over teh tarik and taufufah.', jasmine:'Jasmine sea-salt cream, our newest cup.'};
+const NEW = {taro:true, jasmine:true};
+const flGrid = document.getElementById('flGrid');
+FLAVORS.forEach((f,i)=>{
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'fl'; b.style.setProperty('--c', f.bg[2]);
+  b.setAttribute('aria-label', `${f.name}. Show it in 3D at the top of the page`);
+  b.innerHTML = `${NEW[f.id] ? '<span class="new">New</span>' : ''}<div class="ph"><img src="a/${A[f.id].card[0]}" alt="" loading="lazy" width="${A[f.id].card[1]}" height="${A[f.id].card[2]}"></div>
+    <div class="tx"><span class="cr">${f.cream}</span><h3>${f.name.replace(' Teh Tarik','')}</h3><p>${TAG[f.id]}</p></div>`;
+  b.addEventListener('click', ()=>{ heroEl.scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); setTimeout(()=>select(i), reduce ? 0 : 650); });
+  flGrid.appendChild(b);
+});
+
+/* ---------- the pour video: plays only when on screen, layers light up in sync ---------- */
+const pour = document.getElementById('pour'), pourBtn = document.getElementById('pourBtn'), pourIcon = document.getElementById('pourIcon'), pourBar = document.getElementById('pourBar');
+const layerList = document.getElementById('layerList'), layerItems = [...layerList.querySelectorAll('li')];
+const PAUSE = 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z', PLAY = 'M8 5v14l11-7z';
+let userPaused = reduce, pourVisible = false;
+function syncPour(){
+  const t = pour.currentTime, d = pour.duration || 5;
+  pourBar.style.width = (t/d*100).toFixed(1) + '%';
+  layerItems.forEach(li=>li.classList.toggle('on', t >= +li.dataset.from && t < +li.dataset.to));
+  if (!pour.paused) requestAnimationFrame(syncPour);
+}
+function setPourIcon(){ const playing = !pour.paused; pourIcon.setAttribute('d', playing ? PAUSE : PLAY); pourBtn.setAttribute('aria-label', playing ? 'Pause video' : 'Play video'); layerList.classList.toggle('live', playing); }
+pour.addEventListener('play', ()=>{ setPourIcon(); requestAnimationFrame(syncPour); });
+pour.addEventListener('pause', ()=>{ setPourIcon(); layerItems.forEach(li=>li.classList.remove('on')); });
+pourBtn.addEventListener('click', ()=>{ if (pour.paused){ userPaused = false; pour.play().catch(()=>{}); } else { userPaused = true; pour.pause(); } });
+new IntersectionObserver(es=>{ pourVisible = es[0].isIntersecting; if (pourVisible && !userPaused) pour.play().catch(()=>{}); else pour.pause(); }, {threshold:.35}).observe(pour);
+setPourIcon();
+
+/* ---------- header: shrink on scroll, mark the chapter you are reading ---------- */
+const header = document.getElementById('header');
+const onScroll = ()=>header.classList.toggle('scrolled', scrollY > 40);
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+const links = [...document.querySelectorAll('.nav a')];
+const chapters = ['story','cup','flavours','journey'].map(id=>document.getElementById(id));
+const spy = new IntersectionObserver(es=>es.forEach(e=>{
+  if (!e.isIntersecting) return;
+  links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+}), {rootMargin:'-30% 0px -60% 0px'});
+chapters.forEach(c=>spy.observe(c));
+new IntersectionObserver(es=>{ if (es[0].isIntersecting) links.forEach(a=>a.classList.remove('active')); }, {rootMargin:'-45% 0px -50% 0px'}).observe(heroEl);
+
+/* ---------- phone menu ---------- */
+const menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
+function setMenu(open){
+  menuBtn.setAttribute('aria-expanded', open); menuBtn.setAttribute('aria-label', open ? 'Close chapters' : 'Open chapters');
+  if (open){ menu.hidden = false; requestAnimationFrame(()=>menu.classList.add('open')); document.body.style.overflow = 'hidden'; menu.querySelector('a').focus(); }
+  else { menu.classList.remove('open'); document.body.style.overflow = ''; setTimeout(()=>{ if (!menu.classList.contains('open')) menu.hidden = true; }, 250); }
+}
+menuBtn.addEventListener('click', ()=>setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
+document.addEventListener('keydown', e=>{ if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script type="module">
+/* Motion (Framer Motion for the web). One clear move per chapter, springs for anything that enters,
+   scroll-linked for anything that follows the reader. Nothing animates when reduced motion is on. */
+const M = window.Motion;
+if (M && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const { animate, scroll, inView, stagger } = M;
+  const springIn = { type:'spring', bounce:.18, duration:.75 };
+  const below = el => el.getBoundingClientRect().top > innerHeight * .9;
+  // set the start pose only for things still below the fold, so the first screen is always complete
+  function reveal(trigger, getTargets, from, to, opts, amount = .2){
+    const preset = () => getTargets().filter(below).forEach(el => animate(el, from, { duration:0 }));
+    preset();
+    inView(trigger, () => { animate(getTargets(), to, opts); }, { amount });
+  }
+  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+  // 1. chapter openings: eyebrow, title and lead rise together
+  $$('.chapter').forEach(ch=>{
+    const heads = () => $$(':scope > .wrap > .eyebrow, :scope > .wrap > .ch-title, :scope .split .eyebrow, :scope .split .ch-title, :scope .split > .prose, :scope > .wrap > .prose', ch);
+    reveal(ch, heads, { y:28, opacity:.25 }, { y:0, opacity:1 }, { ...springIn, delay: stagger(.07) }, .12);
+  });
+
+  // 2. the pairing: teh tarik, then taufufah, then the cup that joins them
+  const pairing = document.querySelector('.pairing');
+  reveal(pairing, () => $$('.pair', pairing), { y:24, opacity:.25 }, { y:0, opacity:1 }, { ...springIn, delay: stagger(.14) }, .4);
+  reveal(pairing, () => $$('.op', pairing), { scale:.3, rotate:-90, opacity:.2 }, { scale:1, rotate:0, opacity:1 }, { type:'spring', bounce:.5, duration:.7, delay: stagger(.14, { startDelay:.12 }) }, .4);
+
+  // 3. flavours: the five cups land in a wave
+  const grid = document.getElementById('flGrid');
+  reveal(grid, () => $$('.fl', grid), { y:44, scale:.95, opacity:.25 }, { y:0, scale:1, opacity:1 }, { ...springIn, delay: stagger(.07) }, .15);
+
+  // 4. journey: the line draws as you read, each stop lights up when reached
+  const wrap = document.getElementById('stepsWrap'), line = document.getElementById('stepsLine');
+  scroll(p => { line.style.transform = `scaleY(${p.toFixed(4)})`; }, { target: wrap, offset:['start 70%', 'end 70%'] });
+  $$('.steps li', wrap).forEach(li => inView(li, () => { li.classList.add('lit'); animate(li.querySelector('.dot'), { scale:[.7, 1] }, { type:'spring', bounce:.55, duration:.6 }); return () => li.classList.remove('lit'); }, { margin:'0px 0px -30% 0px' }));
+  const closing = document.querySelector('.closing');
+  reveal(closing, () => [closing], { y:20, opacity:.25 }, { y:0, opacity:1 }, springIn, .6);
+
+  // 5. leaving the stage: the cup sinks back and the headlines drift up as the story begins
+  const hero = document.getElementById('hero');
+  const off = { target: hero, offset:['start start', 'end start'] };
+  const hc = document.getElementById('heroCenter'), hl = document.querySelector('.hero-left'), hr = document.querySelector('.hero-right');
+  scroll(p => {
+    hc.style.transform = `translateY(${(p*140).toFixed(1)}px) scale(${(1 - p*.1).toFixed(4)})`;
+    hl.style.transform = `translateY(${(-p*70).toFixed(1)}px)`; hl.style.opacity = (1 - p*.85).toFixed(3);
+    hr.style.transform = `translateY(${(-p*40).toFixed(1)}px)`; hr.style.opacity = (1 - p*.85).toFixed(3);
+  }, off);
+}
+</script>

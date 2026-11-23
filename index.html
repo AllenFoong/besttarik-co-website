@@ -1,0 +1,1708 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Best Tarik &amp; Co</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="preload" as="image" href="a/hero-poster.jpg">
+<style>
+/* Layout: a full-screen looping ingredient film (HeroTea-style) with captions top-left, then an editorial story,
+   an asymmetric photo wall, and a tea-brown destination.
+   One committed light look; tea-brown is the only dark surface. Mobile (390px) designed first. */
+:root{
+  --cream:#F5EBDD;
+  --cream-2:#EEDFCB;
+  --caramel:#E5BD8E;
+  --tea:#382219;
+  --tea-soft:#6A4B3A;      /* secondary text on cream, 7:1 */
+  --tarik:#A95C25;         /* orange for text on cream, 4.6:1 */
+  --brand:#E87825;         /* the logo orange, for fills and type on tea-brown */
+  --line:rgba(56,34,25,.14);
+  --f-display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --f-body:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --gutter-l:max(20px, env(safe-area-inset-left,0px));
+  --gutter-r:max(20px, env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--tea);font:16px/1.65 var(--f-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--cream)}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--tarik);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{display:flex;align-items:center;gap:.7rem;font:600 .72rem/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--tea-soft)}
+.eyebrow::before{content:"";width:12px;height:7px;background:var(--brand);border-radius:1px;flex:none}
+.display{font-family:var(--f-display);font-weight:500;letter-spacing:-.01em;line-height:.95;text-wrap:balance}
+.display em{font-style:italic;color:var(--tarik)}
+.lede{color:var(--tea-soft);font-size:1.06rem;line-height:1.75;max-width:52ch}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- header ---------- */
+.header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:calc(.9rem + env(safe-area-inset-top,0px)) var(--gutter-r) .9rem var(--gutter-l);
+  transition:background-color .35s ease,box-shadow .35s ease}
+.header.solid{background:color-mix(in srgb,var(--cream) 90%,transparent);box-shadow:0 1px 0 var(--line);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px)}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;min-height:44px}
+.logo svg{width:20px;height:28px;flex:none}
+.logo span{font:700 .78rem/1 var(--f-body);letter-spacing:.3em;white-space:nowrap}
+.logo small{font-size:.56rem;letter-spacing:.14em;margin-left:.1em;color:var(--tea-soft)}
+.nav{display:none}
+.nav a{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 .9rem;font:500 .86rem/1 var(--f-body);color:var(--tea-soft);text-decoration:none;transition:color .25s ease}
+.nav a::after{content:"";position:absolute;left:50%;bottom:6px;width:8px;height:5px;margin-left:-4px;background:var(--brand);border-radius:1px;opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .3s var(--ease-out)}
+.nav a.active{color:var(--tea)}
+.nav a.active::after{opacity:1;transform:none}
+@media (hover:hover) and (pointer:fine){.nav a:hover{color:var(--tea)}}
+.menu-btn{display:inline-flex;align-items:center;gap:.5rem;min-height:44px;padding:0 1rem;border-radius:99px;border:1px solid var(--line);background:color-mix(in srgb,var(--cream) 70%,transparent);font:600 .78rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:transform .16s var(--ease-out)}
+.menu-btn:active{transform:scale(.96)}
+.menu-btn i{display:grid;gap:4px}
+.menu-btn i::before,.menu-btn i::after{content:"";display:block;width:16px;height:1.5px;background:currentColor;border-radius:1px}
+.menu{position:fixed;inset:0;z-index:49;background:var(--tea);color:var(--cream);display:flex;flex-direction:column;justify-content:flex-end;gap:.2rem;
+  padding:calc(6rem + env(safe-area-inset-top,0px)) var(--gutter-r) calc(2.4rem + env(safe-area-inset-bottom,0px)) var(--gutter-l);opacity:0;transition:opacity .28s ease}
+.menu.open{opacity:1}
+.menu a{display:flex;align-items:baseline;gap:1rem;text-decoration:none;font:500 clamp(2.4rem,11vw,3.4rem)/1.1 var(--f-display)}
+.menu a span{font:600 .72rem var(--f-body);letter-spacing:.2em;color:var(--brand)}
+.menu p{margin-top:1.6rem;font-size:.9rem;color:rgba(245,235,221,.7)}
+.header.on-menu .logo,.header.on-menu .menu-btn{color:var(--cream)}
+.header.on-menu .menu-btn{background:transparent;border-color:rgba(245,235,221,.3)}
+.header.on-menu .logo small{color:rgba(245,235,221,.7)}
+@media (min-width:900px){
+  .nav{display:flex}
+  .menu-btn{display:none}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(120% 70% at 18% 8%, rgba(255,236,206,.95) 0%, rgba(255,236,206,0) 55%),
+    radial-gradient(90% 60% at 50% 62%, #EED2AC 0%, rgba(238,210,172,0) 70%),
+    linear-gradient(180deg,#F3E2CA 0%, #E9C9A1 58%, #DDB283 100%)}
+.liquid{position:absolute;inset:-10%;width:120%;height:120%;z-index:0;pointer-events:none}
+.liquid .blob{transform-box:fill-box;transform-origin:center}
+.liquid .b1{animation:drift1 38s ease-in-out infinite alternate}
+.liquid .b2{animation:drift2 46s ease-in-out infinite alternate}
+.liquid .stream-flow{stroke-dasharray:2 34;animation:flow 3.2s linear infinite}
+@keyframes drift1{to{transform:translate(4%,3%) rotate(14deg) scale(1.06)}}
+@keyframes drift2{to{transform:translate(-5%,-2%) rotate(-12deg) scale(.95)}}
+@keyframes flow{to{stroke-dashoffset:-72}}
+.hero-light{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(115deg,rgba(255,244,226,.55) 0%,rgba(255,244,226,0) 38%),radial-gradient(70% 45% at 50% 100%,rgba(56,34,25,.28),rgba(56,34,25,0) 70%)}
+.hero-word{position:absolute;left:0;right:0;top:31%;z-index:2;text-align:center;pointer-events:none;
+  font:500 clamp(6.4rem,30vw,22rem)/.8 var(--f-display);letter-spacing:-.03em;color:var(--tea);transform:translateY(-50%)}
+.hero-word .ch{display:inline-block}
+.hero-word .dot{color:var(--brand)}
+.hero-top{position:absolute;z-index:4;left:var(--gutter-l);right:var(--gutter-r);top:calc(5.6rem + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.hero-kicker{font:500 clamp(1.4rem,6.4vw,2.6rem)/1 var(--f-display);letter-spacing:.02em}
+.hero-kicker em{font-style:italic;color:var(--tarik)}
+.hero-place{font:600 .66rem/1.5 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--tea-soft);text-align:right}
+.cup-stage{position:absolute;inset:0;z-index:3;pointer-events:none}
+.cup-float{position:absolute;inset:0;animation:bob 7s ease-in-out infinite}
+.cup-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.cup-stage .poster{position:absolute;left:50%;top:60%;height:44%;width:auto;max-width:none;transform:translate(-50%,-50%);transition:opacity .6s ease}
+.cup-stage.ready .poster{opacity:0}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.drops{position:absolute;inset:0;z-index:3;pointer-events:none}
+.drop{position:absolute;width:10px;height:14px;opacity:0;animation:fall 7s ease-in infinite}
+.drop svg{width:100%;height:100%}
+.drop:nth-child(1){left:22%;top:18%;animation-delay:.6s}
+.drop:nth-child(2){left:76%;top:24%;animation-delay:3.1s;width:8px;height:11px}
+.drop:nth-child(3){left:64%;top:12%;animation-delay:5.2s}
+.drop:nth-child(4){left:34%;top:30%;animation-delay:4.2s;width:7px;height:10px}
+@keyframes fall{0%{opacity:0;transform:translateY(0)}12%{opacity:.75}70%{opacity:.6}100%{opacity:0;transform:translateY(46vh)}}
+.hero-bottom{position:absolute;z-index:4;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:1.1rem;text-align:center}
+.hero-sub{font:italic 400 clamp(1.15rem,4.6vw,1.6rem)/1.3 var(--f-display);max-width:22ch}
+.scroll-cue{display:grid;justify-items:center;gap:.5rem;font:600 .62rem var(--f-body);letter-spacing:.3em;text-transform:uppercase;color:var(--tea-soft);text-decoration:none;min-height:44px}
+.scroll-cue i{position:relative;width:1px;height:34px;background:rgba(56,34,25,.2);overflow:hidden}
+.scroll-cue i::after{content:"";position:absolute;left:-1px;top:-12px;width:3px;height:12px;border-radius:2px;background:var(--brand);animation:cue 2.2s var(--ease-out) infinite}
+@keyframes cue{to{transform:translateY(48px)}}
+@media (max-width:420px){.drop:nth-child(n+3){display:none}}
+@media (min-width:900px){
+  .hero{min-height:720px}
+  .hero-word{top:47%}
+  .cup-stage .poster{top:52%;height:66%}
+  .hero-top{top:calc(7rem + env(safe-area-inset-top,0px))}
+  .hero-bottom{left:auto;right:var(--gutter-r);justify-items:end;text-align:right;bottom:3rem}
+  .hero-sub{max-width:16ch}
+  .scroll-cue{position:fixed;left:50%;bottom:1.6rem;transform:translateX(-50%)}
+  .hero-bottom .scroll-cue{position:absolute;right:auto;left:50%;bottom:-1.4rem;transform:none;margin-left:calc(-50vw + var(--gutter-r))}
+}
+
+/* ---------- signature drinks ---------- */
+.drinks{position:relative;--bg:#E5BD8E;background:var(--bg);transition:background-color .8s ease;padding-block:clamp(72px,10vw,120px) clamp(48px,7vw,96px);overflow:hidden}
+.drinks-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.2rem 2rem}
+.drinks-head h2{font-size:clamp(2.8rem,11vw,5.6rem);margin-top:1rem}
+.count{font:500 1.05rem/1 var(--f-display);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.count b{font-weight:600;font-size:1.6rem}
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;margin-top:clamp(28px,4vw,44px);list-style:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:center;scroll-snap-stop:always;position:relative;display:grid;justify-items:center;padding:0 var(--gutter-r) 0 var(--gutter-l)}
+.slide-word{position:absolute;top:10%;left:0;right:0;text-align:center;font:500 clamp(5rem,24vw,15rem)/.8 var(--f-display);letter-spacing:-.03em;color:rgba(56,34,25,.08);pointer-events:none;white-space:nowrap}
+.slide figure{position:relative;width:min(78vw,440px);aspect-ratio:3/4;display:grid;place-items:end center}
+.slide figure::after{content:"";position:absolute;left:12%;right:12%;bottom:-2%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(56,34,25,.32),rgba(56,34,25,0));z-index:0}
+.slide img{position:relative;z-index:1;width:auto;height:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(56,34,25,.28))}
+.slide-text{position:relative;display:grid;justify-items:center;text-align:center;gap:.5rem;margin-top:1.6rem;max-width:30ch}
+.slide-text .no{font:600 .7rem var(--f-body);letter-spacing:.24em;color:var(--tea-soft)}
+.slide-text h3{font:500 clamp(2.2rem,9vw,3.6rem)/1 var(--f-display)}
+.slide-text p{font:italic 400 1.15rem/1.4 var(--f-display);color:var(--tea)}
+.slide-text .layers{font:600 .66rem/1.6 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--tea-soft)}
+.drinks-ctrl{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:clamp(24px,4vw,36px)}
+.arrow{width:48px;height:48px;border-radius:50%;border:1px solid rgba(56,34,25,.25);background:transparent;cursor:pointer;display:grid;place-items:center;transition:background-color .25s ease,transform .16s var(--ease-out),opacity .25s ease}
+.arrow svg{width:18px;height:18px}
+.arrow:active{transform:scale(.94)}
+.arrow:disabled{opacity:.3;cursor:default}
+@media (hover:hover) and (pointer:fine){.arrow:not(:disabled):hover{background:rgba(56,34,25,.08)}}
+.dots{display:flex;gap:.2rem}
+.dots button{width:36px;height:44px;border:0;background:transparent;cursor:pointer;display:grid;place-items:center}
+.dots button i{display:block;width:22px;height:3px;border-radius:2px;background:rgba(56,34,25,.22);transition:background-color .3s ease,width .3s var(--ease-out)}
+.dots button[aria-current="true"] i{background:var(--tea);width:30px}
+.swipe-hint{text-align:center;font:600 .62rem var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--tea-soft);margin-top:.8rem}
+@media (min-width:900px){
+  .slide{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;justify-items:stretch;gap:4vw}
+  .slide figure{justify-self:end;width:min(40vw,520px)}
+  .slide-text{justify-items:start;text-align:left;margin-top:0;max-width:34ch}
+  .slide-word{top:50%;transform:translateY(-50%)}
+  .swipe-hint{display:none}
+}
+
+/* ---------- the art of tarik ---------- */
+.art-intro{padding-block:clamp(88px,13vw,170px) clamp(48px,7vw,80px)}
+.art-intro h2{font-size:clamp(3.2rem,13vw,8.6rem);line-height:.9;margin-top:1.2rem}
+.art-intro h2 .w{display:inline-block}
+.art-intro .lede{margin-top:1.6rem}
+.scrub{position:relative;height:320vh}
+.scrub-sticky{position:sticky;top:0;height:100svh;overflow:hidden;background:#EAD9C1}
+.scrub video{position:absolute;left:0;right:0;top:0;width:100%;height:64%;object-fit:cover;object-position:50% 70%}
+.scrub-sticky::after{content:"";position:absolute;left:0;right:0;bottom:0;height:36%;background:var(--tea);z-index:0}
+.scrub-shade{position:absolute;left:0;right:0;top:0;height:64%;background:linear-gradient(180deg,rgba(56,34,25,0) 70%,rgba(56,34,25,.9) 100%);pointer-events:none;z-index:1}
+.beats{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(2rem + env(safe-area-inset-bottom,0px));list-style:none;color:var(--cream);min-height:9.5rem}
+.beat{position:absolute;left:0;right:0;bottom:0;display:grid;gap:.4rem;opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .5s var(--ease-out)}
+.beat.on{opacity:1;transform:none}
+.beat span{font:600 .7rem var(--f-body);letter-spacing:.24em;color:var(--brand)}
+.beat h3{font:500 clamp(2.2rem,9vw,4.4rem)/1 var(--f-display)}
+.beat p{max-width:36ch;color:rgba(245,235,221,.86);font-size:.98rem}
+.scrub-bar{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);top:calc(5.2rem + env(safe-area-inset-top,0px));height:2px;background:rgba(56,34,25,.15);border-radius:2px}
+.scrub-bar i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:var(--brand);border-radius:2px}
+@media (min-width:900px){.scrub video{height:100%;object-position:50% 50%}.scrub-sticky::after{display:none}.beats{left:auto;right:var(--gutter-r);width:min(440px,40vw);bottom:4rem}.scrub-shade{height:100%;background:linear-gradient(90deg,rgba(56,34,25,0) 45%,rgba(56,34,25,.62) 100%)}}
+
+/* ---------- our story ---------- */
+.story{padding-block:clamp(96px,13vw,170px)}
+.story-head h2{font-size:clamp(3rem,12vw,7rem);margin-top:1.2rem}
+.story-grid{display:grid;gap:clamp(40px,6vw,80px);margin-top:clamp(44px,6vw,80px)}
+.story-row{display:grid;gap:1.4rem;align-items:center}
+.story-row .ph{position:relative;overflow:hidden;border-radius:2px}
+.story-row .ph img{width:100%;height:100%;object-fit:cover}
+.story-row h3{font:500 clamp(1.9rem,7vw,2.8rem)/1.05 var(--f-display)}
+.story-row .txt{display:grid;gap:.9rem}
+.story-row .txt p{color:var(--tea-soft);line-height:1.75}
+.tall{aspect-ratio:4/5}
+.wide{aspect-ratio:5/4}
+.todo{position:relative;display:grid;place-items:center;text-align:center;gap:.4rem;padding:24px;border:1.5px dashed rgba(56,34,25,.3);background:repeating-linear-gradient(135deg,rgba(56,34,25,.035) 0 10px,transparent 10px 20px);color:var(--tea-soft);font-size:.86rem;line-height:1.5}
+.todo b{font:600 .66rem var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--tarik)}
+.todo-text{border-left:2px dashed rgba(169,92,37,.5);padding-left:1rem;color:var(--tea-soft);font-style:italic}
+.milestones{list-style:none;display:grid;gap:0;margin-top:.6rem;border-top:1px solid var(--line)}
+.milestones li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:.95rem;color:var(--tea-soft)}
+.milestones li span{font:500 1.1rem var(--f-display);color:var(--tarik)}
+.prep{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.prep figure{position:relative}
+.prep img{width:100%;aspect-ratio:1;object-fit:cover}
+.prep figcaption{font:600 .62rem/1.4 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--tea-soft);margin-top:.5rem}
+@media (min-width:900px){
+  .story-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6vw}
+  .story-row.flip .ph,.story-row.flip .todo{order:2}
+  .prep{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+
+/* ---------- highlights ---------- */
+.high{background:var(--cream-2);padding-block:clamp(96px,13vw,160px)}
+.high h2{font-size:clamp(2.8rem,11vw,6rem);margin-top:1.2rem}
+.wall{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:clamp(40px,6vw,72px);grid-auto-flow:dense}
+.wall figure{position:relative;overflow:hidden;background:#E6D3BB;min-width:0}
+.wall img{width:100%;height:100%;object-fit:cover}
+.wall .cut{background:linear-gradient(180deg,#EAD2B0,#D9B48A);display:grid;place-items:end center;padding-top:14%}
+.wall .cut img{width:auto;height:100%;object-fit:contain;filter:drop-shadow(0 18px 20px rgba(56,34,25,.25))}
+.wall figcaption{position:absolute;left:10px;bottom:10px;font:600 .58rem/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;background:rgba(245,235,221,.88);color:var(--tea);padding:6px 8px}
+.w-a{grid-column:span 2;aspect-ratio:4/3}
+.w-b{aspect-ratio:3/4}
+.w-c{aspect-ratio:3/4}
+.w-d{aspect-ratio:1}
+.w-e{aspect-ratio:1}
+.w-f{grid-column:span 2;aspect-ratio:16/9}
+.w-g{aspect-ratio:3/4}
+.w-h{aspect-ratio:3/4}
+@media (min-width:900px){
+  .wall{grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+  .w-a{grid-column:1 / span 7;grid-row:span 2;aspect-ratio:auto;min-height:620px}
+  .w-b{grid-column:8 / span 5;aspect-ratio:5/4}
+  .w-c{grid-column:8 / span 2;aspect-ratio:auto}
+  .w-d{grid-column:10 / span 3;aspect-ratio:auto}
+  .w-e{grid-column:1 / span 3;aspect-ratio:1}
+  .w-f{grid-column:4 / span 6;grid-row:span 2;aspect-ratio:auto}
+  .w-g{grid-column:10 / span 3;grid-row:span 2;aspect-ratio:auto}
+  .w-h{grid-column:1 / span 3;aspect-ratio:3/4}
+}
+
+/* ---------- find us ---------- */
+.find{background:var(--tea);color:var(--cream);padding-block:clamp(96px,13vw,170px) calc(48px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden}
+.find::before{content:"";position:absolute;right:-30%;top:-20%;width:90vmax;height:90vmax;border-radius:50%;background:radial-gradient(closest-side,rgba(232,120,37,.22),rgba(232,120,37,0));pointer-events:none}
+.find .eyebrow{color:rgba(245,235,221,.72)}
+.find h2{font-size:clamp(3.4rem,15vw,9rem);margin-top:1.2rem;color:var(--cream)}
+.find h2 em{color:var(--brand)}
+.find-grid{position:relative;display:grid;gap:0;margin-top:clamp(40px,6vw,72px);border-top:1px solid rgba(245,235,221,.16)}
+.find-item{display:grid;gap:.35rem;padding:1.3rem 0;border-bottom:1px solid rgba(245,235,221,.16)}
+.find-item dt{font:600 .66rem var(--f-body);letter-spacing:.24em;text-transform:uppercase;color:var(--brand)}
+.find-item dd{font:500 1.35rem/1.35 var(--f-display)}
+.find-item dd .ph{font:italic 400 1rem var(--f-display);color:rgba(245,235,221,.55)}
+.find-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem;position:relative}
+.pill{display:inline-flex;align-items:center;gap:.6rem;min-height:48px;padding:0 1.4rem;border-radius:99px;text-decoration:none;font:600 .9rem var(--f-body);transition:transform .16s var(--ease-out),background-color .25s ease}
+.pill:active{transform:scale(.97)}
+.pill svg{width:18px;height:18px}
+.pill.solid{background:var(--brand);color:var(--tea)}
+.pill.ghost{border:1px solid rgba(245,235,221,.3);color:var(--cream)}
+@media (hover:hover) and (pointer:fine){.pill.solid:hover{background:#F08A3D}.pill.ghost:hover{background:rgba(245,235,221,.08)}}
+.foot{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:clamp(64px,9vw,120px);padding-top:1.4rem;border-top:1px solid rgba(245,235,221,.16);font-size:.82rem;color:rgba(245,235,221,.6)}
+.foot .big{font:500 clamp(2.4rem,10vw,6rem)/.9 var(--f-display);color:var(--cream);width:100%}
+@media (min-width:900px){
+  .find-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 2rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .liquid .b1,.liquid .b2,.liquid .stream-flow,.cup-float,.drop,.scroll-cue i::after{animation:none}
+  .drops{display:none}
+  .scrub{height:auto}
+  .scrub-sticky{position:relative;height:auto;aspect-ratio:9/12}
+  .beats{position:relative;left:auto;right:auto;bottom:auto;padding:2rem var(--gutter-r) 2.4rem var(--gutter-l);background:var(--tea);min-height:0}
+  .beat{position:relative;opacity:1;transform:none;margin-bottom:1.4rem}
+}
+
+/* ---------- video hero (Version 3) ---------- */
+.vhero{position:relative;height:100svh;min-height:540px;overflow:hidden;background:#5a3a22;color:var(--cream)}
+.vhero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vhero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(165deg,rgba(30,15,6,.5) 0%,rgba(30,15,6,0) 45%),linear-gradient(0deg,rgba(30,15,6,.42) 0%,rgba(30,15,6,0) 32%)}
+.vcap{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);top:clamp(112px,20vh,200px);max-width:min(760px,100%)}
+@media (min-width:900px){.vcap{left:max(48px,env(safe-area-inset-left,0px))}}
+.vcap h1{font:italic 500 clamp(2.7rem,7.4vw,6rem)/1 var(--f-display);letter-spacing:-.01em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.22)}
+.vcap p{margin-top:1.1rem;font:600 clamp(.66rem,1.1vw,.8rem)/1.7 var(--f-body);letter-spacing:.24em;text-transform:uppercase;opacity:.92}
+.vcap h1,.vcap p{transition:opacity .7s ease,transform .9s var(--ease-out)}
+.vcap p{transition-delay:.12s}
+.vcap.out h1,.vcap.out p{opacity:0;transform:translateY(14px);transition-delay:0s}
+.vfoot{position:absolute;z-index:2;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));
+  display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+@media (min-width:900px){.vfoot{left:max(48px,env(safe-area-inset-left,0px));right:max(48px,env(safe-area-inset-right,0px))}}
+.vchaps{display:flex;gap:6px;list-style:none;flex:1;max-width:420px}
+.vchaps li{flex:1;height:2px;background:rgba(245,235,221,.28);overflow:hidden;border-radius:1px}
+.vchaps i{display:block;height:100%;width:100%;background:var(--brand);transform:scaleX(0);transform-origin:left}
+.vplace{font:600 .66rem/1.5 var(--f-body);letter-spacing:.22em;text-transform:uppercase;text-align:right;opacity:.9}
+.vbtn{min-height:44px;min-width:44px;padding:0 1rem;border-radius:99px;border:1px solid rgba(245,235,221,.45);background:rgba(30,15,6,.28);color:var(--cream);
+  font:600 .7rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vcue{position:absolute;z-index:2;left:50%;transform:translateX(-50%);bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--cream);text-decoration:none;font:600 .62rem var(--f-body);letter-spacing:.24em;text-transform:uppercase}
+.vcue i{width:1px;height:28px;background:linear-gradient(var(--cream),transparent)}
+@media (max-width:899px){.vcue{display:none}}
+/* header sits over the film until it turns solid, on every screen */
+@media all{
+.header:not(.solid):not(.on-menu){color:var(--cream)}
+.header:not(.solid):not(.on-menu) .logo small,.header:not(.solid):not(.on-menu) .nav a{color:rgba(245,235,221,.82)}
+.header:not(.solid):not(.on-menu) .nav a.active,.header:not(.solid):not(.on-menu) .nav a:hover{color:var(--cream)}
+.header:not(.solid):not(.on-menu) .menu-btn{background:rgba(30,15,6,.25);border-color:rgba(245,235,221,.4)}
+}
+/* portrait screens: the film stays landscape, full width, with the clear header over it */
+@media (max-aspect-ratio:4/5){
+.vhero{height:auto;min-height:0;aspect-ratio:16/9}
+.vhero::after{background:linear-gradient(180deg,rgba(30,15,6,.55) 0%,rgba(30,15,6,0) 55%),linear-gradient(0deg,rgba(30,15,6,.4) 0%,rgba(30,15,6,0) 35%)}
+.vcap{top:calc(3.7rem + env(safe-area-inset-top,0px))}
+.vcap h1{font-size:clamp(1.5rem,6.4vw,2.4rem)}
+.vcap p{margin-top:.5rem;font-size:.56rem;letter-spacing:.2em}
+.vfoot{bottom:10px}
+.vchaps{max-width:none}
+}
+/* ---------- compact header on phones: logo and menu on one centre line ---------- */
+@media (max-width:899px){
+  .header{padding:calc(.65rem + env(safe-area-inset-top,0px)) var(--gutter-r) .65rem var(--gutter-l);align-items:center}
+  .logo{min-height:34px;gap:.45rem}
+  .logo svg{width:16px;height:22px}
+  .logo span{font-size:.7rem;letter-spacing:.26em}
+  .menu-btn{min-height:34px;padding:0 .8rem;gap:.45rem;font-size:.64rem;letter-spacing:.16em;line-height:1}
+  .menu-btn i{width:14px;height:7px}
+  .menu-btn[aria-expanded="true"] i::before{transform:translateY(2.75px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] i::after{transform:translateY(-2.75px) rotate(-45deg)}
+  .menu-btn i::before,.menu-btn i::after{width:14px}
+  .menu{clip-path:circle(0px at calc(100% - var(--gutter-r) - 40px) calc(env(safe-area-inset-top,0px) + 1.7rem))}
+  .menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 40px) calc(env(safe-area-inset-top,0px) + 1.7rem))}
+}
+/* ---------- dynamic menu button and menu ---------- */
+.header,.header .logo,.header .logo small{transition:background-color .35s ease,box-shadow .35s ease,color .35s ease}
+.menu-btn{transition:transform .16s var(--ease-out),background-color .35s ease,border-color .35s ease,color .35s ease}
+.menu-btn i{position:relative;display:block;width:16px;height:8px}
+.menu-btn i::before,.menu-btn i::after{position:absolute;left:0;transition:transform .45s cubic-bezier(.65,0,.35,1)}
+.menu-btn i::before{top:0}
+.menu-btn i::after{bottom:0}
+.menu-btn[aria-expanded="true"] i::before{transform:translateY(3.25px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i::after{transform:translateY(-3.25px) rotate(-45deg)}
+.menu-btn span{display:inline-block}
+.menu-btn span.swap{animation:menuSwap .4s var(--ease-out)}
+@keyframes menuSwap{0%{opacity:0;transform:translateY(6px);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+.menu{opacity:1;clip-path:circle(0px at calc(100% - var(--gutter-r) - 48px) calc(env(safe-area-inset-top,0px) + 2.3rem));
+  transition:clip-path .6s cubic-bezier(.65,0,.35,1)}
+.menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 48px) calc(env(safe-area-inset-top,0px) + 2.3rem))}
+.menu a,.menu p{opacity:0;transform:translateY(26px);transition:opacity .3s ease,transform .3s ease}
+.menu.open a,.menu.open p{opacity:1;transform:none;transition:opacity .5s ease,transform .7s var(--ease-out);transition-delay:calc(.22s + var(--i,0) * .07s)}
+@media (prefers-reduced-motion:reduce){.vcap h1,.vcap p{transition:none}.menu{clip-path:none;opacity:0;transition:opacity .2s ease}.menu.open{opacity:1}.menu a,.menu p{opacity:1;transform:none;transition:none}.menu-btn span.swap{animation:none}}
+
+/* ---------- real photos ---------- */
+.mile-photo,.team-photo,.find-photo{position:relative;overflow:hidden;margin-top:.6rem}
+.mile-photo img,.team-photo img,.find-photo img{width:100%;height:100%;object-fit:cover}
+.mile-photo{aspect-ratio:4/5;max-width:380px}
+.team-photo{aspect-ratio:4/5}
+.mile-photo figcaption,.team-photo figcaption,.find-photo figcaption{position:absolute;left:10px;bottom:10px;font:600 .58rem/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;background:rgba(245,235,221,.88);color:var(--tea);padding:6px 8px}
+.find-body{position:relative;display:grid;gap:28px;margin-top:clamp(40px,6vw,72px)}
+.find-body .find-grid{margin-top:0}
+.find-photo{aspect-ratio:4/5;margin-top:0}
+@media (min-width:900px){.find-body{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:6vw;align-items:start}.team-photo{aspect-ratio:16/10}}
+
+/* ---------- V1 3D drink stage (scoped) ---------- */
+.v1stage{--text:#2B1D13;--muted:#6B5646;--glass-bg:rgba(255,255,255,.55);--glass-border:rgba(43,29,19,.12);--orange:#FC8C27;--accent:#D96E0A;
+  --bg-inner:#FFF8EF;--bg-mid:#F3E1C8;--bg-outer:#E4C6A0;--font-main:var(--f-body);--font-heading:var(--f-display);color:var(--text);font-family:var(--font-main);
+  -webkit-user-select:none;user-select:none}
+.v1stage img{-webkit-user-drag:none}
+.v1stage .main-title,.v1stage .side-title{font-style:italic;font-weight:500;letter-spacing:-.02em}
+.v1stage .nav-arrow{font:500 1rem var(--f-body)}
+.v1stage .card{font:inherit}
+/* ---------- bubbles ---------- */
+.v1stage #bubbles{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.v1stage .bubble{position:absolute;bottom:-50px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 32% 30%,#fff 0 9%,rgba(255,255,255,.35) 24%,rgba(255,255,255,.08) 60%,transparent 74%);
+  box-shadow:inset 0 0 0 1px rgba(43,29,19,.14)}
+.v1stage{position:relative;isolation:isolate;overflow:hidden;height:100vh;height:100svh;min-height:600px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center, var(--bg-inner) 0%, var(--bg-mid) 50%, var(--bg-outer) 100%);
+  padding:5rem max(4%, 16px, env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(4%, 16px, env(safe-area-inset-left,0px))}
+.v1stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--cream));z-index:105;pointer-events:none}
+.v1stage .hero-content{display:flex;justify-content:space-between;align-items:stretch;width:100%;height:100%;position:relative}
+.v1stage .main-title,.v1stage .side-title{font-family:var(--font-heading);font-size:clamp(5rem,10vw,12rem);line-height:.8;font-weight:400;white-space:nowrap;color:var(--text)}
+.v1stage .main-title .soft,.v1stage .side-title .soft{color:var(--accent)}
+/* far background: tea leaves */
+.v1stage .leaves{position:absolute;inset:0;pointer-events:none;z-index:-1}
+.v1stage .leaf{position:absolute;width:60px;height:60px;object-fit:contain;pointer-events:none;filter:drop-shadow(0 5px 12px rgba(60,35,15,.18))}
+.v1stage .l1{top:10%;left:15%;width:48px;height:48px}
+.v1stage .l2{top:40%;left:82%;width:84px;height:84px;opacity:.35}
+.v1stage .l3{top:72%;left:78%;width:56px;height:56px}
+.v1stage .l4{top:86%;left:12%;width:72px;height:72px;opacity:.3}
+/* left column */
+.v1stage .hero-left{display:flex;flex-direction:column;height:100%;padding:6rem 0;gap:2rem;z-index:100;position:relative}
+.v1stage .description{color:var(--muted);font-size:1.1rem;line-height:1.6;max-width:400px}
+.v1stage .primary-btn{display:flex;align-items:center;gap:1.5rem;background:var(--text);color:var(--page);border:0;padding:.4rem .4rem .4rem 1.5rem;border-radius:100px;font-weight:700;cursor:pointer;width:fit-content;text-decoration:none;transition:background-color .3s ease,transform .2s cubic-bezier(.23,1,.32,1)}
+.v1stage .primary-btn:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.v1stage .primary-btn:hover{background:#43301F;transform:translateY(-3px)}}
+.v1stage .plus-icon{background:var(--orange);color:var(--on-accent);width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.v1stage .plus-icon svg{width:16px;height:16px}
+.v1stage .badge{display:flex;align-items:center;gap:1rem;margin-top:auto}
+.v1stage .badge-icon{width:48px;height:48px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.v1stage .badge-icon svg{width:20px;height:26px}
+.v1stage .badge-text{display:flex;flex-direction:column}
+.v1stage .badge-title{font-size:.7rem;letter-spacing:.1em;color:var(--muted)}
+.v1stage .badge-sub{font-size:.85rem;font-weight:600}
+/* ingredient layers */
+.v1stage .pieces-bg,.v1stage .pieces-fg{position:absolute;inset:0;pointer-events:none}
+.v1stage .pieces-bg{z-index:0}
+.v1stage .pieces-fg{z-index:110}
+.v1stage .piece{position:absolute;width:120px;height:120px;object-fit:contain;filter:drop-shadow(0 10px 16px rgba(60,35,15,.22));will-change:transform}
+/* kept small and out of the cup's column so the cup stays the hero */
+.v1stage .b1{top:20%;left:27%;width:96px;height:96px}
+.v1stage .b2{top:74%;left:36%;width:54px;height:54px}
+.v1stage .b3{top:41%;left:63.5%;width:104px;height:104px}
+.v1stage .b4{top:6%;left:58%;width:66px;height:66px}
+.v1stage .b5{top:80%;left:22%;width:62px;height:62px}
+.v1stage .b6{top:56%;left:73%;width:82px;height:82px}
+.v1stage .b7{top:12%;left:36%;width:44px;height:44px;opacity:.6}
+.v1stage .b8{top:62%;left:63%;width:40px;height:40px;opacity:.5}
+.v1stage .b9{top:86%;left:58%;width:42px;height:42px;opacity:.6}
+/* the cup */
+.v1stage .hero-center{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.4s ease-out;
+  background:radial-gradient(circle at center, rgba(255,214,170,.14) 0%, transparent 60%)}
+.v1stage .hero-center.ready{opacity:1}
+.v1stage .cup-float{position:absolute;inset:0;animation:float 6s ease-in-out infinite}
+.v1stage .hero-center canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+/* right column */
+.v1stage .hero-right{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;text-align:right;height:100%;padding:6rem 0;z-index:100;width:450px;pointer-events:none;position:relative}
+.v1stage .carousel{display:flex;flex-direction:column;gap:1.5rem;align-items:flex-end;pointer-events:auto}
+.v1stage .cards-window{width:calc(135px*2 + 1rem);overflow:visible;clip-path:inset(-200px 0 -10px 0)}
+.v1stage .cards{display:flex;gap:1rem;transition:transform .55s cubic-bezier(.23,1,.32,1)}
+.v1stage .card{flex:none;width:135px;background:var(--glass-bg);border:1px solid var(--glass-border);padding:5rem 1rem 1rem;border-radius:28px;display:flex;flex-direction:column;align-items:center;gap:1.2rem;cursor:pointer;color:var(--text);text-align:center;position:relative;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background-color .4s ease,border-color .4s ease}
+@media (hover:hover) and (pointer:fine){.v1stage .card:hover{background:rgba(255,255,255,.8);border-color:rgba(43,29,19,.3)}}
+.v1stage .card[aria-pressed="true"]{border-color:var(--orange)}
+.v1stage .card img{width:96px;height:132px;object-fit:contain;margin-top:-8rem;filter:drop-shadow(0 18px 24px rgba(60,35,15,.28));transition:transform .5s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+@media (hover:hover) and (pointer:fine){.v1stage .card:hover img{transform:translateY(-24px) rotate(-10deg) scale(1.12)}}
+.v1stage .card-info{display:flex;flex-direction:column;font-size:.72rem;width:100%;line-height:1.35}
+.v1stage .card-info span:first-child{font-weight:600}
+.v1stage .card-info span:last-child{color:var(--muted)}
+.v1stage .carousel-nav{display:flex;gap:1rem}
+.v1stage .nav-arrow{background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text);width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .3s,opacity .3s}
+.v1stage .nav-arrow:disabled{opacity:.35;cursor:default}
+@media (hover:hover) and (pointer:fine){.v1stage .nav-arrow:not(:disabled):hover{background:rgba(43,29,19,.12)}}
+.v1stage .side-title{align-self:flex-end}
+@media (max-width:1200px){.v1stage .main-title,.v1stage .side-title{font-size:6rem}
+.v1stage .hero-right{width:340px}}
+@media (max-width:860px){.v1stage{padding-top:4.5rem}
+.v1stage .hero-content{flex-direction:column;justify-content:space-between;overflow:hidden}
+.v1stage .hero-left{height:auto;padding:.5rem 0 0;gap:.9rem}
+.v1stage .main-title{font-size:clamp(3.4rem,15vw,4.6rem)}
+.v1stage .description{display:none}
+.v1stage .pieces-fg{z-index:2}
+.v1stage .b1{top:30%;left:6%;width:84px;height:84px}
+.v1stage .b2{top:62%;left:8%;width:48px;height:48px}
+.v1stage .b3{top:34%;left:74%;width:92px;height:92px}
+.v1stage .b4{top:20%;left:62%;width:60px;height:60px}
+.v1stage .b5{top:56%;left:78%;width:58px;height:58px}
+.v1stage .b6{top:46%;left:-4%;width:70px;height:70px}
+.v1stage .b7{width:40px;height:40px}
+.v1stage .b8{width:36px;height:36px}
+.v1stage .b9{top:60%;width:38px;height:38px}
+.v1stage .l1{width:44px;height:44px}
+.v1stage .l2{width:80px;height:80px}
+.v1stage .l3{width:50px;height:50px}
+.v1stage .l4{top:62%;width:64px;height:64px}
+.v1stage .badge,.v1stage .side-title{display:none}
+.v1stage .hero-right{width:100%;height:auto;padding:0 0 1.25rem;align-items:center}
+.v1stage .carousel{align-items:center;gap:1rem}
+.v1stage .cards-window{width:min(100%, calc(118px*3 + 1.2rem))}
+.v1stage .card{width:118px;padding-top:4rem}
+.v1stage .card img{width:80px;height:110px;margin-top:-6.5rem}
+.v1stage .l2{left:70%}}
+@media (prefers-reduced-motion:reduce){.v1stage .cup-float{animation:none}
+.v1stage #bubbles{display:none}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* CircularCarousel.css — verbatim from reactbits.dev/r/CircularCarousel-JS-CSS.json */
+.circular-carousel {
+  --cc-fade: #000000;
+  --cc-radius: 12px;
+  --cc-inner: 0.4;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: none;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.circular-carousel[data-axis='x'] {
+  touch-action: pan-x;
+}
+
+.circular-carousel[data-draggable] {
+  cursor: grab;
+}
+
+.circular-carousel[data-dragging] {
+  cursor: grabbing;
+}
+
+.circular-carousel:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(128, 128, 140, 0.55);
+}
+
+.circular-carousel__view {
+  position: absolute;
+  inset: 0;
+}
+
+.circular-carousel[data-shape='wheel'] .circular-carousel__view {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000000 18%, #000000 82%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000000 18%, #000000 82%, transparent);
+}
+
+.circular-carousel[data-shape='panorama'] .circular-carousel__view {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000000 12%, #000000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000000 12%, #000000 88%, transparent);
+}
+
+.circular-carousel__stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.circular-carousel[data-ready] .circular-carousel__stage {
+  opacity: 1;
+}
+
+.circular-carousel__camera,
+.circular-carousel__ring,
+.circular-carousel__card {
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.circular-carousel__camera {
+  position: relative;
+}
+
+.circular-carousel__ring,
+.circular-carousel__card {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.circular-carousel__tile {
+  position: absolute;
+  outline: 1px solid transparent;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.circular-carousel__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.circular-carousel__photo {
+  position: absolute;
+  display: block;
+  max-width: none;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.circular-carousel__photo--leaving {
+  animation: circular-carousel-leave 700ms cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+.circular-carousel__shade,
+.circular-carousel__inner {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.circular-carousel__shade {
+  background: var(--cc-fade);
+  opacity: var(--cc-depth, 0);
+}
+
+.circular-carousel__inner {
+  background: #000000;
+  opacity: var(--cc-inner);
+}
+
+.circular-carousel__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  color: inherit;
+  text-align: center;
+  pointer-events: none;
+  animation: circular-carousel-reveal 900ms ease both;
+}
+
+.circular-carousel__title {
+  display: flex;
+  max-width: 100%;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  animation: circular-carousel-title 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.circular-carousel__subtitle {
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.circular-carousel__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.circular-carousel__slash {
+  opacity: 0.6;
+}
+
+.circular-carousel__digits {
+  display: inline-flex;
+}
+
+.circular-carousel__digit {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.circular-carousel__reel {
+  display: flex;
+  flex-direction: column;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.circular-carousel__reel > span {
+  height: 1em;
+}
+
+.circular-carousel__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@keyframes circular-carousel-title {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes circular-carousel-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes circular-carousel-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circular-carousel__stage,
+  .circular-carousel__reel {
+    transition: none;
+  }
+
+  .circular-carousel__caption,
+  .circular-carousel__title {
+    animation: none;
+  }
+}
+
+/* ---------- CircularCarousel (React Bits, JS-CSS) in Brand Highlights ---------- */
+.cc-holder{margin-top:clamp(28px,4vw,48px)}
+@media (max-width:600px){.cc-holder{height:420px!important}}
+#highlightCarousel{color:var(--tea)}
+#highlightCarousel .circular-carousel__title{font:italic 500 1.35rem/1.2 var(--f-display);letter-spacing:-.01em}
+#highlightCarousel .circular-carousel__subtitle{font:600 .6rem/1.9 var(--f-body);letter-spacing:.22em;text-transform:uppercase;font-style:normal}
+#highlightCarousel .circular-carousel__count{font-family:var(--f-body)}
+.cc-hint{margin-top:.6rem;text-align:center;font:600 .6rem/1.6 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted,#7a6656);opacity:.8}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 26 34">
+    <path d="M2 3h22M4 3l2 12M22 3l-2 12M6 19l2 13h10l2-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="8.5" y="6.5" width="9" height="5.5" fill="#E87825"/>
+    <rect x="8.5" y="20.5" width="9" height="5.5" fill="#E87825"/>
+  </symbol>
+  <symbol id="drop" viewBox="0 0 10 14"><path d="M5 0C5 0 0 6.2 0 9a5 5 0 0 0 10 0C10 6.2 5 0 5 0z" fill="#A95C25"/><path d="M3.2 8.6a1.9 1.9 0 0 0 1.4 2.6" stroke="#F5EBDD" stroke-width=".9" fill="none" stroke-linecap="round" opacity=".7"/></symbol>
+</svg>
+
+<header class="header" id="header">
+  <a class="logo" href="#top" aria-label="Best Tarik and Co, back to top"><svg aria-hidden="true"><use href="#mark"/></svg><span>BEST TARIK <small>&amp;CO</small></span></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#drinks">Drinks</a>
+    <a href="#story">Our Story</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#find">Find Us</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span id="menuLabel">Menu</span></button>
+</header>
+<nav class="menu" id="menu" aria-label="Sections" hidden>
+  <a href="#drinks"><span>01</span>Drinks</a>
+  <a href="#story"><span>02</span>Our Story</a>
+  <a href="#highlights"><span>03</span>Highlights</a>
+  <a href="#find"><span>04</span>Find Us</a>
+  <p>Johor Bahru &middot; @besttarik.co</p>
+</nav>
+
+<main id="top">
+<!-- 1. Hero film -->
+<section class="vhero" id="hero" aria-label="Best Tarik and Co, the art of tarik">
+  <video id="film" src="a/hero-16x9.mp4" muted playsinline autoplay loop preload="auto" poster="a/hero-poster.jpg" aria-hidden="true"></video>
+  <div class="vcap out" id="vcap" aria-live="polite"><h1 id="vcapH">Bold black tea</h1><p id="vcapS">Selected tea leaves</p></div>
+  <div class="vfoot">
+  </div>
+  <a class="vcue" href="#drinks"><span>Our drinks</span><i aria-hidden="true"></i></a>
+</section>
+
+<section class="v1stage" id="drinks" aria-label="Five flavours in 3D">
+  <div id="bubbles" aria-hidden="true"></div>
+  <div class="hero-center" id="heroCenter">
+    <div class="cup-float" id="cupFloat"></div>
+  </div>
+  <div class="hero-content">
+    <div class="leaves" id="leaves" aria-hidden="true"></div>
+
+    <div class="hero-left">
+      <h1 class="main-title"><span class="soft">Five</span><br>Ways</h1>
+      <p class="description">Pulled teh tarik over silky soy beancurd, <br>crowned with a different cream in every cup. <br>Five ways to sip, made in Johor Bahru.</p>
+      <div class="badge">
+        <div class="badge-icon"><svg aria-hidden="true"><use href="#mark"/></svg></div>
+        <div class="badge-text"><span class="badge-title">JOHOR BAHRU</span><span class="badge-sub">Teh tarik with taufufah</span></div>
+      </div>
+    </div>
+
+    <div class="pieces-bg" id="piecesBg" aria-hidden="true"></div>
+
+    <div class="pieces-fg" id="piecesFg" aria-hidden="true"></div>
+
+    <div class="hero-right">
+      <div class="carousel">
+        <div class="cards-window"><div class="cards" id="cards" role="group" aria-label="Choose a flavour"></div></div>
+        <div class="carousel-nav">
+          <button class="nav-arrow" id="prev" type="button" aria-label="Previous flavours">&larr;</button>
+          <button class="nav-arrow" id="next" type="button" aria-label="More flavours">&rarr;</button>
+        </div>
+      </div>
+      <h2 class="side-title"><span class="soft">Pick</span><br>Yours</h2>
+    </div>
+  </div>
+  <p class="sr-only" id="live" aria-live="polite"></p>
+</section>
+
+<!-- 2. Our story -->
+<section class="story" id="story" aria-labelledby="story-t">
+  <div class="wrap">
+    <div class="story-head">
+      <div class="eyebrow">Our Story</div>
+      <h2 class="display" id="story-t">Familiar, <em>yet unexpected.</em></h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-row">
+        <div class="ph tall reveal"><img src="a/photo-pour-1.webp" alt="Pulled teh tarik poured from a frothing jug into a Best Tarik cup" width="1280" height="2208" loading="lazy"></div>
+        <div class="txt">
+          <span class="eyebrow">Where it began</span>
+          <h3>Born in Johor.</h3>
+          <p>Best Tarik &amp; Co was established in Johor, Malaysia, with a vision to bring a fresh and creative twist to the traditional Malaysian teh tarik. By combining familiar local flavours with unique ingredients, the brand introduces a new way to enjoy a beloved Malaysian classic.</p>
+        </div>
+      </div>
+      <div class="story-row flip">
+        <div class="ph wide reveal"><img src="a/base-close-taro.webp" alt="Silky soy beancurd at the bottom of the cup" width="793" height="831" loading="lazy"></div>
+        <div class="txt">
+          <span class="eyebrow">Why taufufah</span>
+          <h3>A drink and a dessert, in one cup.</h3>
+          <p>Teh tarik with taufufah was made to be familiar yet unexpected. The rich, comforting taste of traditional teh tarik meets the soft, silky texture of soy pudding: a local beverage and a traditional dessert, together.</p>
+        </div>
+      </div>
+      <div class="story-row">
+        <div class="ph tall reveal"><img src="a/photo-booth-johor-jaya.webp" alt="The Best Tarik pop-up cart set up at a street market in Johor Jaya" width="1280" height="2269" loading="lazy" style="object-position:50% 60%"></div>
+        <div class="txt">
+          <span class="eyebrow">From a small pop-up</span>
+          <h3>The first stall.</h3>
+          <p>Every brand has a beginning. Best Tarik &amp; Co started with pop-ups on the streets of Johor, introducing the drink to the local community one cup at a time.</p>
+          <p class="todo-text">To add: the story of the first stall day.</p>
+        </div>
+      </div>
+      <div class="story-row flip">
+        <div class="txt" style="order:0">
+          <span class="eyebrow">Milestones</span>
+          <h3>One step at a time.</h3>
+          <ol class="milestones">
+            <li><span>2026</span>TNCSEA Shining Business Award 2026: Shining Malaysian Beverage Innovation Excellence Award.</li>
+            <li><span>&mdash;</span>To add: a milestone and its date</li>
+            <li><span>&mdash;</span>To add: a milestone and its date</li>
+          </ol>
+          <figure class="mile-photo reveal"><img src="a/photo-award-1.webp" alt="The Shining Business Award trophy and certificate for Best Tarik and Co at the ceremony" width="1280" height="1952" loading="lazy"><figcaption>From the street to the stage</figcaption></figure>
+        </div>
+        <div class="txt">
+          <span class="eyebrow">Team &amp; preparation</span>
+          <h3>Made by hand.</h3>
+          <div class="prep">
+            <figure><img src="a/prep-0.9.jpg" alt="Soy beancurd being spooned into an empty cup" width="900" height="900" loading="lazy"><figcaption>Taufufah</figcaption></figure>
+            <figure><img src="a/prep-2.05.jpg" alt="Ice dropped into the cup" width="900" height="900" loading="lazy"><figcaption>Ice</figcaption></figure>
+            <figure><img src="a/prep-3.7.jpg" alt="Teh tarik poured over the ice" width="900" height="900" loading="lazy"><figcaption>Teh tarik</figcaption></figure>
+            <figure><img src="a/prep-6.6.jpg" alt="Cream poured over the top" width="900" height="900" loading="lazy"><figcaption>Cream</figcaption></figure>
+          </div>
+          <figure class="team-photo reveal"><img src="a/photo-made-by-hand.webp" alt="Pulling teh tarik at the Best Tarik market stall" width="1280" height="1673" loading="lazy"><figcaption>At the stall</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Highlights -->
+<section class="high" id="highlights" aria-labelledby="high-t">
+  <div class="wrap">
+    <div class="eyebrow">Brand Highlights</div>
+    <h2 class="display" id="high-t">Up <em>close.</em></h2>
+    <div class="cc-holder" style="width:100%;height:560px;position:relative">
+      <div id="highlightCarousel"></div>
+    </div>
+    <p class="cc-hint">Drag to spin &middot; tap a photo to bring it forward</p>
+  </div>
+</section>
+
+<!-- 4. Find us -->
+<section class="find" id="find" aria-labelledby="find-t">
+  <div class="wrap">
+    <div class="eyebrow">Find Us</div>
+    <h2 class="display" id="find-t">Come <em>find us.</em></h2>
+    <div class="find-body">
+    <dl class="find-grid">
+      <div class="find-item"><dt>Location</dt><dd>Jalan Sri Pelangi, Johor Bahru<br><span class="ph">To add: full stall address</span></dd></div>
+      <div class="find-item"><dt>Hours</dt><dd><span class="ph">To add: operating days and hours</span></dd></div>
+      <div class="find-item"><dt>Say hello</dt><dd>@besttarik.co<br><span class="ph">To add: WhatsApp number</span></dd></div>
+    </dl>
+    <figure class="find-photo reveal"><img src="a/photo-booth-pelangi-day.webp" alt="The Best Tarik stall set up in a car park on Jalan Sri Pelangi" width="1280" height="2330" loading="lazy" style="object-position:50% 70%"><figcaption>Jalan Sri Pelangi</figcaption></figure>
+    </div>
+    <div class="find-cta">
+      <a class="pill solid" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan%20Sri%20Pelangi%2C%20Johor%20Bahru" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Open in Google Maps</a>
+      <a class="pill ghost" href="https://www.instagram.com/besttarik.co/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+    </div>
+    <div class="foot">
+      <p class="big">Best Tarik &amp; Co.</p>
+      <span>Teh tarik with taufufah. Johor Bahru, Malaysia.</span>
+      <span>The art of tarik.</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+/* ---------- page chrome: header, menu, section spy (no libraries needed) ---------- */
+(function(){
+  const header = document.getElementById('header'), hero = document.getElementById('hero');
+  const onScroll = ()=>header.classList.toggle('solid', scrollY > hero.offsetHeight - 80);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  const menu = document.getElementById('menu'), btn = document.getElementById('menuBtn'), label = document.getElementById('menuLabel');
+  function setMenu(open){
+    btn.setAttribute('aria-expanded', open); label.textContent = open ? 'Close' : 'Menu'; label.classList.remove('swap'); void label.offsetWidth; label.classList.add('swap'); header.classList.toggle('on-menu', open);
+    if (open){ menu.hidden = false; requestAnimationFrame(()=>menu.classList.add('open')); document.documentElement.style.overflow = 'hidden'; menu.querySelector('a').focus(); }
+    else { menu.classList.remove('open'); document.documentElement.style.overflow = ''; setTimeout(()=>{ if (!menu.classList.contains('open')) menu.hidden = true; }, 620); }
+  }
+  btn.addEventListener('click', ()=>setMenu(btn.getAttribute('aria-expanded') !== 'true'));
+  [...menu.children].forEach((el,i)=>el.style.setProperty('--i', i));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>setMenu(false)));
+  document.addEventListener('keydown', e=>{ if (e.key === 'Escape' && !menu.hidden){ setMenu(false); btn.focus(); } });
+  const links = [...document.querySelectorAll('.nav a')];
+  const spy = new IntersectionObserver(es=>es.forEach(e=>{ if (e.isIntersecting) links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)); }), {rootMargin:'-40% 0px -55% 0px'});
+  ['drinks','story','highlights','find'].forEach(id=>spy.observe(document.getElementById(id)));
+  new IntersectionObserver(es=>{ if (es[0].isIntersecting) links.forEach(a=>a.classList.remove('active')); }, {rootMargin:'-40% 0px -55% 0px'}).observe(hero);
+})();
+
+/* ---------- hero film: one loop, five chapters, captions as page text ---------- */
+(function(){
+  const CH = [
+    {t:0,    h:'Bold black tea',          s:'Selected tea leaves'},
+    {t:7.5,  h:'Pulled, not stirred',     s:'The art of tarik'},
+    {t:14,   h:'Silky, never too sweet',  s:'Milk meets hot tea'},
+    {t:22,   h:'Handmade taufufah',       s:'Silky soy beancurd'},
+    {t:28.7, h:'Five flavours, one pull', s:'Premium \u00b7 Cham \u00b7 Matcha \u00b7 Taro \u00b7 Jasmine Seasalt'}
+  ];
+  const TOTAL = 38.7;
+  const v = document.getElementById('film'), cap = document.getElementById('vcap'), H = document.getElementById('vcapH'), S = document.getElementById('vcapS');
+  const bars = [...document.querySelectorAll('#vchaps i')], hero = document.getElementById('hero');
+  let cur = -1;
+  // pause off-screen to save battery
+  new IntersectionObserver(es=>{ if (es[0].isIntersecting) v.play().catch(()=>{}); else v.pause(); }).observe(hero);
+  function tick(){
+    requestAnimationFrame(tick);
+    const t = v.currentTime || 0; let k = 0; CH.forEach((c,i)=>{ if (t >= c.t) k = i; });
+    const end = CH[k+1] ? CH[k+1].t : TOTAL;
+    if (k !== cur){ cur = k; cap.classList.add('out'); setTimeout(()=>{ H.textContent = CH[k].h; S.textContent = CH[k].s; }, 260); }
+    cap.classList.toggle('out', !(t >= CH[k].t + .5 && t < end - .4) && !(v.paused && t < .05));
+    bars.forEach((b,i)=>{ const a = CH[i].t, z = CH[i+1] ? CH[i+1].t : TOTAL; b.style.transform = `scaleX(${Math.min(1, Math.max(0, (t - a)/(z - a))).toFixed(3)})`; });
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+
+<script>
+/* ---------- scroll reveals (GSAP + ScrollTrigger) ---------- */
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !window.ScrollTrigger) return;
+  gsap.registerPlugin(ScrollTrigger);
+  // leaving the film: captions lift away
+  gsap.to(['#vcap', '.vfoot', '.vcue'], {y:-60, opacity:0, ease:'none', scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:.6}});
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.fromTo(el, {clipPath:'inset(18% 0 0 0)', y:30}, {clipPath:'inset(0% 0 0 0)', y:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:el, start:'top 88%'}});
+  });
+  gsap.utils.toArray('.story-row h3, .high h2, .story-head h2, .find h2').forEach(el=>{
+    gsap.from(el, {y:30, opacity:0, duration:.9, ease:'power3.out', scrollTrigger:{trigger:el, start:'top 88%'}});
+  });
+  addEventListener('load', ()=>ScrollTrigger.refresh());
+})();
+</script>
+
+<script>
+/* CircularCarousel — React Bits (JS-CSS variant), ported line-for-line to plain JavaScript
+   so it runs in this single-page site without React. Same props, same physics, same CSS.
+   Usage: CircularCarousel(rootElement, { items, preset, intro, cardWidth, aspectRatio, speed, captions, ... }) */
+(function (global) {
+  const PRESETS = {
+    cylinder: { axis: 'y', tilt: -5, perspective: 2500, curve: 1, spread: 1, inward: false, billboard: false, backfaces: true, window: 0 },
+    orbit: { axis: 'y', tilt: -16, perspective: 1500, curve: 0, spread: 1.45, inward: false, billboard: true, backfaces: false, window: 0 },
+    wheel: { axis: 'x', tilt: 0, perspective: 1800, curve: 0, spread: 1, inward: false, billboard: false, backfaces: true, window: 1.7 },
+    panorama: { axis: 'y', tilt: 0, perspective: 0, curve: 1, spread: 1, inward: true, billboard: false, backfaces: false, window: 0 }
+  };
+  const INTRO_LENGTH = { assemble: 1500, rise: 1400, spin: 1800, none: 0 };
+  const TILES = 8, OVERLAP = 2.5, DRAG_THRESHOLD = 5, SPRING = 118, SETTLE_SPEED = 9, CAPTION_SPACE = 76;
+  const TO_RAD = Math.PI / 180;
+  const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+  const wrap = d => ((((d + 180) % 360) + 360) % 360) - 180;
+  const easeOut = t => 1 - Math.pow(1 - t, 4);
+  const easeOutQuint = t => 1 - Math.pow(1 - t, 5);
+  const rotateX = (p, deg) => { const r = deg * TO_RAD, c = Math.cos(r), s = Math.sin(r); return [p[0], p[1] * c - p[2] * s, p[1] * s + p[2] * c]; };
+  const rotateY = (p, deg) => { const r = deg * TO_RAD, c = Math.cos(r), s = Math.sin(r); return [p[0] * c + p[2] * s, p[1], -p[0] * s + p[2] * c]; };
+  const el = (tag, cls, css) => { const e = document.createElement(tag); if (cls) e.className = cls; if (css) Object.assign(e.style, css); return e; };
+  const px = v => (typeof v === 'number' ? v + 'px' : v);
+
+  function CircularCarousel(root, opts) {
+    const o = Object.assign({
+      items: [], preset: 'cylinder', intro: 'rise', cardWidth: 220, aspectRatio: 1, gap: 25,
+      curve: undefined, tilt: undefined, perspective: undefined,
+      autoplay: 'drift', speed: 14, interval: 3, direction: 'left', draggable: true, momentum: 0.6, snap: true,
+      pauseOnHover: true, focusOnClick: true, parallax: 0.3, stretch: 0.5, depthFade: 0.55, fadeColor: '#000000',
+      innerShade: 0.6, cornerRadius: 12, captions: false, onChange: null, onItemClick: null, ariaLabel: 'Image carousel'
+    }, opts || {});
+    const list = o.items;
+    const count = list.length;
+    const shape = PRESETS[o.preset] ? o.preset : 'cylinder';
+    const layout = PRESETS[shape];
+    const axis = layout.axis;
+    const reduced = !!(global.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    const tiltValue = o.tilt ?? layout.tilt;
+    const curveValue = layout.billboard ? 0 : clamp(o.curve ?? layout.curve, 0, 1);
+    const cardW = Math.max(40, o.cardWidth);
+    const cardH = cardW / clamp(o.aspectRatio, 0.2, 5);
+    const along = axis === 'x' ? cardH : cardW;
+    const step = 360 / count;
+
+    const radius = (() => {
+      const n = Math.max(count, 3);
+      const pitch = (along + o.gap) * layout.spread;
+      const chord = pitch / (2 * Math.sin(Math.PI / n));
+      const arc = (n * pitch) / (2 * Math.PI);
+      return Math.max(chord + (arc - chord) * curveValue, along * 0.6);
+    })();
+
+    const tiles = (() => {
+      const total = curveValue > 0.001 ? TILES : 1;
+      const length = along / total;
+      const bend = curveValue > 0.001 ? radius / curveValue : 0;
+      return Array.from({ length: total }, (_, index) => {
+        const start = index * length - (index > 0 ? OVERLAP / 2 : 0);
+        const end = (index + 1) * length + (index < total - 1 ? OVERLAP / 2 : 0);
+        const center = (start + end) / 2 - along / 2;
+        const alpha = bend ? center / bend : 0;
+        const shift = bend ? bend * Math.sin(alpha) : center;
+        const sink = bend ? bend * (1 - Math.cos(alpha)) : 0;
+        const depth = layout.inward ? sink : -sink;
+        const turn = ((layout.inward ? -alpha : alpha) * 180) / Math.PI;
+        const move = axis === 'x'
+          ? `translate3d(0px, ${shift}px, ${depth}px) rotateX(${-turn}deg)`
+          : `translate3d(${shift}px, 0px, ${depth}px) rotateY(${turn}deg)`;
+        return { index, total, start, end, size: end - start, move };
+      });
+    })();
+
+    const s = {
+      count, step, radius, layout, axis, tilt: tiltValue,
+      perspective: layout.inward ? radius : (o.perspective ?? layout.perspective),
+      cardW, cardH,
+      intro: reduced ? 'none' : (o.intro in INTRO_LENGTH ? o.intro : 'rise'),
+      autoplay: reduced ? 'off' : o.autoplay, speed: o.speed, interval: Math.max(0.5, o.interval),
+      draggable: o.draggable, momentum: clamp(o.momentum, 0, 1), snap: o.snap, pauseOnHover: o.pauseOnHover,
+      parallax: reduced ? 0 : clamp(o.parallax, 0, 1), stretch: reduced ? 0 : clamp(o.stretch, 0, 1),
+      depthFade: clamp(o.depthFade, 0, 1), captions: o.captions, reduced
+    };
+    const dragSign = layout.inward ? -1 : 1;
+    const state = {
+      angle: 0, velocity: 0, target: null, dir: (o.direction === 'right' ? 1 : -1) * dragSign, press: null, drag: false,
+      hover: false, pointer: { inside: false, x: 0, y: 0 }, yaw: 0, pitch: 0, intro: null, introDone: false,
+      holdUntil: 0, stepAt: 0, suppressClick: false, wheelTimer: 0, fit: 1, shift: 0, drop: 0, last: 0
+    };
+    let ready = false, active = 0;
+
+    /* ---------- DOM (same structure and class names as the React component) ---------- */
+    root.classList.add('circular-carousel');
+    root.style.setProperty('--cc-fade', o.fadeColor);
+    root.style.setProperty('--cc-radius', `${Math.max(0, o.cornerRadius)}px`);
+    root.style.setProperty('--cc-inner', (1 - clamp(o.innerShade, 0, 1)).toFixed(3));
+    root.setAttribute('role', 'region');
+    root.setAttribute('aria-roledescription', 'carousel');
+    root.setAttribute('aria-label', o.ariaLabel);
+    root.tabIndex = 0;
+    root.dataset.axis = axis;
+    root.dataset.shape = shape;
+    if (o.draggable) root.dataset.draggable = '';
+
+    const view = el('div', 'circular-carousel__view');
+    const stage = el('div', 'circular-carousel__stage');
+    const camera = el('div', 'circular-carousel__camera');
+    const ring = el('div', 'circular-carousel__ring');
+    camera.appendChild(ring); stage.appendChild(camera); view.appendChild(stage); root.appendChild(view);
+
+    const renderTile = (item, tile, back) => {
+      const strip = back ? tile.total - 1 - tile.index : tile.index;
+      const first = strip === 0, last = strip === tile.total - 1, r = 'var(--cc-radius)';
+      const frameRadius = axis === 'x'
+        ? `${first ? r : 0} ${first ? r : 0} ${last ? r : 0} ${last ? r : 0}`
+        : `${first ? r : 0} ${last ? r : 0} ${last ? r : 0} ${first ? r : 0}`;
+      const offset = back ? along - tile.end : tile.start;
+      const size = tile.size;
+      const box = axis === 'x'
+        ? { left: -cardW / 2, top: -size / 2, width: cardW, height: size }
+        : { left: -size / 2, top: -cardH / 2, width: size, height: cardH };
+      const photoStyle = axis === 'x'
+        ? { left: 0, top: -offset, width: cardW, height: cardH }
+        : { left: -offset, top: 0, width: cardW, height: cardH };
+      const flip = axis === 'x' ? ' rotateX(180deg)' : ' rotateY(180deg)';
+      const t = el('div', 'circular-carousel__tile');
+      for (const k in box) t.style[k] = px(box[k]);
+      t.style.transform = tile.move + (back ? flip : '');
+      t.setAttribute('aria-hidden', 'true');
+      const frame = el('div', 'circular-carousel__frame');
+      frame.style.height = px(axis === 'x' ? size : cardH);
+      frame.style.borderRadius = frameRadius;
+      const img = el('img', 'circular-carousel__photo');
+      img.src = item.src; img.alt = ''; img.draggable = false; img.decoding = 'async';
+      if (item.position) img.style.objectPosition = item.position;
+      for (const k in photoStyle) img.style[k] = px(photoStyle[k]);
+      frame.appendChild(img);
+      if (back) frame.appendChild(el('div', 'circular-carousel__inner'));
+      frame.appendChild(el('div', 'circular-carousel__shade'));
+      t.appendChild(frame);
+      return t;
+    };
+
+    const cards = list.map((item, index) => {
+      const card = el('div', 'circular-carousel__card');
+      card.dataset.ccIndex = index;
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-roledescription', 'slide');
+      card.setAttribute('aria-label', `${item.title || item.alt || `Image ${index + 1}`}, ${index + 1} of ${count}`);
+      tiles.forEach(tile => card.appendChild(renderTile(item, tile, false)));
+      if (layout.backfaces) tiles.forEach(tile => card.appendChild(renderTile(item, tile, true)));
+      ring.appendChild(card);
+      return card;
+    });
+
+    let titleEl = null, countWrap = null, digitsEl = null;
+    if (o.captions) {
+      const cap = el('div', 'circular-carousel__caption');
+      cap.setAttribute('aria-hidden', 'true');
+      titleEl = el('span', 'circular-carousel__title');
+      countWrap = el('span', 'circular-carousel__count');
+      digitsEl = el('span', 'circular-carousel__digits');
+      const slash = el('span', 'circular-carousel__slash'); slash.textContent = '/';
+      const total = el('span'); total.textContent = String(count).padStart(2, '0');
+      countWrap.append(digitsEl, slash, total);
+      cap.append(titleEl, countWrap);
+      root.appendChild(cap);
+    }
+    const live = el('div', 'circular-carousel__live');
+    live.setAttribute('aria-live', 'polite'); live.setAttribute('aria-atomic', 'true');
+    root.appendChild(live);
+
+    const setDigits = value => {
+      const str = String(value).padStart(2, '0');
+      if (digitsEl.children.length !== str.length) {
+        digitsEl.textContent = '';
+        for (let i = 0; i < str.length; i++) {
+          const d = el('span', 'circular-carousel__digit');
+          const reel = el('span', 'circular-carousel__reel');
+          '0123456789'.split('').forEach(n => { const x = el('span'); x.textContent = n; reel.appendChild(x); });
+          d.appendChild(reel); digitsEl.appendChild(d);
+        }
+      }
+      str.split('').forEach((digit, i) => { digitsEl.children[i].firstChild.style.transform = `translateY(${-Number(digit) * 10}%)`; });
+    };
+    const showActive = index => {
+      const current = list[index] || list[0];
+      if (titleEl) {
+        const fresh = el('span', 'circular-carousel__title');
+        fresh.textContent = current.title || current.alt;
+        if (current.subtitle) { const sub = el('span', 'circular-carousel__subtitle'); sub.textContent = current.subtitle; fresh.appendChild(sub); }
+        titleEl.replaceWith(fresh); titleEl = fresh;   // remount so the title animation replays, like React's key
+        setDigits(index + 1);
+      }
+      live.textContent = `${current.title || current.alt || `Image ${index + 1}`}, ${index + 1} of ${count}`;
+    };
+    showActive(0);
+
+    /* ---------- engine ---------- */
+    let raf = 0, visible = true;
+    const nearest = a => Math.round(a / s.step) * s.step;
+
+    const measure = () => {
+      const rect = root.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const room = s.captions ? CAPTION_SPACE : 0;
+      const width = rect.width * 0.94;
+      const height = (rect.height - room) * 0.92;
+      const P = s.perspective;
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      if (s.layout.inward) {
+        minX = -width / 2; maxX = width / 2; minY = -s.cardH / 2; maxY = s.cardH / 2;
+      } else {
+        const corners = [[-s.cardW / 2, -s.cardH / 2], [s.cardW / 2, -s.cardH / 2], [-s.cardW / 2, s.cardH / 2], [s.cardW / 2, s.cardH / 2]];
+        const limit = s.layout.window ? s.layout.window * s.step : 180;
+        for (let a = -limit; a <= limit; a += limit / 24) {
+          for (const [cx, cy] of corners) {
+            let p;
+            if (s.axis === 'x') p = rotateY(rotateX([cx, cy, s.radius], -a), s.tilt);
+            else if (s.layout.billboard) { const c = rotateY([0, 0, s.radius], a); p = rotateX([c[0] + cx, cy, c[2]], s.tilt); }
+            else p = rotateX(rotateY([cx, cy, s.radius], a), s.tilt);
+            p = [p[0], p[1], p[2] - s.radius];
+            if (p[2] >= P * 0.95) continue;
+            const k = P / (P - p[2]);
+            minX = Math.min(minX, p[0] * k); maxX = Math.max(maxX, p[0] * k);
+            minY = Math.min(minY, p[1] * k); maxY = Math.max(maxY, p[1] * k);
+          }
+        }
+      }
+      const spanX = Math.max(maxX - minX, 1), spanY = Math.max(maxY - minY, 1);
+      const fit = Math.min(1, width / spanX, height / spanY);
+      state.fit = fit;
+      state.shift = -((minY + maxY) / 2) * fit - room / 2;
+      state.drop = s.axis === 'x' ? (rect.width / fit) * 0.55 + s.cardW : (rect.height / fit) * 0.55 + s.cardH;
+      stage.style.perspective = `${P}px`;
+      stage.style.transform = `translate3d(0, ${state.shift}px, 0) scale(${fit})`;
+    };
+
+    const introCard = (elapsed, landing) => {
+      if (!state.intro) return { radius: 1, lift: 0 };
+      const type = state.intro.type;
+      const reach = Math.abs(wrap(landing + state.angle));
+      if (type === 'assemble') { const p = easeOut(clamp((elapsed - (reach / 180) * 420) / 1080, 0, 1)); return { radius: 1 + 0.6 * (1 - p), lift: 0 }; }
+      if (type === 'rise') { const p = easeOutQuint(clamp((elapsed - (reach / 180) * 480) / 900, 0, 1)); return { radius: 1, lift: (1 - p) * state.drop }; }
+      if (type === 'spin') { const p = easeOut(clamp(elapsed / INTRO_LENGTH.spin, 0, 1)); return { radius: 1 + 0.28 * (1 - p), lift: 0 }; }
+      return { radius: 1, lift: 0 };
+    };
+
+    const advance = (dt, now) => {
+      if (!state.introDone && ready) {
+        if (!state.intro) { if (s.intro === 'none') state.introDone = true; else state.intro = { type: s.intro, start: now }; }
+        if (state.intro && now - state.intro.start >= INTRO_LENGTH[state.intro.type]) { state.intro = null; state.introDone = true; }
+      }
+      const paused = (s.pauseOnHover && state.hover) || state.drag || now < state.holdUntil;
+      const cruise = s.autoplay === 'drift' && !paused && !state.intro ? s.speed * state.dir : 0;
+      let busy = Boolean(state.intro) || state.drag;
+      if (state.drag || state.intro) {
+        state.velocity = state.drag ? state.velocity : 0;
+      } else if (state.target !== null) {
+        let remaining = dt; const damping = 2 * Math.sqrt(SPRING);
+        while (remaining > 0) {
+          const h = Math.min(remaining, 1 / 240);
+          const accel = SPRING * (state.target - state.angle) - damping * state.velocity;
+          state.velocity += accel * h; state.angle += state.velocity * h; remaining -= h;
+        }
+        if (Math.abs(state.target - state.angle) < 0.004 && Math.abs(state.velocity) < 0.03) { state.angle = state.target; state.velocity = 0; state.target = null; }
+        busy = true;
+      } else {
+        const tau = 0.18 + s.momentum * 1.5;
+        state.velocity += (cruise - state.velocity) * (1 - Math.exp(-dt / tau));
+        state.angle += state.velocity * dt;
+        if (cruise === 0 && s.snap && Math.abs(state.velocity) < SETTLE_SPEED) state.target = nearest(state.angle);
+        busy = busy || cruise !== 0 || Math.abs(state.velocity) > 0.01 || state.target !== null;
+      }
+      if (s.autoplay === 'step' && !paused && !state.intro && state.introDone) {
+        if (!state.stepAt) state.stepAt = now + s.interval * 1000;
+        if (now >= state.stepAt) { state.target = (state.target ?? nearest(state.angle)) + s.step * state.dir; state.stepAt = now + s.interval * 1000; }
+        busy = true;
+      } else state.stepAt = 0;
+      if (now < state.holdUntil) busy = true;
+      const ease = 1 - Math.exp(-dt / 0.35);
+      const aimYaw = state.pointer.inside ? state.pointer.x * s.parallax * 9 : 0;
+      const aimPitch = state.pointer.inside ? -state.pointer.y * s.parallax * 6 : 0;
+      state.yaw += (aimYaw - state.yaw) * ease; state.pitch += (aimPitch - state.pitch) * ease;
+      if (Math.abs(aimYaw - state.yaw) > 0.01 || Math.abs(aimPitch - state.pitch) > 0.01) busy = true;
+      return busy;
+    };
+
+    const render = now => {
+      const elapsed = state.intro ? now - state.intro.start : 0;
+      const swell = 1 + s.stretch * 0.12 * Math.min(1, Math.abs(state.velocity) / 420);
+      let spinOffset = 0;
+      if (state.intro?.type === 'spin') spinOffset = -300 * state.dir * (1 - easeOut(clamp(elapsed / INTRO_LENGTH.spin, 0, 1)));
+      else if (state.intro?.type === 'assemble') spinOffset = -32 * state.dir * (1 - easeOut(clamp(elapsed / INTRO_LENGTH.assemble, 0, 1)));
+      const angle = state.angle + spinOffset;
+      const R = s.radius * swell;
+      if (s.axis === 'x') { camera.style.transform = `translate3d(0, 0, ${-R}px) rotateY(${s.tilt + state.yaw}deg) rotateX(${state.pitch}deg)`; ring.style.transform = `rotateX(${-angle}deg)`; }
+      else if (s.layout.inward) { camera.style.transform = `translate3d(0, 0, ${s.perspective - 1}px) rotateX(${s.tilt + state.pitch}deg) rotateY(${state.yaw}deg)`; ring.style.transform = `rotateY(${angle}deg)`; }
+      else { camera.style.transform = `translate3d(0, 0, ${-R}px) rotateX(${s.tilt + state.pitch}deg) rotateY(${state.yaw}deg)`; ring.style.transform = `rotateY(${angle}deg)`; }
+      for (let index = 0; index < s.count; index++) {
+        const card = cards[index];
+        const base = index * s.step;
+        const mod = introCard(elapsed, base);
+        const r = R * mod.radius;
+        let transform;
+        if (s.axis === 'x') transform = `rotateX(${-base}deg) translateZ(${r}px)`;
+        else if (s.layout.inward) transform = `rotateY(${base}deg) translateZ(${-r}px)`;
+        else { transform = `rotateY(${base}deg) translateZ(${r}px)`; if (s.layout.billboard) transform += ` rotateY(${-(base + angle)}deg)`; }
+        if (mod.lift) transform += s.axis === 'x' ? ` translateX(${mod.lift}px)` : ` translateY(${mod.lift}px)`;
+        card.style.transform = transform;
+        const world = wrap(base + angle);
+        const facing = Math.cos(world * TO_RAD);
+        if (s.layout.inward) card.style.visibility = Math.abs(world) > 86 ? 'hidden' : '';
+        card.style.setProperty('--cc-depth', (s.depthFade * Math.pow((1 - facing) / 2, 1.25)).toFixed(3));
+      }
+      const index = ((Math.round(-state.angle / s.step) % s.count) + s.count) % s.count || 0;
+      if (index !== active) { active = index; showActive(index); o.onChange && o.onChange(index); }
+    };
+
+    const frame = now => {
+      raf = 0;
+      const dt = state.last ? Math.min((now - state.last) / 1000, 0.05) : 1 / 60;
+      state.last = now;
+      const busy = advance(dt, now);
+      render(now);
+      if (busy && visible && !document.hidden) raf = requestAnimationFrame(frame);
+      else state.last = 0;
+    };
+    const wake = () => { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); };
+    const onVisibility = () => { if (document.hidden) { cancelAnimationFrame(raf); raf = 0; state.last = 0; } else wake(); };
+
+    new ResizeObserver(() => { measure(); wake(); }).observe(root);
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) wake(); else { cancelAnimationFrame(raf); raf = 0; state.last = 0; }
+    }).observe(root);
+
+    root.addEventListener('wheel', event => {
+      if (!s.draggable) return;
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : 0;
+      if (!delta) return;
+      event.preventDefault();
+      const perPixel = 180 / (Math.PI * s.radius * state.fit);
+      state.target = null;
+      state.angle -= delta * perPixel * (s.layout.inward ? -1 : 1);
+      state.velocity = -delta * perPixel * (s.layout.inward ? -1 : 1) * 30;
+      state.holdUntil = performance.now() + 1600;
+      clearTimeout(state.wheelTimer);
+      state.wheelTimer = setTimeout(() => { if (s.snap) state.target = nearest(state.angle + state.velocity * 0.12); wake(); }, 140);
+      wake();
+    }, { passive: false });
+    document.addEventListener('visibilitychange', onVisibility);
+
+    const focusIndex = index => {
+      let target = -index * s.step;
+      target += 360 * Math.round((state.angle - target) / 360);
+      state.target = target; state.holdUntil = performance.now() + 2800; wake();
+    };
+    const stepBy = delta => {
+      const base = state.target ?? Math.round(state.angle / s.step) * s.step;
+      state.target = base - delta * s.step * (s.layout.inward ? -1 : 1);
+      state.holdUntil = performance.now() + 2800; wake();
+    };
+    const updatePointer = event => {
+      const rect = root.getBoundingClientRect();
+      state.pointer.x = clamp(((event.clientX - rect.left) / rect.width) * 2 - 1, -1, 1);
+      state.pointer.y = clamp(((event.clientY - rect.top) / rect.height) * 2 - 1, -1, 1);
+    };
+
+    root.addEventListener('pointerdown', event => {
+      state.suppressClick = false;
+      if (!s.draggable || event.button !== 0) return;
+      state.press = { id: event.pointerId, x: event.clientX, y: event.clientY, angle: state.angle, moved: false, origin: 0, samples: [{ time: performance.now(), angle: state.angle }] };
+    });
+    root.addEventListener('pointermove', event => {
+      if (event.pointerType === 'mouse') { state.pointer.inside = true; updatePointer(event); }
+      const press = state.press;
+      if (!press || press.id !== event.pointerId) { wake(); return; }
+      const delta = s.axis === 'x' ? event.clientY - press.y : event.clientX - press.x;
+      const cross = s.axis === 'x' ? event.clientX - press.x : event.clientY - press.y;
+      if (!press.moved) {
+        if (Math.abs(delta) < DRAG_THRESHOLD) return;
+        if (Math.abs(cross) > Math.abs(delta) * 1.2 && event.pointerType !== 'mouse') { state.press = null; return; }
+        press.moved = true; press.origin = delta; state.drag = true; state.target = null; state.velocity = 0;
+        root.dataset.dragging = '';
+        try { root.setPointerCapture(event.pointerId); } catch (e) {}
+      }
+      const perPixel = 180 / (Math.PI * s.radius * state.fit);
+      state.angle = press.angle + (delta - press.origin) * perPixel * (s.layout.inward ? -1 : 1);
+      const now = performance.now();
+      press.samples.push({ time: now, angle: state.angle });
+      while (press.samples.length > 2 && now - press.samples[0].time > 110) press.samples.shift();
+      wake();
+    });
+    const releasePointer = event => {
+      const press = state.press;
+      if (!press || press.id !== event.pointerId) return;
+      state.press = null;
+      if (!press.moved) return;
+      state.drag = false; delete root.dataset.dragging; state.suppressClick = true;
+      const first = press.samples[0], last = press.samples[press.samples.length - 1];
+      const span = (last.time - first.time) / 1000;
+      const velocity = span > 0.008 ? clamp((last.angle - first.angle) / span, -1400, 1400) : 0;
+      state.velocity = velocity;
+      if (Math.abs(velocity) > 60) state.dir = Math.sign(velocity);
+      const coasting = s.autoplay === 'drift' && !(s.pauseOnHover && state.hover && event.pointerType === 'mouse');
+      if (s.snap && !coasting) { const tau = 0.18 + s.momentum * 1.5; state.target = Math.round((state.angle + velocity * tau * 0.55) / s.step) * s.step; }
+      wake();
+    };
+    root.addEventListener('pointerup', releasePointer);
+    root.addEventListener('pointercancel', releasePointer);
+    root.addEventListener('pointerenter', event => { if (event.pointerType !== 'mouse') return; state.hover = true; wake(); });
+    root.addEventListener('pointerleave', event => { if (event.pointerType === 'mouse') { state.hover = false; state.pointer.inside = false; } wake(); });
+    root.addEventListener('click', event => {
+      if (state.suppressClick) { state.suppressClick = false; return; }
+      const card = event.target.closest && event.target.closest('[data-cc-index]');
+      if (!card) return;
+      const index = Number(card.getAttribute('data-cc-index'));
+      if (o.focusOnClick) focusIndex(index);
+      o.onItemClick && o.onItemClick(list[index], index);
+    });
+    root.addEventListener('keydown', event => {
+      const forward = axis === 'x' ? 'ArrowDown' : 'ArrowRight';
+      const backward = axis === 'x' ? 'ArrowUp' : 'ArrowLeft';
+      if (event.key === forward) stepBy(1);
+      else if (event.key === backward) stepBy(-1);
+      else if (event.key === 'Home') focusIndex(0);
+      else if (event.key === 'End') focusIndex(count - 1);
+      else if (event.key === 'Enter' || event.key === ' ') o.onItemClick && o.onItemClick(list[active], active);
+      else return;
+      event.preventDefault();
+    });
+
+    /* preload (first 16), then reveal and play the intro — same 2.4 s safety timeout */
+    const load = src => new Promise(resolve => {
+      const image = new Image(); image.decoding = 'async';
+      image.onload = () => (image.decode ? image.decode().then(resolve, resolve) : resolve());
+      image.onerror = resolve; image.src = src;
+    });
+    Promise.race([Promise.all(list.slice(0, 16).map(i => load(i.src))), new Promise(r => setTimeout(r, 2400))]).then(() => {
+      state.introDone = false; state.intro = null; ready = true; root.dataset.ready = ''; wake();
+    });
+
+    measure();
+    render(performance.now());
+    wake();
+    return { focusIndex, stepBy };
+  }
+
+  global.CircularCarousel = CircularCarousel;
+})(window);
+</script>
+
+<script>
+/* Brand Highlights: 3D circular carousel */
+CircularCarousel(document.getElementById('highlightCarousel'), {
+  items: [
+    { src: 'a/photo-award-2.webp', alt: 'The founder holding the Shining Business Award', title: 'Award night', subtitle: 'TNCSEA 2026', position: '50% 28%' },
+    { src: 'a/photo-pour-1.webp', alt: 'Teh tarik poured into a Best Tarik cup', title: 'The pour', subtitle: 'Premium Teh Tarik', position: '50% 40%' },
+    { src: 'a/top-cham.webp', alt: 'Salted coffee cream seen from above', title: 'Salted coffee cream', subtitle: 'Cham Teh Tarik' },
+    { src: 'a/photo-booth-pelangi-night.webp', alt: 'The Best Tarik stall lit up at night', title: 'The stall', subtitle: 'Jalan Sri Pelangi', position: '50% 62%' },
+    { src: 'a/base-close-matcha.webp', alt: 'Soy beancurd layer under matcha', title: 'Taufufah', subtitle: 'Matcha' },
+    { src: 'a/photo-pour-2.webp', alt: 'An iced Best Tarik cup with a dome lid', title: 'Ready to go', subtitle: 'Iced', position: '50% 45%' },
+    { src: 'a/photo-booth-night-trunk.webp', alt: 'The car-boot stall at night', title: 'After dark', subtitle: 'Pop-up', position: '50% 55%' },
+    { src: 'a/top-premium.webp', alt: 'Pulled tea froth seen from above', title: 'Pulled froth', subtitle: 'Premium Teh Tarik' },
+    { src: 'a/photo-made-by-hand.webp', alt: 'Pulling teh tarik at the stall', title: 'Made by hand', subtitle: 'At the stall', position: '50% 35%' },
+    { src: 'a/photo-award-1.webp', alt: 'The award trophy and certificate', title: 'Street to stage', subtitle: 'Shining Business Award', position: '50% 40%' }
+  ],
+  preset: 'cylinder',
+  intro: 'rise',
+  cardWidth: 220,
+  aspectRatio: 1,
+  speed: 14,
+  captions: true,
+  fadeColor: getComputedStyle(document.documentElement).getPropertyValue('--cream-2').trim() || '#EFE2D0',
+  ariaLabel: 'Brand highlights'
+});
+</script>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FLAVORS = [
+  {id:'premium', name:'Premium Teh Tarik', cream:'Pulled tea froth', bg:['#FFF8EF','#F3E1C8','#E4C6A0']},
+  {id:'cham',    name:'Cham Teh Tarik',    cream:'Salted coffee cream', bg:['#FBF3EA','#EBD6BF','#D4B391']},
+  {id:'matcha',  name:'Matcha Teh Tarik',  cream:'Creamy matcha', bg:['#F8FAEF','#E4ECCB','#C9D7A2']},
+  {id:'taro',    name:'Taro Teh Tarik',    cream:'Creamy taro', bg:['#FBF7FE','#E9DFF4','#CFBEE5']},
+  {id:'jasmine', name:'Jasmine Seasalt',   cream:'Jasmine salted cream', bg:['#FFFDF6','#F5EDDA','#E5D5B2']}
+];
+const [A, ING] = await Promise.all([fetch('a/assets.json').then(r=>r.json()), fetch('a/ingredients.json').then(r=>r.json())]);
+let cur = 0, isSwitching = false, switchSpin = 0;
+/* auto-advance: rest on each drink for about 2.5 s, then spin to the next; pauses while a card is hovered */
+const HOLD = 2500; let nextAt = performance.now() + 3000, hoverHold = false;
+
+/* ---------- ingredients: each flavour floats its own, the leaves are always fresh tea leaves ---------- */
+const INGREDIENT = {premium:'tealeaf', cham:'bean', matcha:'greenleaf', taro:'taro', jasmine:'jasmine'};
+const pieceSrc = (fid, i) => { const p = ING[INGREDIENT[fid]]; return 'a/' + p[i % p.length][0]; };
+const leafSrc = i => 'a/' + ING.greenleaf[i % ING.greenleaf.length][0];
+const piecesFg = document.getElementById('piecesFg'), piecesBg = document.getElementById('piecesBg'), leavesEl = document.getElementById('leaves');
+const make = (parent, cls, src) => { const im = new Image(); im.className = cls; im.alt = ''; im.decoding = 'async'; im.src = src; parent.appendChild(im); return im; };
+const fg = [1,2,3,4,5,6].map((n,i)=>make(piecesFg, `piece b${n}`, pieceSrc('premium', i)));
+const bgp = [7,8,9].map((n,i)=>make(piecesBg, `piece b${n}`, pieceSrc('premium', i+6)));
+const allPieces = [...fg, ...bgp];
+const leaves = [1,2,3,4].map((n,i)=>make(leavesEl, `leaf l${n}`, leafSrc(i+1)));
+allPieces.forEach(b=>{ b.dataset.rx = 0; b.dataset.ry = 0; b.dataset.angle = Math.random()*360; b.dataset.baseX = 0; b.dataset.baseY = 0; });
+// warm the cache for every flavour's ingredients
+Object.values(ING).flat().forEach(p=>{ const i = new Image(); i.src = 'a/' + p[0]; });
+
+/* ---------- flavour cards ---------- */
+const cardsEl = document.getElementById('cards');
+const cards = FLAVORS.map((f,i)=>{
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'card'; b.setAttribute('aria-pressed', i===0 ? 'true':'false');
+  b.innerHTML = `<img src="a/${A[f.id].card[0]}" alt="" width="${A[f.id].card[1]}" height="${A[f.id].card[2]}"><div class="card-info"><span>${f.name}</span><span>${f.cream}</span></div>`;
+  b.addEventListener('click', ()=>{ nextAt = performance.now() + HOLD + 2500; select(i); }); cardsEl.appendChild(b); return b;
+});
+let offset = 0;
+const prevBtn = document.getElementById('prev'), nextBtn = document.getElementById('next');
+function visibleCount(){ return innerWidth <= 860 ? 3 : 2; }
+function slide(){
+  const maxOff = FLAVORS.length - visibleCount(); offset = Math.max(0, Math.min(maxOff, offset));
+  const step = cards[0].getBoundingClientRect().width + parseFloat(getComputedStyle(cardsEl).gap);
+  cardsEl.style.transform = `translateX(${-offset*step}px)`;
+  prevBtn.disabled = offset === 0; nextBtn.disabled = offset >= maxOff;
+}
+prevBtn.addEventListener('click', ()=>{ offset--; slide(); });
+nextBtn.addEventListener('click', ()=>{ offset++; slide(); });
+addEventListener('resize', slide); slide();
+cardsEl.addEventListener('pointerenter', e=>{ if (e.pointerType === 'mouse') hoverHold = true; });
+cardsEl.addEventListener('pointerleave', ()=>{ hoverHold = false; nextAt = Math.max(nextAt, performance.now() + 1200); });
+[prevBtn, nextBtn].forEach(b=>b.addEventListener('click', ()=>{ nextAt = performance.now() + HOLD + 2500; }));
+
+/* ---------- the 3D cup ---------- */
+const heroCenter = document.getElementById('heroCenter'), cupFloat = document.getElementById('cupFloat');
+const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(2, devicePixelRatio));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+cupFloat.appendChild(renderer.domElement);
+const canvas = renderer.domElement;
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
+const HW = 3;
+const lean = new THREE.Group(); lean.rotation.z = -0.2; scene.add(lean);   // the floating lean, like the can
+const tilt = new THREE.Group(); lean.add(tilt);
+const spinG = new THREE.Group(); tilt.add(spinG);
+const maxAniso = renderer.capabilities.getMaxAnisotropy();
+
+/* Cup shape: the outline of the Premium front shot is the master for every flavour.
+   Each flavour keeps only its own cream dome above the rim. */
+function rimOf(raw){ let k = -1; raw.forEach((p,i)=>{ if (p[1] > .6 && p[1] < .97 && (k < 0 || p[0] > raw[k][0])) k = i; }); return k; }
+const MASTER = (()=>{ const raw = A.premium.profile, k = rimOf(raw); return {raw, k, ry: raw[k][1], rr: raw[k][0]}; })();
+function masterR(y){
+  const r = MASTER.raw;
+  for (let i=1;i<=MASTER.k;i++) if (r[i][1] >= y){ const a = r[i-1], b = r[i], t = (y-a[1]) / Math.max(1e-6, b[1]-a[1]); return a[0] + (b[0]-a[0])*t; }
+  return MASTER.rr;
+}
+function profileFor(fid){
+  const raw = A[fid].profile;
+  if (A[fid].master) return raw.map(([r,y],i)=>new THREE.Vector2(i === 0 ? 0 : r*HW, y*HW - HW/2));
+  const k = rimOf(raw), ry = raw[k][1], rr = raw[k][0], s = MASTER.rr / rr;
+  return raw.map(([r,y],i)=>{
+    if (i === 0) return new THREE.Vector2(0, -HW/2);
+    let Y, R;
+    if (y <= ry){ Y = y/ry*MASTER.ry; R = masterR(Y); } else { Y = MASTER.ry + (y-ry)*s; R = r*s; }
+    return new THREE.Vector2(R*HW, Y*HW - HW/2);
+  });
+}
+// Older photos see the base from above, so their bottom rows show the base ellipse as stripes: stretch the band above it down.
+function clampBaseUV(geo, prof){
+  const j = prof.findIndex(p=>p.y >= .06*HW - HW/2); const vMin = j / (prof.length - 1);
+  const uv = geo.attributes.uv;
+  for (let i=0;i<uv.count;i++) if (uv.getY(i) < vMin) uv.setY(i, vMin);
+  uv.needsUpdate = true;
+}
+const RADIAL = (()=>{ const c = document.createElement('canvas'); c.width = c.height = 256; const g = c.getContext('2d');
+  const r = g.createRadialGradient(128,128,0,128,128,128); r.addColorStop(0,'#fff'); r.addColorStop(.72,'#fff'); r.addColorStop(.9,'#000'); r.addColorStop(1,'#000');
+  g.fillStyle = r; g.fillRect(0,0,256,256); return new THREE.CanvasTexture(c); })();
+function buildCup(fid, set){
+  const g = new THREE.Group();
+  const prof = profileFor(fid);
+  const bodyGeo = new THREE.LatheGeometry(prof, 200); if (!A[fid].master && !A[fid].level) clampBaseUV(bodyGeo, prof);
+  g.add(new THREE.Mesh(bodyGeo, new THREE.MeshBasicMaterial({map:set.tex})));
+  const rim = rimOf(A[fid].profile);
+  const gl = new THREE.Mesh(new THREE.LatheGeometry(prof.slice(0, rim+1).map(p=>new THREE.Vector2(p.x*1.012+.004, p.y)), 200),
+    new THREE.MeshPhysicalMaterial({color:0xffffff, roughness:.05, metalness:0, transparent:true, opacity:.12, clearcoat:1, clearcoatRoughness:.03, envMapIntensity:2.4, depthWrite:false}));
+  gl.renderOrder = 2; g.add(gl);
+  if (set.cap){                                        // foam seen from above, laid over the dome and faded out at its edge
+    const dome = prof.slice(rim); const Rd = Math.max(...dome.map(p=>p.x));
+    const geo = new THREE.LatheGeometry(dome.map(p=>new THREE.Vector2(p.x*1.004+.002, p.y+.003)), 200);
+    const pos = geo.attributes.position, uv = geo.attributes.uv;
+    for (let i=0;i<uv.count;i++) uv.setXY(i, .5 + pos.getX(i)/(2*Rd), .5 - pos.getZ(i)/(2*Rd));
+    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({map:set.cap, alphaMap:RADIAL, transparent:true, depthWrite:false}));
+    m.renderOrder = 1; g.add(m);
+  }
+  if (set.base){                                       // the underside, from the bottom-view photo
+    const disk = new THREE.Mesh(new THREE.CircleGeometry(prof[1].x, 96), new THREE.MeshBasicMaterial({map:set.base}));
+    disk.rotation.x = Math.PI/2; disk.position.y = -HW/2 - .002; g.add(disk);
+  }
+  return g;
+}
+const loader = new THREE.TextureLoader();
+const texCache = {};
+const loadTex = url => new Promise(res=>loader.load(url, t=>{ t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = maxAniso; renderer.initTexture(t); res(t); }, undefined, ()=>res(null)));
+function texFor(fid){
+  if (!texCache[fid]) texCache[fid] = Promise.all([loadTex(`a/wrap-${fid}.webp`), A[fid].cap ? loadTex('a/' + A[fid].cap) : null, A[fid].base ? loadTex('a/' + A[fid].base) : null])
+    .then(([tex, cap, base])=>({tex, cap, base}));
+  return texCache[fid];
+}
+let cupMesh = null;
+function setCup(fid, set){
+  if (cupMesh){ spinG.remove(cupMesh); cupMesh.traverse(o=>{ if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); }); }
+  cupMesh = buildCup(fid, set); spinG.add(cupMesh);
+}
+const heroEl = document.getElementById('drinks');
+function frame(){
+  const w = heroEl.clientWidth, h = heroEl.clientHeight; renderer.setSize(w, h, false); camera.aspect = w/h;
+  const small = w <= 860;
+  const share = small ? .32 : .66;                         // cup height as a share of the viewport
+  const dist = (HW/share) / (2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
+  camera.position.set(0, small ? -.25 : 0, dist); camera.lookAt(0, small ? -.25 : 0, 0); camera.updateProjectionMatrix();
+}
+frame(); addEventListener('resize', frame);
+
+texFor(FLAVORS[0].id).then(t=>{ setCup(FLAVORS[0].id, t); heroCenter.classList.add('ready'); FLAVORS.slice(1).forEach(f=>texFor(f.id)); });
+
+/* ---------- switching flavour ---------- */
+function select(i){
+  if (isSwitching || i === cur) return;
+  cards[cur].setAttribute('aria-pressed','false'); cards[i].setAttribute('aria-pressed','true');
+  if (i < offset) { offset = i; slide(); } else if (i >= offset + visibleCount()) { offset = i - visibleCount() + 1; slide(); }
+  cur = i; switchFlavor(FLAVORS[i]);
+  document.getElementById('live').textContent = FLAVORS[i].name;
+}
+function switchFlavor(f){
+  isSwitching = true;
+  const root = heroEl;
+  gsap.to(root, {'--bg-inner':f.bg[0], '--bg-mid':f.bg[1], '--bg-outer':f.bg[2], duration:1.5, ease:'power2.inOut'});
+  const texP = texFor(f.id);
+  if (reduce){ texP.then(t=>setCup(f.id, t)); allPieces.forEach((p,i)=>p.src = pieceSrc(f.id, i)); isSwitching = false; return; }
+
+  // the cup spins with a motion blur and changes at the peak
+  const s = {val:0, blur:0};
+  gsap.to(s, {val:360, blur:15, duration:.6, ease:'power2.in',
+    onUpdate(){ switchSpin = s.val; canvas.style.filter = `blur(${s.blur}px)`; },
+    onComplete: async ()=>{
+      const t = await texP; setCup(f.id, t);
+      gsap.to(s, {val:720, blur:0, duration:1.5, ease:'back.out(0.7)',
+        onUpdate(){ switchSpin = s.val; canvas.style.filter = `blur(${s.blur}px)`; },
+        onComplete(){ switchSpin = 0; canvas.style.filter = 'none'; }});
+    }});
+
+  // safety net: never let a slow device leave the stage locked
+  setTimeout(()=>{ if (isSwitching){ isSwitching = false; nextAt = performance.now() + HOLD; } }, 4500);
+  // ingredients implode into the cup, swap, and burst back out
+  let done = 0;
+  allPieces.forEach((p,i)=>{
+    const bW = p.offsetWidth/2, bH = p.offsetHeight/2;
+    const parentRect = p.parentElement.getBoundingClientRect();
+      const hr = heroEl.getBoundingClientRect();
+    const cx = hr.left + hr.width/2 - parentRect.left - p.offsetLeft - bW, cy = hr.top + hr.height/2 - parentRect.top - p.offsetTop - bH;
+    const a0 = parseFloat(p.dataset.angle) || 0, bx = parseFloat(p.dataset.baseX) || 0, by = parseFloat(p.dataset.baseY) || 0;
+    const nx = (Math.random()-.5)*80, ny = (Math.random()-.5)*80;
+    gsap.set(p, {rotation:a0, x:bx, y:by});
+    gsap.timeline()
+      .to(p, {x:cx, y:cy, rotation:a0+45, scale:.1, opacity:0, duration:.5, ease:'power2.in', onComplete(){ p.src = pieceSrc(f.id, i); heroCenter.style.zIndex = 50; }})
+      .to(p, {duration:.3})
+      .to(p, {onStart(){ heroCenter.style.zIndex = 1; }, x:nx, y:ny, rotation:a0+90, scale:1, opacity:'', duration:.9, ease:'back.out(1.5)',
+        onComplete(){ p.dataset.angle = a0+90; p.dataset.baseX = nx; p.dataset.baseY = ny; p.dataset.rx = 0; p.dataset.ry = 0; gsap.set(p, {clearProps:'opacity'}); if (++done === allPieces.length){ isSwitching = false; nextAt = performance.now() + HOLD; } }});
+  });
+}
+
+/* ---------- pointer: lean, parallax, repel ---------- */
+const mouse = {x:0, y:0, px:-9999, py:-9999}, cm = {x:0, y:0};
+addEventListener('pointermove', e=>{ if (e.pointerType !== 'mouse') return; mouse.x = e.clientX/innerWidth - .5; mouse.y = e.clientY/innerHeight - .5; mouse.px = e.clientX; mouse.py = e.clientY; });
+document.addEventListener('pointerleave', ()=>{ mouse.px = mouse.py = -9999; });
+const DUR = [5,7,6,8,5.5,6.5,9,11,10];
+let running = true, heroOn = true;
+document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; });
+new IntersectionObserver(es=>{ heroOn = es[0].isIntersecting; }).observe(heroEl);   // the stage rests while you read the story
+
+function animate(){
+  requestAnimationFrame(animate);
+  if (!running || !heroOn){ nextAt = Math.max(nextAt, performance.now() + 1500); return; }
+  const time = performance.now()*.001;
+  if (!reduce && !isSwitching && !hoverHold && performance.now() > nextAt){ nextAt = Infinity; select((cur + 1) % FLAVORS.length); }
+  cm.x += (mouse.x - cm.x) * .05; cm.y += (mouse.y - cm.y) * .05;
+
+  // cup leans toward the cursor: about 20 degrees side to side, 10 up and down
+  spinG.rotation.y = THREE.MathUtils.degToRad(cm.x*40 + switchSpin);
+  tilt.rotation.x = THREE.MathUtils.degToRad(cm.y*20);
+  renderer.render(scene, camera);
+
+  if (reduce) return;
+  piecesFg.style.transform = `translate(${cm.x*60}px, ${cm.y*60}px)`;
+  piecesBg.style.transform = `translate(${cm.x*-30}px, ${cm.y*-30}px)`;
+  leavesEl.style.transform = `translate(${cm.x*-15}px, ${cm.y*-15}px)`;
+
+  if (!isSwitching){
+    allPieces.forEach((p,i)=>{
+      const r = p.getBoundingClientRect(), bx = r.left + r.width/2, by = r.top + r.height/2;
+      const dx = mouse.px - bx, dy = mouse.py - by, dist = Math.hypot(dx, dy) || 1;
+      let tx = 0, ty = 0, speed = 1;
+      if (dist < 260){ const force = (260 - dist)/260; tx = dx/dist*force*-50; ty = dy/dist*force*-50; speed = 1 + force*3; }
+      let rx = +p.dataset.rx, ry = +p.dataset.ry, angle = +p.dataset.angle;
+      rx += (tx - rx)*.1; ry += (ty - ry)*.1; angle += .2*speed;
+      p.dataset.rx = rx; p.dataset.ry = ry; p.dataset.angle = angle;
+      const ph = (time + i*.7) * (Math.PI*2 / DUR[i % 9]);
+      p.style.transform = `translate(${rx + +p.dataset.baseX}px, ${ry + +p.dataset.baseY + Math.sin(ph)*15}px) rotate(${angle + Math.cos(ph)*6}deg)`;
+    });
+  }
+  leaves.forEach((l,i)=>{
+    const ph = (time + i*1.2) * (Math.PI*2 / (10 + i*2));
+    l.style.transform = `translate(${Math.cos(ph*.5)*15}px, ${Math.sin(ph)*20}px) rotate(${Math.sin(ph*.3)*15}deg)`;
+  });
+}
+animate();
+
+/* ---------- rising milk bubbles ---------- */
+const bubbles = document.getElementById('bubbles');
+function bubble(){
+  if (document.hidden || reduce || !heroOn) return;
+  const b = document.createElement('div'); b.className = 'bubble';
+  const size = Math.random()*20 + 10; b.style.width = b.style.height = size + 'px';
+  b.style.left = Math.random()*100 + '%'; b.style.setProperty('--o', (Math.random()*.4 + .2).toFixed(2));
+  const d = Math.random()*6 + 4; b.style.animation = `floatUp ${d}s linear forwards`;
+  bubbles.appendChild(b); setTimeout(()=>b.remove(), d*1000);
+}
+setInterval(bubble, 400);
+</script>
