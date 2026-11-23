@@ -305,6 +305,8 @@ button{font:inherit;color:inherit}
 .vchapters{display:flex;gap:14px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
   padding:0 var(--gutter-r) 4px var(--gutter-l);scroll-padding-left:var(--gutter-l)}
 .vchapters::-webkit-scrollbar{display:none}
+/* trailing space so even the last card can scroll to the same left edge as the headline */
+.vchapters::after{content:"";flex:0 0 var(--rail-tail,0px)}
 @media (min-width:900px){.vchapters{padding-left:max(56px,env(safe-area-inset-left,0px));padding-right:56px;scroll-padding-left:56px}}
 .vchapters li{flex:0 0 min(78vw,300px);scroll-snap-align:start}
 .vch{position:relative;display:grid;grid-template-columns:98px 1fr;align-items:start;gap:14px;width:100%;padding:16px 0 6px;border:0;background:none;color:var(--peach);text-align:left;cursor:pointer;font:inherit;opacity:.62;transition:opacity .35s ease}
@@ -1014,6 +1016,10 @@ button{font:inherit;color:inherit}
   const cards = [...document.querySelectorAll('#vchapters .vch')], bars = cards.map(c=>c.querySelector('i')), rail = document.getElementById('vchapters'), hero = document.getElementById('hero');
   // tap a card to jump to that chapter
   cards.forEach((c,i)=>c.addEventListener('click', ()=>{ v.currentTime = CH[i].t + .02; v.play().catch(()=>{}); }));
+  // room after the last card, so every card (05 included) can line up with the headline's left edge
+  function tail(){ const last = rail.lastElementChild; if (!last) return; const cs = getComputedStyle(rail), padL = parseFloat(cs.scrollPaddingLeft) || 0, gap = parseFloat(cs.columnGap) || 0;
+    rail.style.setProperty('--rail-tail', innerWidth >= 900 ? '0px' : Math.max(0, rail.clientWidth - padL - last.offsetWidth - gap) + 'px'); }
+  tail(); addEventListener('resize', tail);
   // keep the playing card in view inside the rail (never scrolls the page)
   function follow(k){ const li = cards[k].parentElement, pad = parseFloat(getComputedStyle(rail).scrollPaddingLeft) || 0; rail.scrollTo({left: li.offsetLeft - pad, behavior:'smooth'}); }
   let cur = -1;
