@@ -804,6 +804,14 @@ button{font:inherit;color:inherit}
 .v1stage .side-title.drink-name{display:flex;flex-direction:column;align-items:flex-end;text-align:right;font-size:clamp(3.4rem,6.2vw,7rem);line-height:.92;position:relative;z-index:5}
 .v1stage .side-title.drink-name{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-style:normal;font-weight:800;letter-spacing:-.02em;font-size:clamp(2.8rem,5vw,5.6rem);line-height:.95}
 .v1stage .drink-name .fold-text{line-height:inherit;letter-spacing:inherit;white-space:nowrap}
+/* ---------- phones: reference layout, small eyebrow on top, big bold title below, 3D cup in the middle ---------- */
+.v1stage .v1-eyebrow{display:none}
+@media (max-width:860px){
+.v1stage .hero-left{gap:.55rem;padding-top:1.4rem}
+.v1stage .v1-eyebrow{display:block;margin:0;font:700 .74rem/1.2 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.v1stage .main-title{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-style:normal;font-weight:800;text-transform:uppercase;letter-spacing:-.025em;line-height:.88;font-size:clamp(3.2rem,16vw,4.6rem);color:var(--text)}
+.v1stage .main-title .soft{color:inherit}
+}
 @media (max-width:860px){.v1stage .side-title.drink-name{display:flex;align-self:center;align-items:center;text-align:center;font-size:clamp(2rem,9vw,2.8rem);margin:.25rem 0 2.2rem}}
 </style>
 
@@ -876,6 +884,7 @@ button{font:inherit;color:inherit}
     <div class="leaves" id="leaves" aria-hidden="true"></div>
 
     <div class="hero-left">
+      <p class="v1-eyebrow">Teh tarik with taufufah</p>
       <h1 class="main-title"><span class="soft">Five</span><br>Ways</h1>
       <p class="description">Pulled teh tarik over silky soy beancurd, <br>crowned with a different cream in every cup. <br>Five ways to sip, made in Johor Bahru.</p>
       <div class="badge">
