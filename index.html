@@ -7,7 +7,7 @@
 <meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&family=Source+Serif+4:opsz,wght@8..60,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Oswald:wght@400;600&family=Manrope:wght@400;500;600;700&family=Inter:wght@800&family=Source+Serif+4:opsz,wght@8..60,400&display=swap">
 <link rel="preload" as="image" href="a/hero-poster.jpg">
 <style>
 /* Layout: a full-screen looping ingredient film (HeroTea-style) with captions top-left, then an editorial story,
@@ -352,6 +352,19 @@ button{font:inherit;color:inherit}
   .menu{clip-path:circle(0px at calc(100% - var(--gutter-r) - 44px) calc(env(safe-area-inset-top,0px) + .9rem + 22px))}
   .menu.open{clip-path:circle(150vmax at calc(100% - var(--gutter-r) - 44px) calc(env(safe-area-inset-top,0px) + .9rem + 22px))}
 }
+/* ---------- manifesto band (Delta-style brand statement between the film and Five Ways) ---------- */
+.mf{--peach:#F2D4BE;background:var(--tea);color:var(--peach);text-align:center;padding:clamp(88px,13vw,170px) max(6vw,20px,env(safe-area-inset-right,0px)) clamp(88px,12vw,150px) max(6vw,20px,env(safe-area-inset-left,0px))}
+.mf-title{margin:0 auto;font:600 clamp(2.6rem,12.5vw,7.6rem)/.9 "Oswald","Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.005em;text-transform:uppercase;color:var(--peach)}
+.mf-l{display:block}
+.mf-title small{display:inline-block;vertical-align:top;margin:.1em .16em 0 .14em;font-size:.46em;font-weight:400;line-height:1;letter-spacing:.01em}
+.mf-cta{display:flex;justify-content:center;gap:.3rem;margin-top:clamp(32px,4vw,48px)}
+.mf-cta a{display:inline-flex;align-items:center;justify-content:center;min-height:56px;border-radius:99px;text-decoration:none;transition:transform .16s var(--ease-out),background-color .25s ease}
+.mf-cta a:active{transform:scale(.97)}
+.mf-pill{padding:0 1.7rem;background:var(--peach);color:var(--tea);font:500 1rem var(--f-body)}
+.mf-go{width:56px;background:#5A3626;color:var(--peach)}
+.mf-go svg{width:18px;height:18px}
+@media (hover:hover) and (pointer:fine){.mf-pill:hover{background:#FBE6D6}.mf-go:hover{background:#6B412E}}
+.mf-text{max-width:46ch;margin:clamp(26px,3vw,36px) auto 0;font:400 clamp(1rem,1.3vw,1.15rem)/1.6 var(--f-body);color:rgba(242,212,190,.88);text-wrap:balance}
 /* ---------- dynamic menu button and menu ---------- */
 .header,.header .logo,.header .logo small{transition:background-color .35s ease,box-shadow .35s ease,color .35s ease}
 .menu-btn{transition:transform .16s var(--ease-out),background-color .35s ease,border-color .35s ease,color .35s ease}
@@ -840,6 +853,20 @@ button{font:inherit;color:inherit}
   </div>
 </section>
 
+<section class="mf" id="manifesto" aria-labelledby="mf-t">
+  <h2 class="mf-title" id="mf-t" aria-label="Pulled by hand, poured over silky taufufah">
+    <span class="mf-l" aria-hidden="true">Pulled<small>by</small>hand,</span>
+    <span class="mf-l" aria-hidden="true">poured<small>over</small></span>
+    <span class="mf-l" aria-hidden="true">silky</span>
+    <span class="mf-l" aria-hidden="true">taufufah</span>
+  </h2>
+  <div class="mf-cta">
+    <a class="mf-pill" href="#story">Our Story</a>
+    <a class="mf-go" href="#story" aria-label="Read our story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <p class="mf-text">Best Tarik &amp; Co is teh tarik from Johor Bahru. Every cup is pulled by hand, poured over silky soy beancurd and finished in one of five ways.</p>
+</section>
+
 <section class="v1stage" id="drinks" aria-label="Five flavours in 3D">
   <div id="bubbles" aria-hidden="true"></div>
   <div class="hero-center" id="heroCenter">
@@ -1045,6 +1072,9 @@ button{font:inherit;color:inherit}
   gsap.registerPlugin(ScrollTrigger);
   // leaving the film: captions lift away
   gsap.to(['.vbody', '.vrail'], {y:-60, opacity:0, ease:'none', scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:.6}});
+  // manifesto: lines rise in one after another
+  gsap.from('.mf-l', {yPercent:60, opacity:0, duration:1, ease:'expo.out', stagger:.09, scrollTrigger:{trigger:'.mf-title', start:'top 80%'}});
+  gsap.from(['.mf-cta', '.mf-text'], {y:24, opacity:0, duration:.9, ease:'power3.out', stagger:.1, scrollTrigger:{trigger:'.mf-cta', start:'top 90%'}});
   gsap.utils.toArray('.reveal').forEach(el=>{
     gsap.fromTo(el, {clipPath:'inset(18% 0 0 0)', y:30}, {clipPath:'inset(0% 0 0 0)', y:0, duration:1.1, ease:'expo.out', scrollTrigger:{trigger:el, start:'top 88%'}});
   });
