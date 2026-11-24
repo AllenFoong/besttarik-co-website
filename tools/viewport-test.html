@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Viewport test</title>
+<style>
+html,body{margin:0;background:#382219;color:#F5EBDD;font:15px/1.5 -apple-system,system-ui,sans-serif}
+.box{position:absolute;left:0;width:1px;top:0;visibility:hidden}
+#fixb{position:fixed;left:0;bottom:0;width:100%;height:6px;background:#FC8C27;z-index:9}
+#fixt{position:fixed;left:0;top:0;width:100%;height:6px;background:#FC8C27;z-index:9}
+#out{position:fixed;left:0;right:0;top:50%;transform:translateY(-50%);padding:16px 20px;background:rgba(0,0,0,.55);font-variant-numeric:tabular-nums;white-space:pre}
+.tall{height:300vh;background:linear-gradient(#5a3a22,#1e0f06)}
+</style></head><body>
+<div class="box" id="svh" style="height:100svh"></div><div class="box" id="lvh" style="height:100lvh"></div>
+<div class="box" id="dvh" style="height:100dvh"></div><div class="box" id="vh" style="height:100vh"></div>
+<div class="box" id="sab" style="height:env(safe-area-inset-bottom,0px)"></div><div class="box" id="sat" style="height:env(safe-area-inset-top,0px)"></div>
+<div id="fixt"></div><div id="fixb"></div><div class="tall"></div><div id="out"></div>
+<script>
+function h(id){return Math.round(document.getElementById(id).getBoundingClientRect().height)}
+function upd(){var vv=window.visualViewport||{};var fb=document.getElementById('fixb').getBoundingClientRect();
+document.getElementById('out').textContent=
+'screen      '+screen.width+' x '+screen.height+'\n'+
+'innerHeight '+innerHeight+'\n'+
+'clientH     '+document.documentElement.clientHeight+'\n'+
+'visualVP    '+Math.round(vv.height||0)+'  offTop '+Math.round(vv.offsetTop||0)+'\n'+
+'100svh      '+h('svh')+'\n100lvh      '+h('lvh')+'\n100dvh      '+h('dvh')+'\n100vh       '+h('vh')+'\n'+
+'safe top    '+h('sat')+'   bottom '+h('sab')+'\n'+
+'fixed bot   '+Math.round(fb.bottom)+'\n'+
+'scrollY     '+Math.round(scrollY);}
+upd();addEventListener('resize',upd);addEventListener('scroll',upd);if(window.visualViewport)visualViewport.addEventListener('resize',upd);setInterval(upd,500);
+</script></body></html>
