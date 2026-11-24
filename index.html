@@ -2,7 +2,6 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>(function(u){var ios=/iP(hone|od|ad)/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1);if(ios&&!/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(u))document.documentElement.classList.add('ios-safari')})(navigator.userAgent)</script>
 <title>Best Tarik &amp; Co</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
@@ -284,11 +283,6 @@ button{font:inherit;color:inherit}
 
 /* ---------- video hero (Version 4: Delta-style layout) ---------- */
 .vhero{--peach:#F2D4BE;--vbar:0px;position:relative;height:100svh;min-height:520px;overflow:hidden;background:#5a3a22;color:var(--peach)}
-/* iOS 26 Safari tints its toolbars from the page edge colour (cream body). While the hero is on screen,
-   a dark fixed strip at the bottom edge makes Safari tint the bottom bar dark, so no cream band below the film. */
-.tint-bottom{display:none}
-.ios-safari .tint-bottom{display:block;position:fixed;left:0;right:0;bottom:0;height:3px;background:#2b1a11;z-index:40;pointer-events:none;transition:opacity .2s}
-.ios-safari .tint-bottom.off{opacity:0;visibility:hidden}
 .vhero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vhero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(30,15,6,.45) 0%,rgba(30,15,6,0) 26%),linear-gradient(0deg,rgba(30,15,6,.78) 0%,rgba(30,15,6,.35) 32%,rgba(30,15,6,0) 58%)}
@@ -830,7 +824,6 @@ button{font:inherit;color:inherit}
 
 <main id="top">
 <!-- 1. Hero film -->
-<div class="tint-bottom" aria-hidden="true"></div>
 <section class="vhero" id="hero" aria-label="Best Tarik and Co, the art of tarik">
   <video id="film" src="a/hero-16x9.mp4" poster="a/hero-poster.jpg" muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
   <div class="vbody">
@@ -984,10 +977,6 @@ button{font:inherit;color:inherit}
 </section>
 </main>
 
-<script>
-(function(){var t=document.querySelector('.tint-bottom'),h=document.getElementById('hero');if(!t||!h||!('IntersectionObserver' in window))return;
-new IntersectionObserver(function(e){t.classList.toggle('off',e[0].intersectionRatio<0.15)},{threshold:[0,.15,.3]}).observe(h)})();
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
