@@ -2,6 +2,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(u){var ios=/iP(hone|od|ad)/.test(u)||(/Macintosh/.test(u)&&navigator.maxTouchPoints>1);if(ios&&!/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(u))document.documentElement.classList.add('ios-safari')})(navigator.userAgent)</script>
 <title>Best Tarik &amp; Co</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Best Tarik &amp; Co, Johor Bahru. The art of tarik: pulled teh tarik over silky taufufah, crowned with cream.">
@@ -284,11 +285,10 @@ button{font:inherit;color:inherit}
 /* ---------- video hero (Version 4: Delta-style layout) ---------- */
 .vhero{--peach:#F2D4BE;--vbar:0px;position:relative;height:100svh;min-height:520px;overflow:hidden;background:#5a3a22;color:var(--peach)}
 /* iOS 26 Safari paints the page under its translucent toolbars, and how much depends on the tab layout (Compact / Bottom / Top).
-   Backdrop: large viewport + a fixed bleed on touch screens, so it always reaches past the screen bottom (Compact leaves ~80px no CSS unit counts).
+   Backdrop: large viewport + 120px bleed, so it always reaches past the screen bottom (Compact leaves ~80px no CSS unit counts).
    Text and chapter rail: pinned to the bottom of what is actually visible (dvh), so no empty band in any layout. */
-.vhero{--hero-bleed:0px}
-@media (pointer:coarse){.vhero{--hero-bleed:120px}}
-@supports (height:100dvh){.vhero{height:calc(100lvh + var(--hero-bleed));--vbar:calc(100lvh - 100dvh + var(--hero-bleed))}}
+/* only iOS Safari (class set in <head>); Chrome/others keep the plain 100svh hero, which already fits their opaque toolbars */
+@supports (height:100dvh){.ios-safari .vhero{height:calc(100lvh + 120px);--vbar:calc(100lvh - 100dvh + 120px)}}
 .vhero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vhero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,rgba(30,15,6,.45) 0%,rgba(30,15,6,0) 26%),linear-gradient(0deg,rgba(30,15,6,.78) 0%,rgba(30,15,6,.35) 32%,rgba(30,15,6,0) 58%)}
