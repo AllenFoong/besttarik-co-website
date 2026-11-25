@@ -504,7 +504,9 @@ button{font:inherit;color:inherit}
 .v1stage .cards-window{width:min(100%, calc(118px*3 + 1.2rem))}
 .v1stage .card{width:118px;padding-top:4rem}
 .v1stage .card img{width:80px;height:110px;margin-top:-6.5rem}
-.v1stage .l2{left:70%}}
+.v1stage .l2{left:70%}
+/* taro cubes and coffee beans read too big on phones */
+.v1stage .piece.b1:is([data-f="taro"],[data-f="cham"]){width:57px;height:57px}.v1stage .piece.b2:is([data-f="taro"],[data-f="cham"]){width:33px;height:33px}.v1stage .piece.b3:is([data-f="taro"],[data-f="cham"]){width:63px;height:63px}.v1stage .piece.b4:is([data-f="taro"],[data-f="cham"]){width:41px;height:41px}.v1stage .piece.b5:is([data-f="taro"],[data-f="cham"]){width:39px;height:39px}.v1stage .piece.b6:is([data-f="taro"],[data-f="cham"]){width:48px;height:48px}.v1stage .piece.b7:is([data-f="taro"],[data-f="cham"]){width:27px;height:27px}.v1stage .piece.b8:is([data-f="taro"],[data-f="cham"]){width:24px;height:24px}.v1stage .piece.b9:is([data-f="taro"],[data-f="cham"]){width:26px;height:26px}}
 @media (prefers-reduced-motion:reduce){.v1stage .cup-float{animation:none}
 .v1stage #bubbles{display:none}}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -1781,7 +1783,7 @@ function switchFlavor(f){
   const root = heroEl;
   gsap.to(root, {'--bg-inner':f.bg[0], '--bg-mid':f.bg[1], '--bg-outer':f.bg[2], duration:1.5, ease:'power2.inOut'});
   const texP = texFor(f.id);
-  if (reduce){ texP.then(t=>setCup(f.id, t)); allPieces.forEach((p,i)=>p.src = pieceSrc(f.id, i)); isSwitching = false; return; }
+  if (reduce){ texP.then(t=>setCup(f.id, t)); allPieces.forEach((p,i)=>{ p.src = pieceSrc(f.id, i); p.dataset.f = f.id; }); isSwitching = false; return; }
 
   // the cup spins with a motion blur and changes at the peak
   const s = {val:0, blur:0};
@@ -1807,7 +1809,7 @@ function switchFlavor(f){
     const nx = (Math.random()-.5)*80, ny = (Math.random()-.5)*80;
     gsap.set(p, {rotation:a0, x:bx, y:by});
     gsap.timeline()
-      .to(p, {x:cx, y:cy, rotation:a0+45, scale:.1, opacity:0, duration:.5, ease:'power2.in', onComplete(){ p.src = pieceSrc(f.id, i); heroCenter.style.zIndex = 50; }})
+      .to(p, {x:cx, y:cy, rotation:a0+45, scale:.1, opacity:0, duration:.5, ease:'power2.in', onComplete(){ p.src = pieceSrc(f.id, i); p.dataset.f = f.id; heroCenter.style.zIndex = 50; }})
       .to(p, {duration:.3})
       .to(p, {onStart(){ heroCenter.style.zIndex = 1; }, x:nx, y:ny, rotation:a0+90, scale:1, opacity:'', duration:.9, ease:'back.out(1.5)',
         onComplete(){ p.dataset.angle = a0+90; p.dataset.baseX = nx; p.dataset.baseY = ny; p.dataset.rx = 0; p.dataset.ry = 0; gsap.set(p, {clearProps:'opacity'}); if (++done === allPieces.length){ isSwitching = false; nextAt = performance.now() + HOLD; } }});
