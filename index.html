@@ -803,6 +803,7 @@ button{font:inherit;color:inherit}
 /* ---------- drink name (FoldText) in the Drinks stage, bottom right ---------- */
 .v1stage .side-title.drink-name{display:flex;flex-direction:column;align-items:flex-end;text-align:right;font-size:clamp(3.4rem,6.2vw,7rem);line-height:.92;position:relative;z-index:5}
 .v1stage .side-title.drink-name{font-family:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;font-style:normal;font-weight:800;letter-spacing:-.02em;font-size:clamp(2.8rem,5vw,5.6rem);line-height:.95}
+.v1stage .drink-name,.v1stage .drink-name .soft{color:var(--name-ink,var(--accent));transition:color .6s ease}
 .v1stage .drink-name .fold-text{line-height:inherit;letter-spacing:inherit;white-space:nowrap}
 /* ---------- phones: reference layout, small eyebrow on top, big bold title below, 3D cup in the middle ---------- */
 .v1stage .v1-eyebrow{display:none}
@@ -1622,11 +1623,11 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FLAVORS = [
-  {id:'premium', name:'Premium Teh Tarik', cream:'Pulled tea froth', bg:['#FFF8EF','#F3E1C8','#E4C6A0']},
-  {id:'cham',    name:'Cham Teh Tarik',    cream:'Salted coffee cream', bg:['#FBF3EA','#EBD6BF','#D4B391']},
-  {id:'matcha',  name:'Matcha Teh Tarik',  cream:'Creamy matcha', bg:['#F8FAEF','#E4ECCB','#C9D7A2']},
-  {id:'taro',    name:'Taro Teh Tarik',    cream:'Creamy taro', bg:['#FBF7FE','#E9DFF4','#CFBEE5']},
-  {id:'jasmine', name:'Jasmine Seasalt',   cream:'Jasmine salted cream', bg:['#FFFDF6','#F5EDDA','#E5D5B2']}
+  {id:'premium', name:'Premium Teh Tarik', ink:'#D96E0A', cream:'Pulled tea froth', bg:['#FFF8EF','#F3E1C8','#E4C6A0']},
+  {id:'cham',    name:'Cham Teh Tarik',    ink:'#8A5332', cream:'Salted coffee cream', bg:['#FBF3EA','#EBD6BF','#D4B391']},
+  {id:'matcha',  name:'Matcha Teh Tarik',  ink:'#5F8A2E', cream:'Creamy matcha', bg:['#F8FAEF','#E4ECCB','#C9D7A2']},
+  {id:'taro',    name:'Taro Teh Tarik',    ink:'#8460B8', cream:'Creamy taro', bg:['#FBF7FE','#E9DFF4','#CFBEE5']},
+  {id:'jasmine', name:'Jasmine Seasalt',   ink:'#B8862A', cream:'Jasmine salted cream', bg:['#FFFDF6','#F5EDDA','#E5D5B2']}
 ];
 const [A, ING] = await Promise.all([fetch('a/assets.json').then(r=>r.json()), fetch('a/ingredients.json').then(r=>r.json())]);
 let cur = 0, isSwitching = false, switchSpin = 0;
@@ -1662,12 +1663,12 @@ function slide(){
   cardsEl.style.transform = `translateX(${-offset*step}px)`;
 }
 /* drink name, bottom right: React Bits FoldText, refolds on every switch */
-const splitName = n => { const k = n.indexOf(' '); return k < 0 ? [n, ''] : [n.slice(0, k), n.slice(k + 1)]; };
+const splitName = n => { n = n.replace(/\s*Teh Tarik$/i, ''); const k = n.indexOf(' '); return k < 0 ? [n, ''] : [n.slice(0, k), n.slice(k + 1)]; };
 const foldOpts = { splitBy: 'char', hinge: 'top', foldStyle: 'paper', duration: 0.65, stagger: 0.045, fontSize: null, fontWeight: null, color: 'currentColor' };
-const [nA, nB] = splitName(FLAVORS[0].name);
+const [nA, nB] = splitName(FLAVORS[0].name); document.querySelector('.v1stage .drink-name').style.setProperty('--name-ink', FLAVORS[0].ink);
 const nameA = window.FoldText(document.getElementById('nameA'), Object.assign({}, foldOpts, { text: nA })),
       nameB = window.FoldText(document.getElementById('nameB'), Object.assign({}, foldOpts, { text: nB }));
-function showName(i){ const [a, b] = splitName(FLAVORS[i].name); nameA.setText(a); setTimeout(()=>nameB.setText(b), 120); }
+function showName(i){ const [a, b] = splitName(FLAVORS[i].name); document.querySelector('.v1stage .drink-name').style.setProperty('--name-ink', FLAVORS[i].ink); nameA.setText(a); setTimeout(()=>nameB.setText(b), 120); }
 addEventListener('resize', slide); slide();
 cardsEl.addEventListener('pointerenter', e=>{ if (e.pointerType === 'mouse') hoverHold = true; });
 cardsEl.addEventListener('pointerleave', ()=>{ hoverHold = false; nextAt = Math.max(nextAt, performance.now() + 1200); });
